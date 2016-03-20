@@ -1,0 +1,125 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title %}Karol Cowan{% endblock %}
+
+{% block content %}
+
+    {% include 'partials/_home_slider.html' %}
+    <div class="minipause"></div>
+    <!-- SUBHEADER
+    ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p class="text-center">
+                    "El arte es el alma de la civilización" - Karol Cowan
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- ANIMATED COLUMNS
+    ================================================== -->
+    <div class="row">
+        <div class="twelve columns">
+            <ul class="ca-menu">
+                <li>
+                    <a href="/eventos/social">
+                        <span class="ca-icon">
+                            <img src="../images/icons/event.png" data-src="../images/icons/event.png" data-hover="../images/icons/event_hover.png" style="width: 60px; height: 60px;">
+                        </span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Eventos<br/> Profesionales</h2>
+                            <h3 class="ca-sub">Solista o en pareja</h3>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/eventos/bailarin">
+                        <span class="ca-icon">
+                            <img src="../images/icons/dance.png" data-src="../images/icons/dance.png" data-hover="../images/icons/dance_hover.png" style="width: 60px; height: 60px;">
+                        </span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Bailarín<br/> Profesional</h2>
+                            <h3 class="ca-sub">Danzas Afrocubanas, Salsa, SON, Latin Jazz..</h3>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="ca-icon">
+                            <img src="../images/icons/music.png" data-src="../images/icons/music.png" data-hover="../images/icons/music_hover.png" style="width: 60px; height: 60px;">
+                        </span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Músico<br/> Profesional</h2>
+                            <h3 class="ca-sub">Eventos Musicales, solita o en grupo</h3>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="ca-icon">
+                            <img src="../images/icons/teacher.png" data-src="../images/icons/teacher.png" data-hover="../images/icons/teacher_hover.png" style="width: 60px; height: 60px;">
+                        </span>
+                        <div class="ca-content">
+                            <h2 class="ca-main">Profesor y Clases Particulares</h2>
+                            <h3 class="ca-sub">Danzas Afrocubanas, Salsa, Son, Latin Jazz</h3>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        $(".ca-menu li").hover(function (e) {
+            var img = $(this).find("img");
+            var src = img.data('src');
+            if ( e.type == 'mouseenter' ){
+                src = img.data('hover');
+            }
+            img.attr('src', src);
+        });
+
+        $("li.fade").hover(function () {
+            $(this).fadeOut(100);
+            $(this).fadeIn(500);
+        });
+    </script>
+
+
+    <!-- CONTENT
+================================================== -->
+    <br><br>
+    <div class="row">
+        <div class="twelve columns">
+            <div class="centersectiontitle">
+                <h4>Acerca de Mi</h4>
+            </div>
+        </div>
+        <div class="columns">
+            Karol Cowan junco nació el 21 de junio de 1984 en la provincia de Camagüey Cuba,
+            hijo de Delfina Junco Bustillo y Lorenzo Cowan Livines.
+            Desde muy temprana edad tuvo inclinación por el arte ya que sus padres eran artistas,
+            Lorenzo Cowan músico graduado del conservatorio en Cuba especializando en la flauta traversa y en saxofón,
+            vocalista,
+            Delfina Junco también vocalista. Karol Cowan a pesar de no estudiar arte en ningunas de sus manifestaciones,
+            comienza su carrera artística a los 18 años como bailarín en la compañía de danza “Ciclón del Caribe”
+            dirigido por el coreógrafo y director Carlos Ríos Carmenates en la provincia de Camagüey,
+            Cuba Donde continúa trabajando y superándose siempre como bailarín en varios espectáculos del polo
+            turístico Varadero, Cuba En el año 2008 decide ir a vivir a la Argentina en búsqueda de superación
+            artística, para estudiar danza contemporánea y música, Cuando adiciona para la beca de comedia musical
+            en la Fundación Julio Bocca - Ricky Pashkus, teniendo como asignaturas danza clásica, elongación,
+            integración, danza jazz, canto, teatro. Empieza a trabajar en varios espectáculos en Buenos Aires,
+            Argentina,
+            Teatro de revistas, como obras “Habana mía Concerté”,” EXOTICA”, giras nacionales con el cantante
+            internacional
+            José Luis Rodríguez “EL PUMA”, haciendo bolos en televisión, como en el series, Casi Ángeles, Enséñame a
+            vivir,
+            y Los Únicos. A finales del año 2009 comienza a cantar en la orquesta De Salsa de la Timba Son, Rumba Iya.
+            2010
+            arranca a componer varias canciones, convirtiéndose en cantautor, llevando a cabo la grabación del
+            disco “Cruzando Fronteras” con el Dúo “Mas2” K&J hasta la actualidad.
+        </div>
+    </div>
+{% endblock %}

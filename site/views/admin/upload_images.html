@@ -1,0 +1,105 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="twelve columns">
+            <h4>Subir Imagenes</h4>
+
+            <label style="font-weight: bold">
+                AMOR: OJO con las faltas de ortografia. El nombre que le pongas a las carpetas es Muy importante.
+                No es lo mismo, Musico, que musico o que músico (Para el sistema son 3 carpetas diferentes por estar
+                escritas de diferente manera)
+            </label>
+
+            <br><br>
+            <div class="form">
+                <div class="six columns noleftmargin">
+                    <label>Carpeta</label>
+                    <input type="text" name="folder" id="folder" class="smoothborder" placeholder="Musico"/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <button type="button" id="upload_widget_opener" class="readmore" value="Submit">Subir Imagenes</button>
+                </div>
+            </div>
+
+            <form method="post" action="/admin/upload/images" id="uploadform">
+                <br>
+                <div class="row">
+                    <div class="twelve columns images_container">
+                        {% for picture in pictures %}
+                            <div class="img_container three columns">
+                                <input type="hidden" name="images[{{ loop.index0 }}][id]" value="{{ picture.id }}">
+                                <input type="hidden" name="images[{{ loop.index0 }}][public_id]" value="{{ picture.public_id }}">
+                                <input type="hidden" name="images[{{ loop.index0 }}][category]" value="{{ picture.category }}">
+
+                                <img name="images[{{ loop.index0 }}][url]" src="{{ picture.public_id | cloudinary({width: 150, crop: "scale"}) }}" >
+
+                                <br><span><b>Delete</b></span><input type="checkbox" name="images[{{ loop.index0 }}][delete]">
+                                <br><span><b>Categoria</b></span>: {{ picture.category }}
+
+                                <input type="text" name="images[{{ loop.index0 }}][title]" value="{{ picture.title }}" class="smoothborder" placeholder="TITULO"/>
+                                <textarea type="text" name="images[{{ loop.index0 }}][description]" class="smoothborder">{{ picture.description }}</textarea>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="twelve columns">
+                        <button type="submit" id="upload_widget_opener" class="readmore">Guardar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="application/javascript">
+        /** Document Ready Functions **/
+        $( document ).ready(function() {
+            $("#upload_widget_opener").on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+
+                var folder = $("#folder").val();
+                if ($.trim(folder) == ""){
+                    alert('Amor, la carpeta esta vacia, escribi un nombre');
+                } else {
+                    cloudinary.openUploadWidget(
+                        {
+                            cloud_name: 'dplksnehy',
+                            upload_preset: 'karol_cowan',
+                            theme: 'minimal',
+                            show_powered_by: false,
+                            folder: 'karol_cowan' + "/" + folder,
+                            tags: [folder]
+                        },
+                        function(error, result) {
+                            console.log(result);
+                            var _index = $('.images_container div').length;
+                            $.each(result, function( index, value ) {
+                                var top = _index + index;
+                                var url = $('<input type="hidden" name="images['+top+'][url]" value="'+value.secure_url+'">');
+                                var public_id = $('<input type="hidden" name="images['+top+'][public_id]" value="'+value.public_id+'">');
+                                var category = $('<input type="hidden" name="images['+top+'][category]" value="'+value.tags[0]+'">');
+
+
+                                $('.images_container').append(url);
+                                $('.images_container').append(public_id);
+                                $('.images_container').append(category);
+                            });
+
+                           $("#uploadform").submit();
+                        });
+                }
+            });
+        });
+
+    </script>
+{% endblock %}

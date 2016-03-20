@@ -1,0 +1,55 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+    <!-- CONTENT
+================================================== -->
+    <div class="row">
+        <div class="twelve columns">
+            <!-- CATEGORIES-->
+            <section id="options" class="clearfix">
+                <ul id="filters" class="option-set clearfix" data-option-key="filter">
+                    <li><a href="#filter" data-option-value="*" class="portofoliobutton selected">Ver Todas</a></li>
+                    {% for category in categories %}
+                        <li><a href="#filter" data-option-value=".{{ category }}" class="portofoliobutton">{{ category }}</a></li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="portofolio">
+            <!-- Project 1-->
+            {% for picture in pictures %}
+                <div class="four columns threeportofolio category {{ picture.category }}">
+                    <h5>
+                        {% if picture.title is empty %}
+                            {{ picture.tag }}
+                        {% else %}
+                            {{ picture.title }}
+                        {% endif %}
+                    </h5>
+                    {% if picture.description is not empty %}
+                    <p>
+                        {{ picture.description }}
+                    </p>
+                    {% endif %}
+                    <div class="portofoliothumb">
+                        <div class="portofoliothumboverlay threeoverlay">
+                            <div class="viewgallery threegallery">
+                                <a data-gal="prettyPhoto[gallery]" href="{{ picture.public_id | cloudinary }}"><img src="{{ picture.public_id | cloudinary }}" class="left galleryicon" alt=""> Gallery</a>
+                            </div>
+                            {#<div class="inner threedetail">
+                                <a class="projectdetail" href="portofoliodetail.html">+ Project Details</a>
+                            </div>#}
+                        </div>
+                        <img src="{{ picture.public_id | cloudinary({aspect_ratio: "1.7", gravity: "faces", width: 350, crop: "crop"}) }}" class="threeimage" alt=""/>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

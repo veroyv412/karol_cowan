@@ -1,0 +1,41 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p>
+                    Eventos Profesionales
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="row">
+        <div class="twelve columns">
+
+            <div class="flex-video widescreen">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/mPg-FeWaNZ0" style="border:0px;" allowfullscreen>
+                </iframe>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="application/javascript">
+        /** Document Ready Functions **/
+        /********************************************************************/
+        $( document ).ready(function() {
+            $('#background-video').YTPlayer({
+                fitToBackground: true
+            });
+        });
+
+    </script>
+{% endblock %}

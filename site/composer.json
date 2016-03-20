@@ -1,0 +1,19 @@
+{
+    "name":"karolcowan",
+    "description":" ",
+    "license":"proprietary",
+    "require": {
+        "slim/slim": "2.*",
+        "slim/views": "0.1.*",
+        "twig/twig": "1.*",
+        "swiftmailer/swiftmailer": "5.2.*@dev",
+        "cloudinary/cloudinary_php": "dev-master",
+        "simplon/mysql": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.7.*"
+    },
+    "autoload": {
+        "classmap": []
+    }
+}
