@@ -45,8 +45,21 @@
 
 //Pretty Photo
 $(document).ready(function () {
+    var viewportWidth = $('body').innerWidth();
     try {       
-        $("a[data-gal^='prettyPhoto']").prettyPhoto({ animation_speed: 'normal', theme: 'dark_rounded', slideshow: 3000, autoplay_slideshow: false, social_tools: false });
+        /*$("a[data-gal^='prettyPhoto']").prettyPhoto(
+            {   animation_speed: 'normal',
+                theme: 'dark_rounded',
+                slideshow: 3000,
+                autoplay_slideshow: false,
+                social_tools: false,
+                changepicturecallback: function(){
+                    // 1024px is presumed here to be the widest mobile device. Adjust at will.
+                    if (viewportWidth < 1025) {
+                        $(".pp_pic_holder.pp_default").css("top",window.pageYOffset+"px");
+                    }
+                }
+            });*/
     }
     catch (e)
     { }

@@ -65,9 +65,33 @@ $clImgTag = new Twig_SimpleFilter('cl_image_tag', function ($path, $params = arr
     return $img;
 });
 
+$imageWidth = new Twig_SimpleFilter('image_width', function($path){
+    try {
+        list($width, $height) = getimagesize($path);
+        return $width;
+    } catch (Exception $e){
+        return '';
+    }
+
+    return '';
+});
+
+$imageHeight = new Twig_SimpleFilter('image_height', function($path){
+    try {
+        list($width, $height) = getimagesize($path);
+        return $height;
+    } catch (Exception $e){
+        return '';
+    }
+
+    return '';
+});
+
 $twig = $view->getEnvironment();
 $twig->addFilter($cloudinary);
 $twig->addFilter($clImgTag);
+$twig->addFilter($imageWidth);
+$twig->addFilter($imageHeight);
 
 /* DATABASE */
 $config = array(
@@ -160,14 +184,26 @@ $app->get('/eventos/bailarin', function() use ($app) {
     ));
 });
 
-$app->get('/admin/upload/images', function() use ($app, $dbConn) {
+$app->get('/eventos/clases', function() use ($app) {
+    echo $app->view->render('eventos/clases.html', array(
+        'tab' => 'home'
+    ));
+});
+
+$app->get('/eventos/music', function() use ($app) {
+    echo $app->view->render('eventos/musico.html', array(
+        'tab' => 'home'
+    ));
+});
+
+$app->get('/admin/upload-images', function() use ($app, $dbConn) {
     $images = $dbConn->fetchRowMany('SELECT * FROM images');
     echo $app->view->render('admin/upload_images.html', array(
         'pictures' => $images
     ));
 });
 
-$app->post('/admin/upload/images', function() use ($app, $dbConn) {
+$app->post('/admin/upload-images', function() use ($app, $dbConn) {
     \Cloudinary::config(array(
         "cloud_name" => "dplksnehy",
         "api_key" => "586718325429517",

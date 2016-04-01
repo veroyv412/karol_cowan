@@ -1,0 +1,50 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p>
+                    Profesor y Clases Particulares
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="row">
+        <div class="six columns">
+            <div class="flex-video widescreen">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/USrKItCm3Yg" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="six columns">
+            <img src="/images/flyers/flyer_latin_jazz.jpg" style="width: 100%">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="six columns">
+            <img src="/images/flyers/flyer_clases_danza_popular.png" style="width: 100%">
+        </div>
+        <div class="six columns">
+            <img src="/images/flyers/flyer_rumba.jpg" style="width: 100%">
+        </div>
+    </div>
+
+    <script type="application/javascript">
+        /** Document Ready Functions **/
+        /********************************************************************/
+        $( document ).ready(function() {
+            $('#background-video').YTPlayer({
+                fitToBackground: true
+            });
+        });
+
+    </script>
+{% endblock %}
