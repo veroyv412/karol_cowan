@@ -30,8 +30,8 @@ $app = new \Slim\Slim(array(
 
 $view = $app->view();
 $view->parserOptions = array(
-    'debug'         => true
-    //'cache' => dirname(__FILE__) . '/../cache'
+    'debug'         => true,
+    //'cache'         => dirname(__FILE__) . '/../cache'
 );
 
 $cloudinary = new Twig_SimpleFilter('cloudinary', function ($path, $params = array()) {
@@ -245,7 +245,7 @@ $app->post('/admin/upload-images', function() use ($app, $dbConn) {
         }
     }
 
-    $app->redirect('/admin/upload/images');
+    $app->redirect('/admin/upload-images');
 });
 
 $app->run();
