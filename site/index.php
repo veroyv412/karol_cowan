@@ -234,11 +234,11 @@ $app->post('/admin/upload-images', function() use ($app, $dbConn) {
             $image = array(
                 array(
                     'id'            => false,
-                    'public_id'           => $image['public_id'],
+                    'public_id'     => $image['public_id'],
                     'url'           => $image['url'],
-                    'category'      => $image['category'],
-                    'title'         => $image['title'],
-                    'description'   => $image['description'],
+                    'category'      => !empty($image['category']) ? $image['category'] : '',
+                    'title'         => !empty($image['title']) ? $image['title'] : 'Artista Cubano',
+                    'description'   => !empty($image['description']) ? $image['description'] : 'Karol Cowan',
                 )
             );
             $id = $dbConn->insertMany('images', $image);
