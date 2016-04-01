@@ -1,0 +1,84 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title %}Karol Cowan{% endblock %}
+
+{% block content %}
+
+    <!-- SUBHEADER
+    ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p class="left">
+                    CONTACTO
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr">
+    </div>
+    <!-- CONTENT
+    ================================================== -->
+
+    <div class="row">
+        <!-- CONTACT FORM -->
+        <div class="twelve columns">
+            <div class="wrapcontact">
+                {#<h5>SEND US A MESSAGE</h5>
+                <div class="done">
+                    <div class="alert-box success">
+                        Message has been sent! <a href="" class="close">x</a>
+                    </div>
+                </div>
+                <form method="post" action="contact.php" id="contactform">
+                    <div class="form">
+                        <div class="six columns noleftmargin">
+                            <label>Name</label>
+                            <input type="text" name="name" class="smoothborder" placeholder="Your name *"/>
+                        </div>
+                        <div class="six columns">
+                            <label>E-mail address</label>
+                            <input type="text" name="email" class="smoothborder" placeholder="Your e-mail address *"/>
+                        </div>
+                        <label>Message</label>
+                        <textarea name="comment" class="smoothborder ctextarea" rows="14" placeholder="Message, feedback, comments *"></textarea>
+                        <input type="submit" id="submit" class="readmore" value="Submit">
+                    </div>
+                </form>#}
+
+                <p style="font-size: 2em">
+                    <i class="fa fa-envelope"></i> <a href="mailto:loraknawoc@hotmail.com">loraknawoc@hotmail.com</a>
+                </p>
+
+                <p style="font-size: 2em">
+                    <i class="fa fa-whatsapp"></i> +54 9 11 3089-1051
+                </p>
+
+                <p style="font-size: 2em">
+                    <i class="fa fa-facebook-official"></i> <a href="https://www.facebook.com/karolcowanafrodance" target="_blank">/karolcowanafrodance</a>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- GOOGLE MAP IFRAME -->
+            <div class="twelve columns">
+                <iframe class="gmap" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Palermo, Buenos Aires, Argentina&amp;ie=UTF8&amp;hq=disney&amp;hnear=palermo, Buenos Aires, Argentina&amp;output=embed">
+                </iframe>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+
+    <script>
+
+    </script>
+
+
+    <!-- CONTENT
+================================================== -->
+
+{% endblock %}

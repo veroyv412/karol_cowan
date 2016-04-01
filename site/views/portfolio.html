@@ -5,92 +5,59 @@
 
 {% block content %}
     <!-- CONTENT ================================================== -->
+
     <div class="row">
         <div class="twelve columns">
-            <!-- CATEGORIES-->
-            <section id="options" class="clearfix">
-                <ul id="filters" class="option-set clearfix" data-option-key="filter">
-                    <li><a href="#filter" data-option-value="*" class="portofoliobutton selected">Ver Todas</a></li>
-                    {% for category in categories %}
-                        <li><a href="#filter" data-option-value=".{{ category }}" class="portofoliobutton">{{ category }}</a></li>
+            <div class="gamma-container gamma-loading" id="gamma-container">
+
+                <ul class="gamma-gallery">
+                    {% for picture in pictures %}
+                        <li class="four columns threeportofolio category {{ picture.category }}">
+                            <div data-alt="img03" data-description="<h3>{{ picture.title }}<br><br>{{ picture.category }}</h3>" data-max-width="1800" data-max-height="1350">
+                                <div data-src="{{ picture.public_id | cloudinary }}" data-min-width="1300"></div>
+                                <div data-src="{{ picture.public_id | cloudinary }}" data-min-width="1000"></div>
+                                <div data-src="{{ picture.public_id | cloudinary }}" data-min-width="700"></div>
+                                <div data-src="{{ picture.public_id | cloudinary }}" data-min-width="300"></div>
+                                <div data-src="{{ picture.public_id | cloudinary }}" data-min-width="200"></div>
+                                <div data-src="{{ picture.public_id | cloudinary }}" data-min-width="140"></div>
+                                <div data-src="{{ picture.public_id | cloudinary }}"></div>
+                                <noscript>
+                                    <img src="{{ picture.public_id | cloudinary }}" alt="img03"/>
+                                </noscript>
+                            </div>
+                        </li>
                     {% endfor %}
                 </ul>
-            </section>
-        </div>
-    </div>
 
-    <div class="row">
-        <div id="portofolio">
-            <!-- Project 1-->
-            {% for picture in pictures %}
-                <div class="four columns threeportofolio category {{ picture.category }}">
-                    <h5>
-                        {% if picture.title is empty %}
-                            {{ picture.tag }}
-                        {% else %}
-                            {{ picture.title }}
-                        {% endif %}
-                    </h5>
-                    {% if picture.description is not empty %}
-                        <p>
-                            {{ picture.description }}
-                        </p>
-                    {% endif %}
-                    <div class="portofoliothumb">
-                        <a href="{{ picture.public_id | cloudinary }}"
-                           data-width="{{ picture.url | image_width }}"
-                           data-height="{{ picture.url | image_height }}"
-                           data-size="600x400">
-                            <img src="{{ picture.public_id | cloudinary({aspect_ratio: "1.7", gravity: "faces", width: 350, crop: "crop"}) }}" class="threeimage"/>
-                        </a>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+                <div class="gamma-overlay"></div>
 
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div>
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                    <button class="pswp__button pswp__button--share" title="Share"></button>
-                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div>
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"> </button>
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"> </button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
             </div>
         </div>
     </div>
 
     <script type="text/javascript">
         $('document').ready(function() {
-            {% for category in categories %}
-                $('.category_container_{{ category }}').photoswipe({
-                    loop: true
-                });
-            {% endfor %}
+            var GammaSettings = {
+                // order is important!
+                viewport : [ {
+                    width : 1200,
+                    columns : 5
+                }, {
+                    width : 900,
+                    columns : 4
+                }, {
+                    width : 500,
+                    columns : 3
+                }, {
+                    width : 320,
+                    columns : 2
+                }, {
+                    width : 0,
+                    columns : 2
+                } ]
+            };
+
+            Gamma.init( GammaSettings );
         });
     </script>
 {% endblock %}

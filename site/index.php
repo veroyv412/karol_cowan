@@ -141,13 +141,13 @@ $app->get('/', function() use ($app) {
     ));
 });
 
-$app->get('/cv', function() use ($app) {
+$app->get('/cv(/)', function() use ($app) {
     echo $app->view->render('cv.html', array(
         'tab' => 'cv'
     ));
 });
 
-$app->get('/portfolio', function() use ($app, $dbConn) {
+$app->get('/portfolio(/)', function() use ($app, $dbConn) {
     \Cloudinary::config(array(
         "cloud_name" => "dplksnehy",
         "api_key" => "586718325429517",
@@ -172,31 +172,37 @@ $app->get('/portfolio', function() use ($app, $dbConn) {
     ));
 });
 
-$app->get('/eventos/social', function() use ($app) {
+$app->get('/eventos/social(/)', function() use ($app) {
     echo $app->view->render('eventos/social.html', array(
         'tab' => 'home'
     ));
 });
 
-$app->get('/eventos/bailarin', function() use ($app) {
+$app->get('/eventos/bailarin(/)', function() use ($app) {
     echo $app->view->render('eventos/bailarin.html', array(
         'tab' => 'home'
     ));
 });
 
-$app->get('/eventos/clases', function() use ($app) {
+$app->get('/eventos/clases(/)', function() use ($app) {
     echo $app->view->render('eventos/clases.html', array(
         'tab' => 'home'
     ));
 });
 
-$app->get('/eventos/music', function() use ($app) {
+$app->get('/eventos/music(/)', function() use ($app) {
     echo $app->view->render('eventos/musico.html', array(
         'tab' => 'home'
     ));
 });
 
-$app->get('/admin/upload-images', function() use ($app, $dbConn) {
+$app->get('/contact(/)', function() use ($app) {
+    echo $app->view->render('contact.html', array(
+        'tab' => 'contact'
+    ));
+});
+
+$app->get('/admin/upload-images(/)', function() use ($app, $dbConn) {
     $images = $dbConn->fetchRowMany('SELECT * FROM images');
     echo $app->view->render('admin/upload_images.html', array(
         'pictures' => $images

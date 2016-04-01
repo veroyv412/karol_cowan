@@ -1,3 +1,17 @@
+function getMeta(link, varA, varB) {
+    if (typeof varB !== 'undefined') {
+        //console.log(varA + ' width ' + varB + ' height');
+        $(link).data('kc-width', varA);
+        $(link).data('kc-height', varB);
+    } else {
+        var img = new Image();
+        img.src = varA;
+        img.onload = function() {
+            getMeta(link, this.width, this.height);
+        }
+    }
+}
+
 (function( $ ) {
     $.fn.photoswipe = function(options){
         var galleries = [],
@@ -20,6 +34,9 @@
                         }
                         $link.data('gallery-id',i+1);
                         $link.data('photo-id', k);
+
+                        //getMeta($link, $(link).attr('href'))
+                        //console.log($link.data());
 
                         var item = {
                             src: link.href,

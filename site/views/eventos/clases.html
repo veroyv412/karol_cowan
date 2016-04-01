@@ -5,6 +5,13 @@
 
 {% block content %}
 
+    <style>
+        .flex-video {
+            position: initial;
+            padding-top: 0px;
+        }
+    </style>
+
     <!-- SUBHEADER ================================================== -->
     <div id="subheader">
         <div class="row">
@@ -18,10 +25,19 @@
     <div class="hr"></div>
 
     <div class="row">
-        <div class="six columns">
-            <div class="flex-video widescreen">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/USrKItCm3Yg" frameborder="0" allowfullscreen></iframe>
-            </div>
+        <div class="six columns" style="margin-top: 4%">
+            <video preload="none" autoplay loop width="100%"  style="width: 100%">
+                <source type="video/youtube" src="http://www.youtube.com/watch?v=USrKItCm3Yg" />
+            </video>
+            <script>
+
+                $('video').mediaelementplayer({
+                    autoplay: true,
+                    success: function(media, node, player) {
+                        player.play();
+                    }
+                });
+            </script>
         </div>
         <div class="six columns">
             <img src="/images/flyers/flyer_latin_jazz.jpg" style="width: 100%">
@@ -36,15 +52,4 @@
             <img src="/images/flyers/flyer_rumba_sabados.jpg" style="width: 100%">
         </div>
     </div>
-
-    <script type="application/javascript">
-        /** Document Ready Functions **/
-        /********************************************************************/
-        $( document ).ready(function() {
-            $('#background-video').YTPlayer({
-                fitToBackground: true
-            });
-        });
-
-    </script>
 {% endblock %}
