@@ -23,19 +23,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- METATAGS -->
-    <!--<meta property="fb:app_id" content="503719269796531">
+    <meta property="fb:app_id" content="503719269796531">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ baseUrl }}{{ pageUrl }}">
-    <meta property="og:site_name" content="ProHero">
+    <meta property="og:url" content="http://karolcowan.com">
+    <meta property="og:site_name" content="Karol Cowan">
     <meta property="fb:admins" content="725102015">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="ProHero">
-    <meta name="twitter:domain" content="{{ baseUrl }}{{ pageUrl }}">
+    <meta name="twitter:site" content="karolcowan">
+    <meta name="twitter:domain" content="http://karolcowan.com">
     {% block metatags %}
-    <meta property="og:title" content="ProHero.com - Your Network for Experiences">
-    <meta property="og:description" content="Connect on a higher level with friends, supporters and your favorite athletes, musicians + celebrities.">
-    <meta property="og:image" content="{{ baseUrl }}/images/social_network_share.jpg">
-    {% endblock %}-->
+    <meta property="og:title" content="karolcowan.com - Musico, Compositor, Bailarin, Coreografo, Profesor y Artista Cubano">
+    <meta property="og:description" content="El Arte es el Alma de la Civilizacion">
+    <meta property="og:image" content="http://res.cloudinary.com/dplksnehy/image/upload/v1459535140/karol_cowan/12698566_10206675141130389_992575869934933106_o.jpg">
+    {% endblock %}
 
     <!-- CSS Files-->
     <link rel="stylesheet" href="/stylesheets/style.css">
@@ -55,6 +55,11 @@
     <![endif]-->
 
     <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+    <script src="/javascripts/mediaelement/build/mediaelement-and-player.min.js"></script>
+    <link rel="stylesheet" href="/javascripts/mediaelement/build/mediaelementplayer.css">
+
+    <link rel="stylesheet" type="text/css" href="/javascripts/GammaGallery/css/style.css"/>
 </head>
 {% endblock %}
 
@@ -91,8 +96,8 @@
     <script src="/javascripts/elasticslideshow.js"></script>
     <script src="/javascripts/jquery.carouFredSel-6.0.5-packed.js"></script>
     <script src="/javascripts/jquery.cycle.js"></script>
+    <script src="/javascripts/GammaGallery/js/modernizr.custom.70736.js"></script>
     <script src="/javascripts/app.js"></script>
-    <script src="/javascripts/modernizr.foundation.js"></script>
     <script src="/javascripts/slidepanel.js"></script>
     <script src="/javascripts/scrolltotop.js"></script>
     <script src="/javascripts/hoverIntent.js"></script>
@@ -104,13 +109,11 @@
     <script src="/javascripts/jquery.prettyPhoto.js"></script>
     <script src="/javascripts/custom.js"></script>
 
-    <!-- Photoswipe -->
-    <script src="/javascripts/photoSwipe/dist/photoswipe.min.js"></script>
-    <script src="/javascripts/photoSwipe/dist/photoswipe-ui-default.min.js"></script>
-    <script src="/javascripts/photoSwipe/dist/jquery.photoswipe.js"></script>
-
-    <link href="/javascripts/photoSwipe/dist/photoswipe.css" rel="stylesheet" />
-    <link href="/javascripts/photoSwipe/dist/default-skin/default-skin.css" rel="stylesheet" />
+    <script src="/javascripts/GammaGallery/js/jquery.masonry.min.js"></script>
+    <script src="/javascripts/GammaGallery/js/jquery.history.js"></script>
+    <script src="/javascripts/GammaGallery/js/js-url.min.js"></script>
+    <script src="/javascripts/GammaGallery/js/jquerypp.custom.js"></script>
+    <script src="/javascripts/GammaGallery/js/gamma.js"></script>
 
     {% include 'layout/footer.html' %}
 </body>
