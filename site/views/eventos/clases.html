@@ -3,6 +3,17 @@
 {% extends 'layout/base.html' %}
 {% block title%}Karol Cowan{% endblock %}
 
+
+{% block metatags %}
+        <meta property="og:title" content="Horario Clases">
+        <meta property="og:description" content="Clases de Bailes Populares Cubanos, Rumba y sus géneros como El Guaguanco, Yambu y Columbia y Danzas Afrocubanas">
+        <meta property="og:image" content="{{ 'karol_cowan/flyer_clases' | cloudinary }}">
+
+        <meta name="twitter:title" content="Horario Clases">
+        <meta name="twitter:image" content="{{ 'karol_cowan/flyer_clases' | cloudinary }}">
+        <meta name="twitter:text:description" content="Clases de Bailes Populares Cubanos, Rumba y sus géneros como El Guaguanco, Yambu y Columbia y Danzas Afrocubanas">
+{% endblock %}
+
 {% block content %}
 
     <style>
@@ -26,22 +37,33 @@
 
     <div class="row">
         <div class="twelve columns">
-            <p style="font-size: 1.2em">
+            <h5>
                 <b>Nuevas clases de Latin Jazz!!!</b> Es una tecnica que fusiona varias disciplinas, como el Jazz, danzas populares cubanas (Son, Salsa, Rumba, entre otras), danza moderna y Cabaret Cubano!
-                <br>Estas clases son excelentes para todas aquellas personas que quieran iniciarse en la tecnica, como asi tambien para aquellas personas que ya cuentan con conocimientos tecnicos.
-                <br>En las clases, se veran: Tecnica, Coordinacion y Sensacion de Espacio, Improvisacion, Resistencia Corporal, Interpretacion, Cadencia, Preparacion para Coreografia
-                <br>Este Video es el resultado del esfuerzo trabajado a lo largo de las clases.. por eso, si te gusta y tenes ganas de bailar de un modo diferente, te espero todos los Miercoles 19:00hs en Acevedo 768.
+                <br><br>Estas clases son excelentes para todas aquellas personas que quieran iniciarse en la tecnica, como asi tambien para aquellas personas que ya cuentan con conocimientos tecnicos.
+                <br><br>En las clases, se veran: Tecnica, Coordinacion y Sensacion de Espacio, Improvisacion, Resistencia Corporal, Interpretacion, Cadencia, Preparacion para Coreografia
 
-                <br><br><b>Tambien doy clases los Lunes a las 19:00hs de Bailes populares cubanos en Acevedo 768 (Palermo, Capital Federal)</b>
-                <br> <b>los Viernes a las 19:00hs en Acevedo 768 (Palermo, Capital Federal) y los Sabados a las 16:00hs (en Espacio Cubarte)  de Rumba y sus géneros como El Guaguanco, Yambu y Columbia.</b>
-                <br> <b>Y clases Particulares de Son, Salsa, Rumba y Danzas Populares Cubanas.</b>
+                <br><br>
+                    Otras Clases:
+                    <ul style="list-style: initial; padding-left: 40px">
+                        <li>
+                            Bailes Populares Cubanos: Lunes a las 19:00hs en Acevedo 768 (Palermo, Capital Federal)
+                        </li>
+                        <li>
+                            Rumba y sus géneros como El Guaguanco, Yambu y Columbia: Viernes a las 19:00hs en Acevedo 768 (Palermo, Capital Federal)
+                        </li>
+                        <li>
+                            Rumba y Danzas Afrocubanas: Sabados a las 16:00hs (en Espacio Cubarte)
+                        </li>
+                    </ul>
+
+                <br><b>Y clases Particulares de Son, Salsa, Rumba y Danzas Populares Cubanas.</b>
                 <br><br><b>"EL ARTE ES EL ALMA DE LA CIVILIZACIÓN"</b>
-            </p>
+            </h5>
         </div>
     </div>
 
     <div class="row">
-        <div class="six columns" style="margin-top: 4%">
+        <div class="six columns" style="margin-top: 1%">
             <video preload="none" autoplay loop width="100%"  style="width: 100%">
                 <source type="video/youtube" src="http://www.youtube.com/watch?v=USrKItCm3Yg" />
             </video>
@@ -53,6 +75,8 @@
                     }
                 });
             </script>
+            <h6>Este Video es el resultado del esfuerzo trabajado a lo largo de las clases.. por eso, si te gusta y
+            tenes ganas de bailar de un modo diferente, <h5>te espero todos los Miercoles 19:00hs en Acevedo 768.</h5></h6>
         </div>
         <div class="six columns">
             <img src="/images/flyers/flyer_latin_jazz.jpg" style="width: 100%">

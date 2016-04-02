@@ -23,15 +23,15 @@ $app = new \Slim\Slim(array(
     'cookies.secret_key'    => 'kc',
     'cookies.cipher'        => MCRYPT_RIJNDAEL_256,
     'cookies.cipher_mode'   => MCRYPT_MODE_CBC,
-    'debug'                 => true,
+    'debug'                 => false,
     'view'                  => new \Slim\Views\Twig(),
     'templates.path'        => APPLICATION_ROOT . '/views'
 ));
 
 $view = $app->view();
 $view->parserOptions = array(
-    'debug'         => true,
-    //'cache'         => dirname(__FILE__) . '/../cache'
+    'debug'             => false,
+    //'cache'           => dirname(__FILE__) . '/../cache'
 );
 
 $cloudinary = new Twig_SimpleFilter('cloudinary', function ($path, $params = array()) {
@@ -119,15 +119,16 @@ $dbConn = new \Simplon\Mysql\Mysql(
 $sqlManager = new \Simplon\Mysql\Manager\SqlManager($dbConn);
 
 
-
-
 $app->error(function (\Exception $e) use ($app) {
-    var_dump($e->getMessage());
+    echo $app->view->render('404.html', array(
+        'message' => $e->getMessage()
+    ));
 });
 
-
 $app->notFound(function (\Exception $e) use ($app) {
-    var_dump($e->getMessage());
+    echo $app->view->render('404.html', array(
+        'message' => $e->getMessage()
+    ));
 });
 
 
