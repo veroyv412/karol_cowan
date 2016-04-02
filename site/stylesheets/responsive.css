@@ -247,7 +247,7 @@ SUPERFISH
    a > .sf-sub-indicator { top: 0;}
 	.textmenu { margin-top: 8px !important;}
 	#nav-wrap { margin-top: 8px;}
-	.sf-menu {height:auto;background:#333; clear: both; position: absolute; top: 10px; width: 160px; z-index: 10000; padding: 5px; border: solid 1px #999; display: none;}
+	.sf-menu {height:auto;background:#333; clear: both; position: absolute; top: 10px; width: 70%; z-index: 10000; padding: 5px; border: solid 1px #999; display: none;}
 	.sf-menu li {clear: both; float: none; margin: 5px 0 5px 10px;}
 	.sf-menu a,
 	.sf-menu ul a { font: inherit; background: none; display: inline; padding: 0; color: #fff; border: none;}

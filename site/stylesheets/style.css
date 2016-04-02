@@ -250,6 +250,7 @@ that IE7/8 do not support :nth-child.
 	.block-grid.mobile-four-up > li { width: 25% }
 	.block-grid.mobile-four-up > li:nth-child(4n+1) { clear: both }
 	.block-grid.mobile-five-up > li:nth-child(5n+1) { clear: both }
+	.fillWidth { display: none; }
 }
 /* Requires globals.css */
 /* Normal Buttons ---------------------- */
@@ -424,6 +425,13 @@ ul.flyout,.nav-bar li ul { padding: 0; list-style: none; }
 ul.flyout li,.nav-bar li ul li { }
 ul.flyout li a,.nav-bar li ul li a { margin: 0px 20px; background: #fff; border: 1px solid #e6e6e6; border-width: 0px 0px 1px 0; color: #555; display: block; font-size: 12px; height: auto; line-height: 1; padding: 12px 0px; -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
 ul.flyout li a:hover,.nav-bar li ul li a:hover { background: #fff; color: #333; }
+
+@media screen and (max-width: 600px) {
+	ul.flyout li a,.nav-bar li ul li a { margin: 0px 20px; color: #FFFFFF !important; border: none !important; background: #333; display: block; font-size: 14px; height: auto; line-height: 1; padding: 12px 0px; -webkit-box-shadow: none; box-shadow: none }
+	ul.flyout li a:hover,.nav-bar li ul li a:hover { background: #333; color: #33877d; }
+}
+
+
 ul.flyout li.active,.nav-bar li ul li.active { margin-top: 0; border-top: 1px solid #4d4d4d; border-left: 1px solid #1a1a1a; }
 ul.flyout li.active a,.nav-bar li ul li.active a { background: #fff; border: none; color: #fff; height: auto; margin: 0; position: static; top: 0; -webkit-box-shadow: 0 0 0; -moz-box-shadow: 0 0 0; box-shadow: 0 0 0; }
 /* Correct timer in IE */
