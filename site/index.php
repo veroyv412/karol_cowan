@@ -198,7 +198,7 @@ $app->get('/eventos/music(/)', function() use ($app) {
 });
 
 $app->get('/suscripciones(/)', function() use ($app) {
-    $suscripcion_thankyou = $_SESSION['suscripcion_thankyou'];
+    $suscripcion_thankyou = !empty($_SESSION['suscripcion_thankyou']) ? $_SESSION['suscripcion_thankyou'] : null;
     unset($_SESSION['suscripcion_thankyou']);
     echo $app->view->render('suscripciones.html', array(
         'tab' => 'profesor',
