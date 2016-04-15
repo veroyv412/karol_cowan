@@ -3,7 +3,7 @@
 /**
  * Base test for smoke tests.
  *
- * @author      Rouven Weßling
+ * @author Rouven Weßling
  */
 class SwiftMailerSmokeTestCase extends SwiftMailerTestCase
 {
@@ -16,7 +16,7 @@ class SwiftMailerSmokeTestCase extends SwiftMailerTestCase
         }
     }
 
-    protected function _getMailer()
+    protected function getMailer()
     {
         switch (SWIFT_SMOKE_TRANSPORT_TYPE) {
             case 'smtp':
@@ -38,7 +38,7 @@ class SwiftMailerSmokeTestCase extends SwiftMailerTestCase
                 $transport = Swift_DependencyContainer::getInstance()->lookup('transport.mail');
                 break;
             default:
-                throw new Exception('Undefined transport [' . SWIFT_SMOKE_TRANSPORT_TYPE . ']');
+                throw new Exception('Undefined transport ['.SWIFT_SMOKE_TRANSPORT_TYPE.']');
         }
 
         return new Swift_Mailer($transport);

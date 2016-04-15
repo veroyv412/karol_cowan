@@ -11,7 +11,7 @@
 /**
  * Pretends messages have been sent, but just ignores them.
  *
- * @author  Fabien Potencier
+ * @author Fabien Potencier
  */
 class Swift_NullTransport extends Swift_Transport_NullTransport
 {
@@ -25,15 +25,5 @@ class Swift_NullTransport extends Swift_Transport_NullTransport
             Swift_DependencyContainer::getInstance()
                 ->createDependenciesFor('transport.null')
         );
-    }
-
-    /**
-     * Create a new NullTransport instance.
-     *
-     * @return Swift_NullTransport
-     */
-    public static function newInstance()
-    {
-        return new self();
     }
 }

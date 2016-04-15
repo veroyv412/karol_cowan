@@ -11,7 +11,7 @@
 /**
  * Redundantly and rotationally uses several Transports when sending.
  *
- * @author     Chris Corbyn
+ * @author Chris Corbyn
  */
 class Swift_Transport_LoadBalancedTransport implements Swift_Transport
 {
@@ -20,21 +20,21 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      *
      * @var Swift_Transport[]
      */
-    private $_deadTransports = array();
+    private $deadTransports = array();
 
     /**
      * The Transports which are used in rotation.
      *
      * @var Swift_Transport[]
      */
-    protected $_transports = array();
+    protected $transports = array();
 
     /**
-     * Creates a new LoadBalancedTransport.
+     * The Transport used in the last successful send operation.
+     *
+     * @var Swift_Transport
      */
-    public function __construct()
-    {
-    }
+    protected $lastUsedTransport = null;
 
     /**
      * Set $transports to delegate to.
@@ -43,8 +43,8 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function setTransports(array $transports)
     {
-        $this->_transports = $transports;
-        $this->_deadTransports = array();
+        $this->transports = $transports;
+        $this->deadTransports = array();
     }
 
     /**
@@ -54,7 +54,17 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function getTransports()
     {
-        return array_merge($this->_transports, $this->_deadTransports);
+        return array_merge($this->transports, $this->deadTransports);
+    }
+
+    /**
+     * Get the Transport used in the last successful send operation.
+     *
+     * @return Swift_Transport
+     */
+    public function getLastUsedTransport()
+    {
+        return $this->lastUsedTransport;
     }
 
     /**
@@ -64,7 +74,7 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function isStarted()
     {
-        return count($this->_transports) > 0;
+        return count($this->transports) > 0;
     }
 
     /**
@@ -72,7 +82,7 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function start()
     {
-        $this->_transports = array_merge($this->_transports, $this->_deadTransports);
+        $this->transports = array_merge($this->transports, $this->deadTransports);
     }
 
     /**
@@ -80,7 +90,7 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function stop()
     {
-        foreach ($this->_transports as $transport) {
+        foreach ($this->transports as $transport) {
             $transport->stop();
         }
     }
@@ -98,24 +108,26 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function send(Swift_Mime_Message $message, &$failedRecipients = null)
     {
-        $maxTransports = count($this->_transports);
+        $maxTransports = count($this->transports);
         $sent = 0;
+        $this->lastUsedTransport = null;
 
         for ($i = 0; $i < $maxTransports
-            && $transport = $this->_getNextTransport(); ++$i) {
+            && $transport = $this->getNextTransport(); ++$i) {
             try {
                 if (!$transport->isStarted()) {
                     $transport->start();
                 }
                 if ($sent = $transport->send($message, $failedRecipients)) {
+                    $this->lastUsedTransport = $transport;
                     break;
                 }
             } catch (Swift_TransportException $e) {
-                $this->_killCurrentTransport();
+                $this->killCurrentTransport();
             }
         }
 
-        if (count($this->_transports) == 0) {
+        if (count($this->transports) == 0) {
             throw new Swift_TransportException(
                 'All Transports in LoadBalancedTransport failed, or no Transports available'
                 );
@@ -131,7 +143,7 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      */
     public function registerPlugin(Swift_Events_EventListener $plugin)
     {
-        foreach ($this->_transports as $transport) {
+        foreach ($this->transports as $transport) {
             $transport->registerPlugin($plugin);
         }
     }
@@ -141,10 +153,10 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
      *
      * @return Swift_Transport
      */
-    protected function _getNextTransport()
+    protected function getNextTransport()
     {
-        if ($next = array_shift($this->_transports)) {
-            $this->_transports[] = $next;
+        if ($next = array_shift($this->transports)) {
+            $this->transports[] = $next;
         }
 
         return $next;
@@ -153,14 +165,14 @@ class Swift_Transport_LoadBalancedTransport implements Swift_Transport
     /**
      * Tag the currently used (top of stack) transport as dead/useless.
      */
-    protected function _killCurrentTransport()
+    protected function killCurrentTransport()
     {
-        if ($transport = array_pop($this->_transports)) {
+        if ($transport = array_pop($this->transports)) {
             try {
                 $transport->stop();
             } catch (Exception $e) {
             }
-            $this->_deadTransports[] = $transport;
+            $this->deadTransports[] = $transport;
         }
     }
 }

@@ -11,7 +11,7 @@
 /**
  * A Message (RFC 2822) object.
  *
- * @author     Chris Corbyn
+ * @author Chris Corbyn
  */
 interface Swift_Mime_Message extends Swift_Mime_MimeEntity
 {
@@ -37,16 +37,16 @@ interface Swift_Mime_Message extends Swift_Mime_MimeEntity
     public function getSubject();
 
     /**
-     * Set the origination date of the message as a UNIX timestamp.
+     * Set the origination date of the message.
      *
-     * @param int     $date
+     * @param DateTimeInterface $dateTime
      */
-    public function setDate($date);
+    public function setDate(DateTimeInterface $dateTime);
 
     /**
-     * Get the origination date of the message as a UNIX timestamp.
+     * Get the origination date of the message.
      *
-     * @return int
+     * @return DateTimeInterface
      */
     public function getDate();
 

@@ -1,13 +1,19 @@
 <?php
 
-require dirname(__FILE__).'/../mime_types.php';
+require __DIR__.'/../mime_types.php';
 
 Swift_DependencyContainer::getInstance()
     ->register('properties.charset')
     ->asValue('utf-8')
 
-    ->register('mime.grammar')
-    ->asSharedInstanceOf('Swift_Mime_Grammar')
+    ->register('email.validator')
+    ->asSharedInstanceOf('Egulias\EmailValidator\EmailValidator')
+
+    ->register('mime.idgenerator')
+    ->asSharedInstanceOf('Swift_Mime_IdGenerator')
+    ->withDependencies(array(
+        'email.validator',
+    ))
 
     ->register('mime.message')
     ->asNewInstanceOf('Swift_Mime_SimpleMessage')
@@ -15,7 +21,7 @@ Swift_DependencyContainer::getInstance()
         'mime.headerset',
         'mime.qpcontentencoder',
         'cache',
-        'mime.grammar',
+        'mime.idgenerator',
         'properties.charset',
     ))
 
@@ -25,7 +31,7 @@ Swift_DependencyContainer::getInstance()
         'mime.headerset',
         'mime.qpcontentencoder',
         'cache',
-        'mime.grammar',
+        'mime.idgenerator',
         'properties.charset',
     ))
 
@@ -35,7 +41,7 @@ Swift_DependencyContainer::getInstance()
         'mime.headerset',
         'mime.base64contentencoder',
         'cache',
-        'mime.grammar',
+        'mime.idgenerator',
     ))
     ->addConstructorValue($swift_mime_types)
 
@@ -45,7 +51,7 @@ Swift_DependencyContainer::getInstance()
         'mime.headerset',
         'mime.base64contentencoder',
         'cache',
-        'mime.grammar',
+        'mime.idgenerator',
     ))
     ->addConstructorValue($swift_mime_types)
 
@@ -54,7 +60,7 @@ Swift_DependencyContainer::getInstance()
     ->withDependencies(array(
             'mime.qpheaderencoder',
             'mime.rfc2231encoder',
-            'mime.grammar',
+            'email.validator',
             'properties.charset',
         ))
 
@@ -93,7 +99,7 @@ Swift_DependencyContainer::getInstance()
     ->withDependencies(array('properties.charset'))
     ->asNewInstanceOf('Swift_Mime_ContentEncoder_NativeQpContentEncoder')
 
-    ->register('mime.qpcontentencoderproxy')
+    ->register('mime.qpcontentencoder')
     ->asNewInstanceOf('Swift_Mime_ContentEncoder_QpContentEncoderProxy')
     ->withDependencies(array('mime.safeqpcontentencoder', 'mime.nativeqpcontentencoder', 'properties.charset'))
 
@@ -113,11 +119,6 @@ Swift_DependencyContainer::getInstance()
     ->register('mime.rfc2231encoder')
     ->asNewInstanceOf('Swift_Encoder_Rfc2231Encoder')
     ->withDependencies(array('mime.charstream'))
-
-    // As of PHP 5.4.7, the quoted_printable_encode() function behaves correctly.
-    // see https://github.com/php/php-src/commit/18bb426587d62f93c54c40bf8535eb8416603629
-    ->register('mime.qpcontentencoder')
-    ->asAliasOf(version_compare(phpversion(), '5.4.7', '>=') ? 'mime.qpcontentencoderproxy' : 'mime.safeqpcontentencoder')
 ;
 
 unset($swift_mime_types);

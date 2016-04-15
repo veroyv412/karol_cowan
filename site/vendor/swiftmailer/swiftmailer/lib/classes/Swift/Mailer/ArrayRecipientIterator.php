@@ -11,7 +11,7 @@
 /**
  * Wraps a standard PHP array in an iterator.
  *
- * @author     Chris Corbyn
+ * @author Chris Corbyn
  */
 class Swift_Mailer_ArrayRecipientIterator implements Swift_Mailer_RecipientIterator
 {
@@ -20,7 +20,7 @@ class Swift_Mailer_ArrayRecipientIterator implements Swift_Mailer_RecipientItera
      *
      * @var array
      */
-    private $_recipients = array();
+    private $recipients = array();
 
     /**
      * Create a new ArrayRecipientIterator from $recipients.
@@ -29,7 +29,7 @@ class Swift_Mailer_ArrayRecipientIterator implements Swift_Mailer_RecipientItera
      */
     public function __construct(array $recipients)
     {
-        $this->_recipients = $recipients;
+        $this->recipients = $recipients;
     }
 
     /**
@@ -39,17 +39,17 @@ class Swift_Mailer_ArrayRecipientIterator implements Swift_Mailer_RecipientItera
      */
     public function hasNext()
     {
-        return !empty($this->_recipients);
+        return !empty($this->recipients);
     }
 
     /**
      * Returns an array where the keys are the addresses of recipients and the
-     * values are the names. e.g. ('foo@bar' => 'Foo') or ('foo@bar' => NULL)
+     * values are the names. e.g. ('foo@bar' => 'Foo') or ('foo@bar' => NULL).
      *
      * @return array
      */
     public function nextRecipient()
     {
-        return array_splice($this->_recipients, 0, 1);
+        return array_splice($this->recipients, 0, 1);
     }
 }

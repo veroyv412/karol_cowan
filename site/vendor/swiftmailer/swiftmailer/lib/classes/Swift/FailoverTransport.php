@@ -11,7 +11,7 @@
 /**
  * Contains a list of redundant Transports so when one fails, the next is used.
  *
- * @author     Chris Corbyn
+ * @author Chris Corbyn
  */
 class Swift_FailoverTransport extends Swift_Transport_FailoverTransport
 {
@@ -29,17 +29,5 @@ class Swift_FailoverTransport extends Swift_Transport_FailoverTransport
             );
 
         $this->setTransports($transports);
-    }
-
-    /**
-     * Create a new FailoverTransport instance.
-     *
-     * @param Swift_Transport[] $transports
-     *
-     * @return Swift_FailoverTransport
-     */
-    public static function newInstance($transports = array())
-    {
-        return new self($transports);
     }
 }

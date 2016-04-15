@@ -11,7 +11,7 @@
 /**
  * Stores Messages in a queue.
  *
- * @author  Fabien Potencier
+ * @author Fabien Potencier
  */
 class Swift_SpoolTransport extends Swift_Transport_SpoolTransport
 {
@@ -31,17 +31,5 @@ class Swift_SpoolTransport extends Swift_Transport_SpoolTransport
             array($this, 'Swift_Transport_SpoolTransport::__construct'),
             $arguments
         );
-    }
-
-    /**
-     * Create a new SpoolTransport instance.
-     *
-     * @param Swift_Spool $spool
-     *
-     * @return Swift_SpoolTransport
-     */
-    public static function newInstance(Swift_Spool $spool)
-    {
-        return new self($spool);
     }
 }

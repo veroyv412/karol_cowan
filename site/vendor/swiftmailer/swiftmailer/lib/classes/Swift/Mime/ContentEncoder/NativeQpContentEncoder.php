@@ -11,7 +11,7 @@
 /**
  * Handles Quoted Printable (QP) Transfer Encoding in Swift Mailer using the PHP core function.
  *
- * @author     Lars Strojny
+ * @author Lars Strojny
  */
 class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_ContentEncoder
 {
@@ -77,13 +77,13 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
     /**
      * Encode a given string to produce an encoded string.
      *
-     * @param string  $string
-     * @param int     $firstLineOffset if first line needs to be shorter
-     * @param int     $maxLineLength   0 indicates the default length for this encoding
-     *
-     * @return string
+     * @param string $string
+     * @param int    $firstLineOffset if first line needs to be shorter
+     * @param int    $maxLineLength   0 indicates the default length for this encoding
      *
      * @throws RuntimeException
+     *
+     * @return string
      */
     public function encodeString($string, $firstLineOffset = 0, $maxLineLength = 0)
     {
@@ -92,7 +92,7 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
                 sprintf('Charset "%s" not supported. NativeQpContentEncoder only supports "utf-8"', $this->charset));
         }
 
-        return $this->_standardize(quoted_printable_encode($string));
+        return $this->standardize(quoted_printable_encode($string));
     }
 
     /**
@@ -102,12 +102,12 @@ class Swift_Mime_ContentEncoder_NativeQpContentEncoder implements Swift_Mime_Con
      *
      * @return string
      */
-    protected function _standardize($string)
+    protected function standardize($string)
     {
         // transform CR or LF to CRLF
         $string = preg_replace('~=0D(?!=0A)|(?<!=0D)=0A~', '=0D=0A', $string);
         // transform =0D=0A to CRLF
-        $string = str_replace(array("\t=0D=0A", " =0D=0A", "=0D=0A"), array("=09\r\n", "=20\r\n", "\r\n"), $string);
+        $string = str_replace(array("\t=0D=0A", ' =0D=0A', '=0D=0A'), array("=09\r\n", "=20\r\n", "\r\n"), $string);
 
         switch ($end = ord(substr($string, -1))) {
             case 0x09:

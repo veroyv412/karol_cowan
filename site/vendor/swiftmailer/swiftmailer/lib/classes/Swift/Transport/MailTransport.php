@@ -19,29 +19,24 @@
  * due to limitations of PHP's internal mail() function.  You'll get an
  * all-or-nothing result from sending.
  *
- * @author     Chris Corbyn
+ * @author Chris Corbyn
  */
 class Swift_Transport_MailTransport implements Swift_Transport
 {
     /** Additional parameters to pass to mail() */
-    private $_extraParams = '-f%s';
+    private $extraParams = '-f%s';
 
     /** The event dispatcher from the plugin API */
-    private $_eventDispatcher;
-
-    /** An invoker that calls the mail() function */
-    private $_invoker;
+    private $eventDispatcher;
 
     /**
      * Create a new MailTransport with the $log.
      *
-     * @param Swift_Transport_MailInvoker  $invoker
      * @param Swift_Events_EventDispatcher $eventDispatcher
      */
-    public function __construct(Swift_Transport_MailInvoker $invoker, Swift_Events_EventDispatcher $eventDispatcher)
+    public function __construct(Swift_Events_EventDispatcher $eventDispatcher)
     {
-        $this->_invoker = $invoker;
-        $this->_eventDispatcher = $eventDispatcher;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     /**
@@ -77,7 +72,7 @@ class Swift_Transport_MailTransport implements Swift_Transport
      */
     public function setExtraParams($params)
     {
-        $this->_extraParams = $params;
+        $this->extraParams = $params;
 
         return $this;
     }
@@ -91,7 +86,7 @@ class Swift_Transport_MailTransport implements Swift_Transport
      */
     public function getExtraParams()
     {
-        return $this->_extraParams;
+        return $this->extraParams;
     }
 
     /**
@@ -109,8 +104,8 @@ class Swift_Transport_MailTransport implements Swift_Transport
     {
         $failedRecipients = (array) $failedRecipients;
 
-        if ($evt = $this->_eventDispatcher->createSendEvent($this, $message)) {
-            $this->_eventDispatcher->dispatchEvent($evt, 'beforeSendPerformed');
+        if ($evt = $this->eventDispatcher->createSendEvent($this, $message)) {
+            $this->eventDispatcher->dispatchEvent($evt, 'beforeSendPerformed');
             if ($evt->bubbleCancelled()) {
                 return 0;
             }
@@ -126,14 +121,12 @@ class Swift_Transport_MailTransport implements Swift_Transport
         $subjectHeader = $message->getHeaders()->get('Subject');
 
         if (!$toHeader) {
-            throw new Swift_TransportException(
-                'Cannot send message without a recipient'
-                );
+            $this->throwException(new Swift_TransportException('Cannot send message without a recipient'));
         }
         $to = $toHeader->getFieldBody();
         $subject = $subjectHeader ? $subjectHeader->getFieldBody() : '';
 
-        $reversePath = $this->_getReversePath($message);
+        $reversePath = $this->getReversePath($message);
 
         // Remove headers that would otherwise be duplicated
         $message->getHeaders()->remove('To');
@@ -158,19 +151,20 @@ class Swift_Transport_MailTransport implements Swift_Transport
         if ("\r\n" != PHP_EOL) {
             // Non-windows (not using SMTP)
             $headers = str_replace("\r\n", PHP_EOL, $headers);
+            $subject = str_replace("\r\n", PHP_EOL, $subject);
             $body = str_replace("\r\n", PHP_EOL, $body);
         } else {
             // Windows, using SMTP
             $headers = str_replace("\r\n.", "\r\n..", $headers);
+            $subject = str_replace("\r\n.", "\r\n..", $subject);
             $body = str_replace("\r\n.", "\r\n..", $body);
         }
 
-        if ($this->_invoker->mail($to, $subject, $body, $headers,
-            sprintf($this->_extraParams, $reversePath))) {
+        if ($this->mail($to, $subject, $body, $headers, sprintf($this->extraParams, escapeshellarg($reversePath)))) {
             if ($evt) {
                 $evt->setResult(Swift_Events_SendEvent::RESULT_SUCCESS);
                 $evt->setFailedRecipients($failedRecipients);
-                $this->_eventDispatcher->dispatchEvent($evt, 'sendPerformed');
+                $this->eventDispatcher->dispatchEvent($evt, 'sendPerformed');
             }
         } else {
             $failedRecipients = array_merge(
@@ -183,7 +177,7 @@ class Swift_Transport_MailTransport implements Swift_Transport
             if ($evt) {
                 $evt->setResult(Swift_Events_SendEvent::RESULT_FAILED);
                 $evt->setFailedRecipients($failedRecipients);
-                $this->_eventDispatcher->dispatchEvent($evt, 'sendPerformed');
+                $this->eventDispatcher->dispatchEvent($evt, 'sendPerformed');
             }
 
             $message->generateId();
@@ -201,11 +195,42 @@ class Swift_Transport_MailTransport implements Swift_Transport
      */
     public function registerPlugin(Swift_Events_EventListener $plugin)
     {
-        $this->_eventDispatcher->bindEventListener($plugin);
+        $this->eventDispatcher->bindEventListener($plugin);
+    }
+
+    /** Throw a TransportException, first sending it to any listeners */
+    protected function throwException(Swift_TransportException $e)
+    {
+        if ($evt = $this->eventDispatcher->createTransportExceptionEvent($this, $e)) {
+            $this->eventDispatcher->dispatchEvent($evt, 'exceptionThrown');
+            if (!$evt->bubbleCancelled()) {
+                throw $e;
+            }
+        } else {
+            throw $e;
+        }
+    }
+
+    /**
+     * Send mail via the mail() function.
+     *
+     * This method takes the same arguments as PHP mail().
+     *
+     * @param string $to
+     * @param string $subject
+     * @param string $body
+     * @param string $headers
+     * @param string $extraParams
+     *
+     * @return bool
+     */
+    public function mail($to, $subject, $body, $headers = null, $extraParams = null)
+    {
+        return @mail($to, $subject, $body, $headers, $extraParams);
     }
 
     /** Determine the best-use reverse path for this message */
-    private function _getReversePath(Swift_Mime_Message $message)
+    private function getReversePath(Swift_Mime_Message $message)
     {
         $return = $message->getReturnPath();
         $sender = $message->getSender();

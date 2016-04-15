@@ -11,7 +11,7 @@
 /**
  * Sends Messages using the mail() function.
  *
- * @author     Chris Corbyn
+ * @author Chris Corbyn
  */
 class Swift_MailTransport extends Swift_Transport_MailTransport
 {
@@ -29,17 +29,5 @@ class Swift_MailTransport extends Swift_Transport_MailTransport
             );
 
         $this->setExtraParams($extraParams);
-    }
-
-    /**
-     * Create a new MailTransport instance.
-     *
-     * @param string $extraParams To be passed to mail()
-     *
-     * @return Swift_MailTransport
-     */
-    public static function newInstance($extraParams = '-f%s')
-    {
-        return new self($extraParams);
     }
 }
