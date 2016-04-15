@@ -12,16 +12,18 @@
                 </li>
 
                 <li class="{% if tab == 'portfolio'%}active{% endif %}">
-                    <a href="javascript:void(0)">Portfolio</a>
+                    <a href="/portfolio">Portfolio</a>
+                </li>
+                <li class="{% if tab == 'eventos'%}active{% endif %}">
+                    <a href="javascript:void(0)">Eventos</a>
                     <ul>
-                        <li><a href="/portfolio">Imagenes</a></li>
                         <li><a href="/eventos/social">Eventos Profesionales</a></li>
                         <li><a href="/eventos/bailarin">Bailarín Profesional</a></li>
                         <li><a href="/eventos/music">Musico Profesional</a></li>
-                        <li><a href="/eventos/clases">Profesor y Clases Particulaes</a></li>
                     </ul>
                 </li>
-
+                <li class="{% if tab == 'profesor'%}active{% endif %}">
+                    <a href="/eventos/clases">Profesor</a></li>
                 <li class="{% if tab == 'cv'%}active{% endif %}">
                     <a href="/cv">Curriculum Vitae</a>
                 </li>

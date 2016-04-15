@@ -968,3 +968,13 @@ a.socialIcon:hover, .socialHoverClass {
 footer .social-network a {
 	background-color: #333;
 }
+
+.suscripcion label{
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.suscripcion span{
+	font-size: 1.2em;
+	font-weight: bold;
+}

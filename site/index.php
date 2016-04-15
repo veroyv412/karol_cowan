@@ -175,26 +175,78 @@ $app->get('/portfolio(/)', function() use ($app, $dbConn) {
 
 $app->get('/eventos/social(/)', function() use ($app) {
     echo $app->view->render('eventos/social.html', array(
-        'tab' => 'home'
+        'tab' => 'eventos'
     ));
 });
 
 $app->get('/eventos/bailarin(/)', function() use ($app) {
     echo $app->view->render('eventos/bailarin.html', array(
-        'tab' => 'home'
+        'tab' => 'eventos'
     ));
 });
 
 $app->get('/eventos/clases(/)', function() use ($app) {
     echo $app->view->render('eventos/clases.html', array(
-        'tab' => 'home'
+        'tab' => 'profesor'
     ));
 });
 
 $app->get('/eventos/music(/)', function() use ($app) {
     echo $app->view->render('eventos/musico.html', array(
-        'tab' => 'home'
+        'tab' => 'eventos'
     ));
+});
+
+$app->get('/suscripciones(/)', function() use ($app) {
+    $suscripcion_thankyou = $_SESSION['suscripcion_thankyou'];
+    unset($_SESSION['suscripcion_thankyou']);
+    echo $app->view->render('suscripciones.html', array(
+        'tab' => 'profesor',
+        'suscripcion_thankyou' => $suscripcion_thankyou
+    ));
+});
+
+$app->post('/suscripciones', function() use ($app, $dbConn) {
+    $data = $app->request->post();
+
+    $html = $app->view->fetch('suscripcion_email.html', array(
+        'data' => $data
+    ));
+
+    $transport = new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
+    $transport->setUsername('veroyv412@gmail.com');
+    $transport->setPassword('v3r0n1c4');
+
+    $mailer = new Swift_Mailer($transport);
+    $message = (new Swift_Message('Suscripcion a Clases'))
+        ->setFrom($data['email'], $data['name'])
+        ->setContentType('text/html')
+        ->setTo(array('veroyv412@gmail.com' => 'Karol Cowan'))
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $message = (new Swift_Message('Suscripcion a Clases'))
+        ->setFrom('cowan.karol@gmail.com', 'Karol Cowan')
+        ->setContentType('text/html')
+        ->setTo($data['email'],  $data['name'])
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $image = array(
+        array(
+            'id'            => false,
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'classes'       => json_encode($data['clases']),
+            'purpose'       => json_encode($data['tomar_clases']),
+            'message'       => $data['comment']
+        )
+    );
+    $id = $dbConn->insertMany('suscriptions', $image);
+
+
+    $_SESSION['suscripcion_thankyou'] = 'Gracias por suscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
+    $app->redirect('/suscripciones');
 });
 
 $app->get('/contact(/)', function() use ($app) {

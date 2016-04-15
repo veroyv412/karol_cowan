@@ -1,0 +1,119 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+
+{% block metatags %}
+    <meta property="og:url" content="http://karolcowan.com/suscripciones">
+    <meta property="og:title" content="Suscripciones">
+    <meta property="og:description" content="Quieres ampliar tus conocimientos en diferentes disciplinas danzarias y fusionarlas?
+                Te esperamos en las clases, donde aprenderas no solo bailar, sino cultura y tradición y
+                estudiaras diferentes disciplinas sin perder la escencia de cada una. Suscribite!">
+    <meta property="og:image" content="http://karolcowan.com/images/suscripciones.png?t=12345?">
+    <meta property="og:image:width" content="1300"/>
+    <meta property="og:image:height" content="975"/>
+
+    <meta name="twitter:title" content="Suscripciones">
+    <meta name="twitter:image" content="http://karolcowan.com/images/suscripciones.png?t=12345?">
+    <meta name="twitter:text:description" content="Quieres ampliar tus conocimientos en diferentes disciplinas danzarias y fusionarlas?
+                Te esperamos en las clases, donde aprenderas no solo bailar, sino cultura y tradición y
+                estudiaras diferentes disciplinas sin perder la escencia de cada una. Suscribite!">
+{% endblock %}
+
+{% block content %}
+
+    <script>
+        $(document).ready(function(){
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-aero',
+                radioClass: 'iradio_square-aero',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p>
+                    Suscripciones
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="row">
+        <div class="twelve columns">
+            {% if suscripcion_thankyou %}
+                <div class="alert-box default">
+                    {{ suscripcion_thankyou }}. <a href="" class="close">x</a>
+                </div>
+            {% endif %}
+
+            <h5>
+                Quieres ampliar tus conocimientos en diferentes disciplinas danzarias y fusionarlas?
+                Te esperamos en las clases, donde aprenderas no solo bailar, sino cultura y tradición y
+                estudiaras diferentes disciplinas sin perder la escencia de cada una. Suscribite!
+            </h5>
+        </div>
+    </div>
+
+    <div class="row suscripcion">
+        <div class="six columns">
+            <form method="post" action="/suscripciones" id="contactform">
+                <div class="form">
+                    <div class="six columns noleftmargin">
+                        <label>Nombre y Apellido</label>
+                        <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                    </div>
+                    <div class="six columns noleftmargin">
+                        <label>Dirección de Email</label>
+                        <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+                    </div>
+
+                    <div class="twelve columns noleftmargin">
+                        <br><label>Clases a las que me quiero suscribir</label>
+                        <input type="checkbox" name="clases[0]" value="Clases de Danzas Populares Cubanas"> <span>Clases de Danzas Populares Cubanas</span>
+                        <br><input type="checkbox" name="clases[1]" value="Clases de Rumba y Danzas Afrocubanas"> <span>Clases de Rumba y Danzas Afrocubanas</span>
+                        <br><input type="checkbox" name="clases[2]" value="Clases de Latin Jazz"> <span>Clases de Latin Jazz</span>
+                    </div>
+
+                    <div class="twelve columns noleftmargin">
+                        <br><label>Porque quieres tomar clases?</label>
+                        <input type="checkbox" name="tomar_clases[0]" value="Aprender a Interpretar"> <span>Aprender a Interpretar</span>
+                        <br><input type="checkbox" name="tomar_clases[1]" value="Desarrollar Destrezas"> <span>Desarrollar Destrezas</span>
+                        <br><input type="checkbox" name="tomar_clases[2]" value="Incorporarte a un grupo social "> <span>Incorporarte a un grupo social</span>
+                        <br><input type="checkbox" name="tomar_clases[3]" value="Mejorar entrenamiento y rendimiento fisico"> <span>Mejorar entrenamiento y rendimiento fisico</span>
+                        <br><input type="checkbox" name="tomar_clases[4]" value="Mejorar recursos de improvisacion"> <span>Mejorar recursos de improvisacion</span>
+                        <br><input type="checkbox" name="tomar_clases[5]" value="Mejorar comunicacion en los bailes de pareja"> <span>Mejorar comunicacion en los bailes de pareja</span>
+                    </div>
+
+                    <div class="twelve columns noleftmargin">
+                        <br><label>Mensaje</label>
+                        <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                    </div>
+
+                    <input type="submit" id="submit" class="readmore" value="Enviar Suscripción">
+                </div>
+            </form>
+        </div>
+        <div class="six columns">
+            <video preload="none" autoplay loop width="100%"  style="width: 100%">
+                <source type="video/youtube" src="http://www.youtube.com/watch?v=USrKItCm3Yg" />
+            </video>
+            <script>
+                $('video').mediaelementplayer({
+                    autoplay: true,
+                    success: function(media, node, player) {
+                        player.play();
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+
+{% endblock %}
