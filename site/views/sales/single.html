@@ -35,14 +35,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
     <meta property="og:url" content="http://karolcowan.com/sales/product/{{ product.id }}">
     <meta property="og:title" content="{{ product.title }}">
-    <meta property="og:description" content="{{ product.description | raw }}">
+    <meta property="og:description" content="{{ product.description | striptags | raw }}">
     <meta property="og:image" content="{{ product.image }}">
     <meta property="og:image:width" content="1900"/>
     <meta property="og:image:height" content="976"/>
 
     <meta name="twitter:title" content="{{ product.title }}">
     <meta name="twitter:image" content="{{ product.image }}">
-    <meta name="twitter:text:description" content="{{ product.description | raw }}">
+    <meta name="twitter:text:description" content="{{ product.description | striptags | raw }}">
 </head>
 <body>
     <div class="single">
