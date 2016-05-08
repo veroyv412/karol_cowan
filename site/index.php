@@ -23,15 +23,20 @@ $app = new \Slim\Slim(array(
     'cookies.secret_key'    => 'kc',
     'cookies.cipher'        => MCRYPT_RIJNDAEL_256,
     'cookies.cipher_mode'   => MCRYPT_MODE_CBC,
-    'debug'                 => false,
+    'debug'                 => true,
     'view'                  => new \Slim\Views\Twig(),
     'templates.path'        => APPLICATION_ROOT . '/views'
 ));
 
 $view = $app->view();
 $view->parserOptions = array(
-    'debug'             => false,
-    //'cache'           => dirname(__FILE__) . '/../cache'
+    'debug'         => true,
+    //'cache' => dirname(__FILE__) . '/../cache'
+);
+
+$view->parserExtensions = array(
+    new \Slim\Views\TwigExtension(),
+    new Twig_Extension_Debug()
 );
 
 $cloudinary = new Twig_SimpleFilter('cloudinary', function ($path, $params = array()) {
@@ -305,6 +310,53 @@ $app->post('/admin/upload-images', function() use ($app, $dbConn) {
     }
 
     $app->redirect('/admin/upload-images');
+});
+
+$app->get('/sales(/)', function() use ($app, $dbConn) {
+    \Cloudinary::config(array(
+        "cloud_name" => "dplksnehy",
+        "api_key" => "586718325429517",
+        "api_secret" => "YbnnVUyNLna_zRDKDGPr3VtigPg"
+    ));
+
+    $api = new \Cloudinary\Api();
+
+    /* Start  of getting images according prefix and saving into database */
+    /*$list = $api->resources(array("type" => "upload", "prefix" => "veronica/sales/teclado"));
+    $images = array();
+    foreach ($list['resources'] as $item){
+        $image = array(
+            'id'            => false,
+            'sale_id'       => 5,
+            'public_id'     => $item['public_id'],
+            'image'         => $item['url']
+        );
+
+        array_push($images, $image);
+    }
+    $id = $dbConn->insertMany('sales_images', $images);*/
+    /* END */
+
+
+    $products = $dbConn->fetchRowMany('SELECT * FROM sales ORDER BY sort ASC;');
+    echo $app->view->render('/sales/index.html', array(
+        'products' => $products
+    ));
+});
+
+$app->get('/sales/product/:product_id', function($product_id) use ($app, $dbConn) {
+    $product = $dbConn->fetchRow('SELECT * FROM sales WHERE id = '. $product_id. ';');
+    if ( !empty($product) ){
+        $images = $dbConn->fetchRowMany('SELECT * FROM sales_images WHERE sale_id = '. $product_id. ';');
+        $product['images'] = $images;
+
+        echo $app->view->render('/sales/single.html', array(
+            'product' => $product
+        ));
+    } else {
+        echo 'ERROR. EL ID del producto no corresponde a un producto almacenado en la base de datos.';
+    }
+
 });
 
 $app->run();

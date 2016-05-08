@@ -1,0 +1,133 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mis Ventas</title>
+    <link href="/views/sales/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- Custom Theme files -->
+    <!--theme-style-->
+    <link href="/views/sales/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Mis Productos"/>
+    <!--theme-style-->
+    <link href="/views/sales/css/style4.css" rel="stylesheet" type="text/css" media="all"/>
+    <!--//theme-style-->
+    <script src="/views/sales/js/jquery.min.js"></script>
+    <!--- start-rate---->
+    <script src="/views/sales/js/jstarbox.js"></script>
+    <link rel="stylesheet" href="/views/sales/css/jstarbox.css" type="text/css" media="screen" charset="utf-8"/>
+
+    <meta property="og:url" content="http://karolcowan.com/sales">
+    <meta property="og:title" content="Venta de mis productos">
+    <meta property="og:description" content="Vendo de todo un poco, camperas, teclado, sillas materas">
+    <meta property="og:image" content="{{ product.image }}">
+    <meta property="og:image:width" content="1900"/>
+    <meta property="og:image:height" content="976"/>
+
+    <meta name="twitter:title" content="Venta de mis productos">
+    <meta name="twitter:image" content="{{ product.image }}">
+    <meta name="twitter:text:description" content="Vendo de todo un poco, camperas, teclado, sillas materas">
+</head>
+<body>
+<!--content-->
+<div class="content">
+    <div class="container">
+        <!--products-->
+        <div class="content-mid">
+            <h3>Mis Productos</h3>
+            <label class="line"></label>
+            <div class="mid-popular grid-product" id="grid-product">
+                {% for product in products %}
+                <div class="col-md-4 item-grid grid-item grid-item-product simpleCart_shelfItem">
+                    <div class=" mid-pop">
+                        <div class="pro-img">
+                            <img src="{{ product.image }}" class="img-responsive" alt="">
+                            <div class="zoom-icon ">
+                                <a class="picture" href="{{ product.image }}" rel="title"
+                                   class="b-link-stripe b-animate-go  thickbox"><i
+                                            class="glyphicon glyphicon-search icon "></i></a>
+                                <a href="/sales/product/{{ product.id }}"><i class="glyphicon glyphicon-menu-right icon"></i></a>
+                            </div>
+                        </div>
+                        <div class="mid-1">
+                            <div class="women">
+                                <div class="women-top">
+                                    <span>{{ product.category }}</span>
+                                    <h6><a href="/sales/product/{{ product.id }}">{{ product.title }}</a></h6>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="mid-2">
+                                <p><em class="item_price">${{ product.price }}</em></p>
+                                <div class="block">
+                                    <div class="starbox small ghosting"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                {% endfor %}
+
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+        <!--//products-->
+        <br>
+    </div>
+
+</div>
+<!--//content-->
+<!--//footer-->
+<div class="footer">
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="footer-class">&copy; 2016. Todos los derechos reservados</p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--//footer-->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/views/sales/js/simpleCart.min.js"></script>
+<!-- slide -->
+<script src="/views/sales/js/bootstrap.min.js"></script>
+<!--light-box-files -->
+<script src="/views/sales/js/jquery.chocolat.js"></script>
+
+<script src="/views/sales/js/imagesloaded.pkgd.min.js"></script>
+<script src="/views/sales/js/jquery.shuffle.modernizr.min.js"></script>
+<script src="/views/sales/js/jquery.shuffle.min.js"></script>
+
+<link rel="stylesheet" href="/views/sales/css/chocolat.css" type="text/css" media="screen" charset="utf-8">
+<!--light-box-files -->
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $('a.picture').Chocolat();
+
+        imagesLoaded( $('#grid-product'), function(){
+            var $grid = $('#grid-product'),
+                    $sizer = $grid.find('.shuffle__sizer');
+
+            $grid.shuffle({
+                itemSelector: '.grid-item-product',
+                sizer: $sizer,
+                gutterWidth: 10
+            });
+        } );
+    });
+</script>
+
+
+</body>
+</html>
