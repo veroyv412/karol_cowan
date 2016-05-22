@@ -138,7 +138,10 @@ $app->notFound(function (\Exception $e) use ($app) {
 
 
 $app->hook('slim.before', function() use ($app) {
+    $baseUrl = getBaseURI();
 
+    $data['base_url'] = $baseUrl;
+    $app->view()->appendData($data);
 });
 
 $app->get('/', function() use ($app) {
@@ -349,5 +352,10 @@ $app->get('/sales/product/:product_id', function($product_id) use ($app, $dbConn
     }
 
 });
+
+function getBaseURI(){
+    $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+    return $protocol . "://" . $_SERVER['HTTP_HOST'] . parse_url($_SERVER['REQUEST_URI'],PHP_URL_FRAGMENT);
+}
 
 $app->run();

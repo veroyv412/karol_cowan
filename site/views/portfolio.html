@@ -14,15 +14,15 @@
                     {% for picture in pictures %}
                         <li class="four columns threeportofolio category {{ picture.category }}">
                             <div data-alt="img03" data-description="<h3>{{ picture.title }}<br><br>{{ picture.category }}</h3>" data-max-width="1800" data-max-height="1350">
-                                <div data-src="{{ picture.url }}" data-min-width="1300"></div>
-                                <div data-src="{{ picture.url }}" data-min-width="1000"></div>
-                                <div data-src="{{ picture.url }}" data-min-width="700"></div>
-                                <div data-src="{{ picture.url }}" data-min-width="300"></div>
-                                <div data-src="{{ picture.url }}" data-min-width="200"></div>
-                                <div data-src="{{ picture.url }}" data-min-width="140"></div>
-                                <div data-src="{{ picture.url }}"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}" data-min-width="1300"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}" data-min-width="1000"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}" data-min-width="700"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}" data-min-width="300"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}" data-min-width="200"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}" data-min-width="140"></div>
+                                <div data-src="{{ base_url }}/{{ picture.url }}"></div>
                                 <noscript>
-                                    <img src="{{ picture.url }}" alt="img03"/>
+                                    <img src="{{ base_url }}/{{ picture.url }}" alt="img03"/>
                                 </noscript>
                             </div>
                         </li>
