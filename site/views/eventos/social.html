@@ -29,19 +29,47 @@
     </div>
 
     <div class="row">
-        <div class="twelve columns">
+        <div class="six columns">
             <video preload="none" autoplay loop width="100%" height="460"  style="width: 100%;">
                 <source type="video/youtube" src="http://www.youtube.com/watch?v=mPg-FeWaNZ0" />
             </video>
-            <script>
+        </div>
 
-                $('video').mediaelementplayer({
-                    autoplay: true,
-                    success: function(media, node, player) {
-                        player.play();
-                    }
-                });
-            </script>
+        <div class="six columns">
+            <video preload="none" autoplay loop width="100%" height="460"  style="width: 100%;">
+                <source type="video/youtube" src="http://www.youtube.com/watch?v=Cqz46r1FdKw" />
+            </video>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="six columns">
+            <video preload="none" autoplay loop width="100%" height="460"  style="width: 100%;">
+                <source type="video/youtube" src="http://www.youtube.com/watch?v=0Z8_DTfdgx8" />
+            </video>
+        </div>
+
+        <div class="six columns">
+            <video preload="none" autoplay loop width="100%" height="460"  style="width: 100%;">
+                <source type="video/youtube" src="http://www.youtube.com/watch?v=g9sCodNse98" />
+            </video>
+        </div>
+    </div><br>
+    <div class="row">
+        <div class="six columns">
+            <video preload="none" autoplay loop width="100%" height="460"  style="width: 100%;">
+                <source type="video/youtube" src="http://www.youtube.com/watch?v=OhdGVIGBL5s" />
+            </video>
         </div>
     </div>
+
+
+    <script>
+
+        $('video').mediaelementplayer({
+            autoplay: true,
+            success: function(media, node, player) {
+                //player.play();
+            }
+        });
+    </script>
 {% endblock %}

@@ -154,27 +154,18 @@ $app->get('/cv(/)', function() use ($app) {
 });
 
 $app->get('/portfolio(/)', function() use ($app, $dbConn) {
-    \Cloudinary::config(array(
-        "cloud_name" => "dplksnehy",
-        "api_key" => "586718325429517",
-        "api_secret" => "YbnnVUyNLna_zRDKDGPr3VtigPg"
-    ));
 
-    $api = new \Cloudinary\Api();
-
-    $tResponse = $api->tags();
-    $tResponse = $tResponse->getArrayCopy();
     $pictures = array();
-
     $images = $dbConn->fetchRowMany('SELECT * FROM images');
     foreach ( $images as $image ){
+        $image['url'] = '/images/gallery/' . lcfirst($image['category']) . '/' . basename($image['url']);
         array_push($pictures, $image);
     }
 
     echo $app->view->render('portfolio.html', array(
         'tab'           => 'portfolio',
         'pictures'      => $pictures,
-        'categories'    => $tResponse['tags']
+        'categories'    => array('Bailarin', 'Eventos', 'Musico', 'Profesor')
     ));
 });
 
