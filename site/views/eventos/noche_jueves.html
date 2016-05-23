@@ -1,0 +1,101 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p>
+                    Noche de Jueves
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <h4>Es un espacio dedicado a compartir Cultura Cubana... <br>donde el baile y la música son el corazon de la noche!!!!</h4>
+            <div class="panel">
+                <h5>
+                    ★ ¡Más rico con <span style="color: #0000FF">‪#‎Salsa‬!</span> ★ ¡Todos los <span style="color: #0000FF">‪#‎Jueves</span>‬ a partir de <span style="color: #0000FF">‪#‎Mayo‬!</span><br>
+                    21:00hs Clases con <span style="color: #0000FF">Karol Cowan</span> (varios niveles).<br>
+                    22:30hs Música en vivo con <span style="color: #0000FF">‪#‎SonTimberos‬.</span><br><br>
+                    ¡<span style="color: #0000FF">‪#‎HappyHour</span>‬ Hasta Las 23 Hs!<br><br>
+                    / Aire Acondicionado / Barra Económica / WiFi<br><br>
+                    Valor de la entrada: $80 (clase+show)<br><br>
+                    Mamerta Espacio Cultural<br><br>
+                    Lavalle 4080, Almagro.<br>
+                </h5>
+            </div>
+
+            <h5>Adquiera sus entradas aqui: <a href="https://masricoconsalsa.eventbrite.com">https://masricoconsalsa.eventbrite.com</a></h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="six columns">
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FmasRicoConSalsa%2Fvideos%2Fvb.848619908601160%2F854949977968153%2F%3Ftype%3D3&show_text=0&width=560" style="border:none;overflow:hidden; width: 100%; height: 315px" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+        </div>
+        <div class="six columns">
+            <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FmasRicoConSalsa%2Fvideos%2Fvb.848619908601160%2F850506551745829%2F%3Ftype%3D3&show_text=0&width=560" style="border:none;overflow:hidden; width: 100%; height: 315px" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+        </div>
+    </div><br>
+
+    <div class="row">
+        <div class="eleven columns">
+            <div class="gamma-container gamma-loading" id="gamma-container">
+                <ul class="gamma-gallery">
+                    {% for picture in [1,2,3,4,5,6,7,8,9,10,11,12] %}
+                        <li class="four columns threeportofolio">
+                            <div data-alt="img03" data-description="<h3>Mas Rico Con Salsa<br><br>Mamerta</h3>" data-max-width="1800" data-max-height="1350">
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" data-min-width="1300"></div>
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" data-min-width="1000"></div>
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" data-min-width="700"></div>
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" data-min-width="300"></div>
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" data-min-width="200"></div>
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" data-min-width="140"></div>
+                                <div data-src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg"></div>
+                                <noscript>
+                                    <img src="{{ base_url }}/images/noche_jueves/{{ picture }}.jpg" alt="img03"/>
+                                </noscript>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <div class="gamma-overlay"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $('document').ready(function() {
+            var GammaSettings = {
+                // order is important!
+                viewport : [ {
+                    width : 1200,
+                    columns : 5
+                }, {
+                    width : 900,
+                    columns : 4
+                }, {
+                    width : 500,
+                    columns : 3
+                }, {
+                    width : 320,
+                    columns : 2
+                }, {
+                    width : 0,
+                    columns : 2
+                } ]
+            };
+
+            Gamma.init( GammaSettings );
+        });
+    </script>
+{% endblock %}

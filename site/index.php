@@ -190,6 +190,13 @@ $app->get('/eventos/clases(/)', function() use ($app) {
     ));
 });
 
+$app->get('/eventos/noche-jueves(/)', function() use ($app) {
+    echo $app->view->render('eventos/noche_jueves.html', array(
+        'tab' => 'eventos'
+    ));
+});
+
+
 $app->get('/eventos/music(/)', function() use ($app) {
     echo $app->view->render('eventos/musico.html', array(
         'tab' => 'eventos'
