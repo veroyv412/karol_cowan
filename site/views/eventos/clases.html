@@ -36,31 +36,92 @@
             </div>
         </div>
     </div>
-    <div class="hr"></div>
+
+<style>
+    .header-unit {
+        height: 500px;
+        position: relative;
+        padding: 20px;
+    }
+    #video-container {
+        position: absolute;
+    }
+    #video-container {
+        top:0%;
+        left:0%;
+        height:100%;
+        width:100%;
+        overflow: hidden;
+    }
+    video {
+        position:absolute;
+        z-index:0;
+    }
+    video.fillWidth {
+        width: 100%;
+    }
+
+    #overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: black;
+        z-index: 1;
+        opacity: 0.75;
+        color: #FFFFFF;
+        overflow-y: auto;;
+    }
+
+    #overlay .columns p{
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #FFFFFF;
+    }
+</style>
+
+<div class="header-unit">
+    <div id="video-container">
+        <div id="overlay">
+            <div class="row">
+                <div class="columns">
+                    <br><br>
+                    <p>
+                        <b>Nuevas clases de Latin Jazz!!!</b> Es una tecnica que fusiona varias disciplinas, como el Jazz, danzas populares cubanas (Son, Salsa, Rumba, entre otras), danza moderna y Cabaret Cubano!
+                        <br><br>Estas clases son excelentes para todas aquellas personas que quieran iniciarse en la tecnica, como asi tambien para aquellas personas que ya cuentan con conocimientos tecnicos.
+                        <br><br>En las clases, se veran: Tecnica, Coordinacion y Sensacion de Espacio, Improvisacion, Resistencia Corporal, Interpretacion, Cadencia, Preparacion para Coreografia
+
+                        <br><br>
+                        Otras Clases:
+                        <ul style="list-style: initial; padding-left: 40px">
+                            <li>
+                                Bailes Populares Cubanos: Jueves a las 21:00hs en Mamerta Espacio Cultural (Lavalle 4080, CABA)
+                            </li>
+                            <li>
+                                Rumba y Danzas Afrocubanas: Sabados a las 16:00hs (en Espacio Cubarte)
+                            </li>
+                        </ul>
+
+                        <br><b>Y clases Particulares de Son, Salsa, Rumba y Danzas Populares Cubanas.</b>
+                        <br><br><b>"EL ARTE ES EL ALMA DE LA CIVILIZACIÓN"</b>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <video autoplay loop class="fillWidth">
+            <source src="/videos/clase_latin_jazz.mp4#t=32" type="video/mp4"/>
+            Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video>
+    </div><!-- end video-container -->
+</div><!-- end .header-unit -->
 
     <div class="row">
         <div class="twelve columns">
             <h6><a href="/suscripciones">Suscribite a las clases</a></h6>
 
-            <h5>
-                <b>Nuevas clases de Latin Jazz!!!</b> Es una tecnica que fusiona varias disciplinas, como el Jazz, danzas populares cubanas (Son, Salsa, Rumba, entre otras), danza moderna y Cabaret Cubano!
-                <br><br>Estas clases son excelentes para todas aquellas personas que quieran iniciarse en la tecnica, como asi tambien para aquellas personas que ya cuentan con conocimientos tecnicos.
-                <br><br>En las clases, se veran: Tecnica, Coordinacion y Sensacion de Espacio, Improvisacion, Resistencia Corporal, Interpretacion, Cadencia, Preparacion para Coreografia
 
-                <br><br>
-                    Otras Clases:
-                    <ul style="list-style: initial; padding-left: 40px">
-                        <li>
-                            Bailes Populares Cubanos: Jueves a las 21:00hs en Mamerta Espacio Cultural (Lavalle 4080, CABA)
-                        </li>
-                        <li>
-                            Rumba y Danzas Afrocubanas: Sabados a las 16:00hs (en Espacio Cubarte)
-                        </li>
-                    </ul>
-
-                <br><b>Y clases Particulares de Son, Salsa, Rumba y Danzas Populares Cubanas.</b>
-                <br><br><b>"EL ARTE ES EL ALMA DE LA CIVILIZACIÓN"</b>
-            </h5>
         </div>
     </div>
 
@@ -111,10 +172,13 @@
 
     <br>
     <div class="row">
-        <div class="six columns">
+        <div class="four columns">
             <img src="/images/flyers/clases_latin_jazz.png" style="width: 100%">
         </div>
-        <div class="six columns">
+        <div class="four columns">
+            <img src="/images/flyers/flyer_clases_danza_popular.png" style="width: 100%">
+        </div>
+        <div class="four columns">
             <img src="/images/flyers/flyer_rumba_sabados.jpg" style="width: 100%">
         </div>
     </div>
