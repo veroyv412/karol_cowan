@@ -203,6 +203,13 @@ $app->get('/eventos/music(/)', function() use ($app) {
     ));
 });
 
+
+$app->get('/propuestas(/)', function() use ($app) {
+    echo $app->view->render('propuestas/index.html', array(
+        'tab' => 'eventos'
+    ));
+});
+
 $app->get('/suscripciones(/)', function() use ($app) {
     $suscripcion_thankyou = !empty($_SESSION['suscripcion_thankyou']) ? $_SESSION['suscripcion_thankyou'] : null;
     unset($_SESSION['suscripcion_thankyou']);

@@ -1,0 +1,42 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+<!-- SUBHEADER ================================================== -->
+<div id="subheader">
+    <div class="row">
+        <div class="twelve columns">
+            <p>
+                Propuestas
+            </p>
+        </div>
+    </div>
+</div>
+<div class="hr"></div>
+
+<div class="row">
+    <div class="twelve columns">
+        <dl class="tabs" data-toggle="tab">
+            <dd class="active"><a href="#nj">Noche de Jueves</a></dd>
+            <dd class=""><a href="#td">Talleres de Danza</a></dd>
+        </dl>
+        <ul class="tabs-content">
+            <li class="active" id="njTab">
+                {{ include('propuestas/partials/_jueves_por_la_noche.html') }}
+            </li>
+            <li id="tdTab">
+                {{ include('propuestas/partials/_talleres_danza.html') }}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script type="application/javascript">
+    $('.tabs-content li').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    })
+</script>
+{% endblock %}
