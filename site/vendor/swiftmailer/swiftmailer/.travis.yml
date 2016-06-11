@@ -1,10 +1,13 @@
 language: php
 
+sudo: false
+
 before_script:
     - cp tests/acceptance.conf.php.default tests/acceptance.conf.php
     - cp tests/smoke.conf.php.default tests/smoke.conf.php
     - composer self-update
     - composer update --no-interaction --prefer-source
+    - gem install mime-types -v 2.99.1
     - gem install mailcatcher
     - mailcatcher --smtp-port 4456
 
@@ -18,6 +21,5 @@ matrix:
         - php: 7.0
         - php: hhvm
     allow_failures:
-        - php: 7.0
         - php: hhvm
     fast_finish: true
