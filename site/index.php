@@ -260,9 +260,13 @@ $app->get('/fb-autopost', function() use ($app){
 
     if ( !empty($_SESSION['fb_access_token']) ){
         try {
+            print_r($_SESSION['fb_access_token']);
+            
             $me = $fb->get('me', $_SESSION['fb_access_token']);
-            var_dump($me);
+            print_r($me);
 
+            $response = $fb->post('/1178672095511260/feed', array('message' => 'tesss'), $_SESSION['fb_access_token']);
+            print_r($response);
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
             echo "Exception occured, code: " . $e->getCode();
             echo " with message: " . $e->getMessage();
