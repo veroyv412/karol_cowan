@@ -244,6 +244,30 @@ $app->get('/fb-callback', function() use ($app){
     }
     
     $_SESSION['fb_access_token'] = (string) $accessToken;
+
+    $app->response->redirect('/fb-autopost');
+});
+
+
+$app->get('/autopost', function() use ($app){
+    $fb = new Facebook\Facebook(
+        [
+            'app_id' => '310902175730143',
+            'app_secret' => 'c5e81f0f7d9020775a740023bbb1a4a2',
+            'default_graph_version' => 'v2.6'
+        ]
+    );
+
+    if ( !empty($_SESSION['fb_access_token']) ){
+        try {
+            $me = $fb->get('me', $_SESSION['fb_access_token']);
+            var_dump($me);
+
+        } catch(Facebook\Exceptions\FacebookSDKException $e) {
+            echo "Exception occured, code: " . $e->getCode();
+            echo " with message: " . $e->getMessage();
+        }
+    }
 });
 
 $app->get('/cv(/)', function() use ($app) {
