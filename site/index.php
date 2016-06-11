@@ -170,7 +170,7 @@ $app->get('/fb', function() use ($app){
 
     $permissions = ['email', 'publish_actions']; // Optional permissions
     $helper = $fb->getRedirectLoginHelper();
-    $loginUrl = $helper->getLoginUrl('http://karolcowan.com/fb-callback.php', $permissions);
+    $loginUrl = $helper->getLoginUrl('http://karolcowan.com/fb-callback', $permissions);
 
     echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
 });
