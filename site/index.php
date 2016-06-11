@@ -249,7 +249,7 @@ $app->get('/fb-callback', function() use ($app){
 });
 
 
-$app->get('/autopost', function() use ($app){
+$app->get('/fb-autopost', function() use ($app){
     $fb = new Facebook\Facebook(
         [
             'app_id' => '310902175730143',
