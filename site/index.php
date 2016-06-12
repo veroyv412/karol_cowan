@@ -295,11 +295,12 @@ $app->get('/mercadopago', function() use ($app) {
 
 $app->get('/mercadopago_notifications(/)', function() use ($app) {
     $mp = new MP ("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
-    if ( !empty($app->request->get('id')) ){
+    if ( !empty($app->request->post('id')) ){
         $payment_info = $mp->get_payment_info($_GET["id"]);
         error_log(var_export($payment_info, true), 3, APPLICATION_ROOT . '/logs/mercadopago.log');
     }
-    http_response_code(200);
+    header('HTTP/1.1 200 Ok', true, 200);
+    echo 'mercadopago_notifications successfully';
 });
 
 $app->get('/cv(/)', function() use ($app) {
