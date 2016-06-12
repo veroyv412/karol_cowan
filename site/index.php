@@ -168,7 +168,7 @@ $app->get('/fb', function() use ($app){
         ]
     );
 
-    $permissions = ['email', 'publish_actions']; // Optional permissions
+    $permissions = ['email', 'publish_actions', 'user_friends', 'user_likes', 'user_posts', 'pages_show_list', 'publish_pages', 'user_managed_groups']; // Optional permissions
     $helper = $fb->getRedirectLoginHelper();
     $loginUrl = $helper->getLoginUrl('http://karolcowan.com/fb-callback', $permissions);
 
