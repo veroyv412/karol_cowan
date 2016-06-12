@@ -258,8 +258,8 @@ $app->get('/fb-autopost', function() use ($app){
         ]
     );
 
-    //$accessToken = $_SESSION['fb_access_token'];
-    $accessToken = 'EAAEaw42ZBid8BANiwnn8opSoSLY6ufYBo1ANBpoThpYoOUTHLGwvPBwwwbMPgZC0PgYBPBEiyBnDxLgXZAA0RDw3cjiVbOt03ZAKO6ivCeaNsIdYZA3Hq3ZBjicH8tF5fONGpKu8TQNhVdJ0bggpqLdbuI29xZCOPUZD';
+    $accessToken = $_SESSION['fb_access_token'];
+    //$accessToken = 'EAAEaw42ZBid8BANiwnn8opSoSLY6ufYBo1ANBpoThpYoOUTHLGwvPBwwwbMPgZC0PgYBPBEiyBnDxLgXZAA0RDw3cjiVbOt03ZAKO6ivCeaNsIdYZA3Hq3ZBjicH8tF5fONGpKu8TQNhVdJ0bggpqLdbuI29xZCOPUZD';
 
     if ( !empty($accessToken) ){
         try {
