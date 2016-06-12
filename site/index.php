@@ -299,6 +299,7 @@ $app->get('/mercadopago_notifications(/)', function() use ($app) {
         $payment_info = $mp->get_payment_info($_GET["id"]);
         error_log(var_export($payment_info, true), 3, APPLICATION_ROOT . '/logs/mercadopago.log');
     }
+    http_response_code(200);
 });
 
 $app->get('/cv(/)', function() use ($app) {
