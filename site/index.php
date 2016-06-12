@@ -274,6 +274,35 @@ $app->get('/fb-autopost', function() use ($app){
     }
 });
 
+$app->get('/mercadopago', function() use ($app) {
+
+    $mp = new MP("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
+    $preference_data = array (
+        "items" => array (
+            array (
+                "title" => "Test",
+                "quantity" => 1,
+                "currency_id" => "USD",
+                "unit_price" => 10.4
+            )
+        )
+    );
+
+    $preference = $mp->create_preference ($preference_data);
+
+    var_dump($preference);
+});
+
+$app->get('/mercadopago_notifications(/)', function() use ($app) {
+    $mp = new MP ("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
+    $mp->sandbox_mode(TRUE);
+    $payment_info = $mp->get_payment_info($_GET["id"]);
+
+    if ($payment_info["status"] == 200) {
+        print_r($payment_info["response"]);
+    }
+});
+
 $app->get('/cv(/)', function() use ($app) {
     echo $app->view->render('cv.html', array(
         'tab' => 'cv'
