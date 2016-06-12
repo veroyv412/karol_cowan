@@ -282,8 +282,8 @@ $app->get('/mercadopago', function() use ($app) {
             array (
                 "title" => "Test",
                 "quantity" => 1,
-                "currency_id" => "USD",
-                "unit_price" => 10.4
+                "currency_id" => "ARS",
+                "unit_price" => 1
             )
         )
     );
@@ -295,11 +295,9 @@ $app->get('/mercadopago', function() use ($app) {
 
 $app->get('/mercadopago_notifications(/)', function() use ($app) {
     $mp = new MP ("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
-    $mp->sandbox_mode(TRUE);
-    $payment_info = $mp->get_payment_info($_GET["id"]);
-
-    if ($payment_info["status"] == 200) {
-        print_r($payment_info["response"]);
+    if ( !empty($app->request->get('id')) ){
+        $payment_info = $mp->get_payment_info($_GET["id"]);
+        error_log(var_export($payment_info, true), 3, APPLICATION_ROOT . '/logs/mercadopago.log');
     }
 });
 
