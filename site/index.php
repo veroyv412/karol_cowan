@@ -258,15 +258,18 @@ $app->get('/fb-autopost', function() use ($app){
         ]
     );
 
-    if ( !empty($_SESSION['fb_access_token']) ){
-        try {
-            print_r($_SESSION['fb_access_token']);
-            
-            $me = $fb->get('me', $_SESSION['fb_access_token']);
-            print_r($me);
+    //$accessToken = $_SESSION['fb_access_token'];
+    $accessToken = 'EAAEaw42ZBid8BANiwnn8opSoSLY6ufYBo1ANBpoThpYoOUTHLGwvPBwwwbMPgZC0PgYBPBEiyBnDxLgXZAA0RDw3cjiVbOt03ZAKO6ivCeaNsIdYZA3Hq3ZBjicH8tF5fONGpKu8TQNhVdJ0bggpqLdbuI29xZCOPUZD';
 
-            $response = $fb->post('/1178672095511260/feed', array('message' => 'tesss'), $_SESSION['fb_access_token']);
-            print_r($response);
+    if ( !empty($accessToken) ){
+        try {
+            var_dump($accessToken);
+            
+            $me = $fb->get('me/groups', $accessToken);
+            var_dump($me);
+
+            $response = $fb->post('/1178672095511260/feed', array('message' => 'tesss'), $accessToken);
+            var_dump($response);
         } catch(Facebook\Exceptions\FacebookSDKException $e) {
             echo "Exception occured, code: " . $e->getCode();
             echo " with message: " . $e->getMessage();
@@ -283,12 +286,15 @@ $app->get('/mercadopago', function() use ($app) {
                 "title" => "Test",
                 "quantity" => 1,
                 "currency_id" => "ARS",
-                "unit_price" => 1
+                "unit_price" => 1,
+                "picture_url" => ''
             )
         )
     );
 
-    $preference = $mp->create_preference ($preference_data);
+    //$preference = $mp->create_preference ($preference_data);
+
+    $preference = $mp->get_payment ("2096998489");
 
     var_dump($preference);
 });
