@@ -114,6 +114,27 @@ $config = array(
     'unixSocket' => null,
 );
 
+/* Facebook */
+/*$fb = new Facebook\Facebook(
+    [
+        'app_id' => '1669048966705838',
+        'app_secret' => '6328253793bd8e6eb960745f2dd937ed',
+        'default_graph_version' => 'v2.6'
+    ]
+);*/
+
+$fb = new Facebook\Facebook(
+    [
+        'app_id' => '310902175730143',
+        'app_secret' => 'c5e81f0f7d9020775a740023bbb1a4a2',
+        'default_graph_version' => 'v2.6'
+    ]
+);
+
+/* Mercado Pago */
+$mp = new MP("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
+$mp->sandbox_mode(TRUE);
+
 // standard setup
 $dbConn = new \Simplon\Mysql\Mysql(
     $config['host'],
@@ -151,39 +172,15 @@ $app->get('/', function() use ($app) {
 });
 
 
-$app->get('/fb', function() use ($app){
-    /*$fb = new Facebook\Facebook(
-        [
-            'app_id' => '1669048966705838',
-            'app_secret' => '6328253793bd8e6eb960745f2dd937ed',
-            'default_graph_version' => 'v2.6'
-        ]
-    );*/
-
-    $fb = new Facebook\Facebook(
-        [
-            'app_id' => '310902175730143',
-            'app_secret' => 'c5e81f0f7d9020775a740023bbb1a4a2',
-            'default_graph_version' => 'v2.6'
-        ]
-    );
-
-    $permissions = ['email', 'publish_actions', 'user_friends', 'user_likes', 'user_posts', 'pages_show_list', 'publish_pages', 'user_managed_groups']; // Optional permissions
+$app->get('/fb', function() use ($app, $fb){
+    $permissions = ['email', 'publish_actions', 'user_friends', 'user_likes', 'user_posts', 'pages_show_list', 'publish_pages', 'user_groups', 'friends_groups','user_managed_groups']; // Optional permissions
     $helper = $fb->getRedirectLoginHelper();
     $loginUrl = $helper->getLoginUrl('http://karolcowan.com/fb-callback', $permissions);
 
     echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>';
 });
 
-$app->get('/fb-callback', function() use ($app){
-    $fb = new Facebook\Facebook(
-        [
-            'app_id' => '310902175730143',
-            'app_secret' => 'c5e81f0f7d9020775a740023bbb1a4a2',
-            'default_graph_version' => 'v2.6'
-        ]
-    );
-
+$app->get('/fb-callback', function() use ($app, $fb){
     $helper = $fb->getRedirectLoginHelper();
 
     try {
@@ -249,16 +246,8 @@ $app->get('/fb-callback', function() use ($app){
 });
 
 
-$app->get('/fb-autopost', function() use ($app){
-    $fb = new Facebook\Facebook(
-        [
-            'app_id' => '310902175730143',
-            'app_secret' => 'c5e81f0f7d9020775a740023bbb1a4a2',
-            'default_graph_version' => 'v2.6'
-        ]
-    );
-
-    $accessToken = $_SESSION['fb_access_token'];
+$app->get('/fb-autopost', function() use ($app, $fb){
+    /*$accessToken = $_SESSION['fb_access_token'];
     //$accessToken = 'EAAEaw42ZBid8BANiwnn8opSoSLY6ufYBo1ANBpoThpYoOUTHLGwvPBwwwbMPgZC0PgYBPBEiyBnDxLgXZAA0RDw3cjiVbOt03ZAKO6ivCeaNsIdYZA3Hq3ZBjicH8tF5fONGpKu8TQNhVdJ0bggpqLdbuI29xZCOPUZD';
 
     if ( !empty($accessToken) ){
@@ -274,12 +263,13 @@ $app->get('/fb-autopost', function() use ($app){
             echo "Exception occured, code: " . $e->getCode();
             echo " with message: " . $e->getMessage();
         }
-    }
+    }*/
+    $accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
+    $response = $fb->post('/1178672095511260/feed', array('message' => 'Juego de 3 Hermosas Silla Matera + Banquito de Regalo!!!! TEST!!!', 'link' => 'http://karolcowan.com/sales/product/1', 'picture' => 'http://res.cloudinary.com/dplksnehy/image/upload/v1462641249/veronica/sales/silla_matera/IMG_3760.jpg'), $accessToken);
+    var_dump($response);
 });
 
-$app->get('/mercadopago', function() use ($app) {
-
-    $mp = new MP("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
+$app->get('/mercadopago', function() use ($app, $mp) {
     $preference_data = array (
         "items" => array (
             array (
@@ -299,8 +289,7 @@ $app->get('/mercadopago', function() use ($app) {
     var_dump($preference);
 });
 
-$app->get('/mercadopago_notifications(/)', function() use ($app) {
-    $mp = new MP ("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
+$app->get('/mercadopago_notifications(/)', function() use ($app, $mp) {
     if ( !empty($app->request->post('id')) ){
         $payment_info = $mp->get_payment_info($_GET["id"]);
         error_log(var_export($payment_info, true), 3, APPLICATION_ROOT . '/logs/mercadopago.log');
@@ -345,6 +334,24 @@ $app->get('/eventos/bailarin(/)', function() use ($app) {
 
 $app->get('/eventos/clases(/)', function() use ($app) {
     echo $app->view->render('eventos/clases.html', array(
+        'tab' => 'profesor'
+    ));
+});
+
+$app->get('/clases/latin-jazz(/)', function() use ($app) {
+    echo $app->view->render('clases/latin-jazz.html', array(
+        'tab' => 'profesor'
+    ));
+});
+
+$app->get('/clases/danzas-populares(/)', function() use ($app) {
+    echo $app->view->render('clases/danzas-populares.html', array(
+        'tab' => 'profesor'
+    ));
+});
+
+$app->get('/clases/danzas-afrocubanas(/)', function() use ($app) {
+    echo $app->view->render('clases/danzas-afrocubanas.html', array(
         'tab' => 'profesor'
     ));
 });

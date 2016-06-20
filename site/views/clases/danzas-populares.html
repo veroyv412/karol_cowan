@@ -1,0 +1,92 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+
+{% block metatags %}
+<meta property="og:url" content="http://karolcowan.com/clases/danzas-populares">
+<meta property="og:title" content="Clases de Danzas Populares">
+<meta property="og:description" content="Elementos y recursos de las danzas afrocubanas y sus derivados, empleados en el casino y el SON cubano.">
+
+<meta property="og:image" content="http://karolcowan.com/images/flyers/flyer_clases_danza_popular.png">
+<meta property="og:image:width" content="1900"/>
+<meta property="og:image:height" content="976"/>
+
+<meta name="twitter:title" content="Clases de Danzas Populares">
+<meta name="twitter:image" content="http://karolcowan.com/images/flyers/flyer_clases_danza_popular.png">
+<meta name="twitter:text:description" content="Elementos y recursos de las danzas afrocubanas y sus derivados, empleados en el casino y el SON cubano.">
+{% endblock %}
+
+{% block content %}
+
+<!-- SUBHEADER ================================================== -->
+<div id="subheader">
+    <div class="row">
+        <div class="twelve columns">
+            <p>
+                Clases de Danzas Populares Cubanas
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    video {
+        position:absolute;
+        z-index:0;
+    }
+    video.fillWidth {
+        width: 100%;
+    }
+
+    #overlay .columns p{
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #FFFFFF;
+    }
+</style>
+
+<div class="row">
+    <div class="twelve columns">
+        <h6><a href="/suscripciones">Suscribite a las clases</a></h6>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <p>
+            Elementos y recursos de las danzas afrocubanas y sus derivados, empleados en el casino y el SON cubano.
+            <br> Justificando cada movimiento en la particularidad de cada genero, incluyendole todo el sabor de la rumba.
+            <br><b>"EL ARTE ES EL ALMA DE LA CIVILIZACIÓN"</b>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="six columns" style="margin-top: 1%">
+        <img src="/images/flyers/flyer_clases_danza_popular.png" style="width: 100%">
+    </div>
+    <div class="six columns" style="margin-top: 1%">
+        <div class="row">
+            <div class="twelve columns">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FmasRicoConSalsa%2Fvideos%2F865285820267902%2F&width=500&show_text=false&appId=310902175730143&height=281" width="100%" height="281" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            </div>
+            <div class="twelve columns">
+                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FmasRicoConSalsa%2Fvideos%2F854949977968153%2F&width=500&show_text=false&appId=316659568487737&height=281" width="100%" height="281" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('video').mediaelementplayer({
+        autoplay: false,
+        success: function(media, node, player) {
+            //player.play();
+        }
+    });
+</script>
+
+
+{% endblock %}

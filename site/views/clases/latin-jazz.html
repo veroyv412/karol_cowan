@@ -1,0 +1,100 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+
+{% block metatags %}
+<meta property="og:url" content="http://karolcowan.com/clases/latin-jazz">
+<meta property="og:title" content="Clases de Latin Jazz">
+<meta property="og:description" content="Tecnica que fusiona varias disciplinas, como el Jazz, danzas populares cubanas (Son, Salsa, Rumba, entre otras), danza moderna y Cabaret Cubano!">
+
+<meta property="og:image" content="http://karolcowan.com/images/flyers/clases_latin_jazz.png">
+<meta property="og:image:width" content="1900"/>
+<meta property="og:image:height" content="976"/>
+
+<meta name="twitter:title" content="Clases de Latin Jazz">
+<meta name="twitter:image" content="http://karolcowan.com/images/flyers/clases_latin_jazz.png">
+<meta name="twitter:text:description" content="Tecnica que fusiona varias disciplinas, como el Jazz, danzas populares cubanas (Son, Salsa, Rumba, entre otras), danza moderna y Cabaret Cubano!">
+{% endblock %}
+
+{% block content %}
+
+<!-- SUBHEADER ================================================== -->
+<div id="subheader">
+    <div class="row">
+        <div class="twelve columns">
+            <p>
+                Clases de Latin Jazz
+            </p>
+        </div>
+    </div>
+</div>
+
+<style>
+    video {
+        position:absolute;
+        z-index:0;
+    }
+    video.fillWidth {
+        width: 100%;
+    }
+
+    #overlay .columns p{
+        font-weight: bold;
+        font-size: 1.1em;
+        color: #FFFFFF;
+    }
+</style>
+
+<div class="row">
+    <div class="twelve columns">
+        <h6><a href="/suscripciones">Suscribite a las clases</a></h6>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <p>
+            <b>Nuevas clases de Latin Jazz!!!</b> Es una tecnica que fusiona varias disciplinas, como el Jazz, danzas populares cubanas (Son, Salsa, Rumba, entre otras), danza moderna y Cabaret Cubano!
+            <br><br>Estas clases son excelentes para todas aquellas personas que quieran iniciarse en la tecnica, como asi tambien para aquellas personas que ya cuentan con conocimientos tecnicos.
+            <br><br>En las clases, se veran: Tecnica, Coordinacion y Sensacion de Espacio, Improvisacion, Resistencia Corporal, Interpretacion, Cadencia, Preparacion para Coreografia
+
+            <br><b>"EL ARTE ES EL ALMA DE LA CIVILIZACIÓN"</b>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="six columns" style="margin-top: 1%">
+        <div class="row">
+            <div class="twelve columns">
+                <video preload="none" autoplay loop width="100%"  style="width: 100%">
+                    <source type="video/youtube" src="http://www.youtube.com/watch?v=USrKItCm3Yg" />
+                </video>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <br><video preload="none" autoplay loop width="100%"  style="width: 100%">
+                    <source type="video/youtube" src="http://www.youtube.com/watch?v=_EuT5pFbZSk" />
+                </video>
+            </div>
+        </div>
+    </div>
+    <div class="six columns" style="margin-top: 1%">
+        <img src="/images/flyers/clases_latin_jazz.png" style="width: 100%">
+    </div>
+</div>
+
+<script>
+    $('video').mediaelementplayer({
+        autoplay: false,
+        success: function(media, node, player) {
+            //player.play();
+        }
+    });
+</script>
+
+
+{% endblock %}
