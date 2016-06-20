@@ -107,7 +107,6 @@ $config = array(
     'database'   => 'karol_cowan',
 
     // optional
-
     'fetchMode'  => \PDO::FETCH_ASSOC,
     'charset'    => 'utf8',
     'port'       => 3306,
@@ -264,9 +263,9 @@ $app->get('/fb-autopost', function() use ($app, $fb){
             echo " with message: " . $e->getMessage();
         }
     }*/
-    $accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
-    $response = $fb->post('/1178672095511260/feed', array('message' => 'Juego de 3 Hermosas Silla Matera + Banquito de Regalo!!!! TEST!!!', 'link' => 'http://karolcowan.com/sales/product/1', 'picture' => 'http://res.cloudinary.com/dplksnehy/image/upload/v1462641249/veronica/sales/silla_matera/IMG_3760.jpg'), $accessToken);
-    var_dump($response);
+    //$accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
+    //$response = $fb->post('/1178672095511260/feed', array('message' => 'Juego de 3 Hermosas Silla Matera + Banquito de Regalo!!!! TEST!!!', 'link' => 'http://karolcowan.com/sales/product/1', 'picture' => 'http://res.cloudinary.com/dplksnehy/image/upload/v1462641249/veronica/sales/silla_matera/IMG_3760.jpg'), $accessToken);
+    //var_dump($response);
 });
 
 $app->get('/mercadopago', function() use ($app, $mp) {
