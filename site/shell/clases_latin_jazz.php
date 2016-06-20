@@ -36,22 +36,20 @@ $fb = new Facebook\Facebook(
 
 $accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
 
-/*$groups = $dbConn->fetchRowMany('SELECT * FROM groups');
+$groups = $dbConn->fetchRowMany('SELECT * FROM groups');
 foreach ( $groups as $group ){
-    var_dump($group['group_url']);
-    sleep(10);
-}*/
+    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 2');
+    if ( !empty($post) ){
+        $data = array();
+        $message = $post['post_title'];
+        if ( !empty($post['post_description']) ){
+            $message .= ' ' . $post['post_description'];
+        }
+        $data['message'] = $message;
+        $data['link'] = $post['post_link'];
+        //$data['picture'] = $post['post_picture'];
 
-$post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 2');
-if ( !empty($post) ){
-    $data = array();
-    $message = $post['post_title'];
-    if ( !empty($post['post_description']) ){
-        $message .= ' ' . $post['post_description'];
+        $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
+        sleep(180);
     }
-    $data['message'] = $message;
-    $data['link'] = $post['post_link'];
-    //$data['picture'] = $post['post_picture'];
-
-    $response = $fb->post('/1178672095511260/feed', $data, $accessToken);
 }
