@@ -49,7 +49,11 @@ foreach ( $groups as $group ) {
         $data['link'] = $post['post_link'];
         $data['picture'] = $post['post_picture'];
 
-        $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
-        sleep(180);
+        try {
+            $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
+            sleep(180);
+        } catch (Exception $e){
+            echo $e->getMessage();
+        }
     }
 }
