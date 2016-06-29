@@ -36,7 +36,7 @@ $fb = new Facebook\Facebook(
 
 $accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
 
-$groups = $dbConn->fetchRowMany('SELECT * FROM groups');
+$groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ) {
     $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 3');
     if ( !empty($post) ){
@@ -51,7 +51,8 @@ foreach ( $groups as $group ) {
 
         try {
             $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
-            sleep(180);
+            var_dump($response);
+            sleep(60);
         } catch (Exception $e){
             echo $e->getMessage();
         }
