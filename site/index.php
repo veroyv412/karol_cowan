@@ -349,6 +349,15 @@ $app->get('/clases/danzas-populares(/)', function() use ($app) {
     ));
 });
 
+$app->get('/facebook/posts/clases-populares(/)', function() use ($app, $dbConn) {
+    $groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
+    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 3');
+    echo $app->view->render('clases/facebook_clases_populares.html', array(
+        'groups' => $groups,
+        'post' => $post,
+    ));
+});
+
 $app->get('/clases/danzas-afrocubanas(/)', function() use ($app) {
     echo $app->view->render('clases/danzas-afrocubanas.html', array(
         'tab' => 'profesor'

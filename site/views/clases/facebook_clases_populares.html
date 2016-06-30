@@ -1,0 +1,75 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+
+{% block metatags %}
+<meta property="og:url" content="http://karolcowan.com/clases/danzas-populares">
+<meta property="og:title" content="Clases de Danzas Populares">
+<meta property="og:description" content="Elementos y recursos de las danzas afrocubanas y sus derivados, empleados en el casino y el SON cubano.">
+
+<meta property="og:image" content="http://karolcowan.com/images/flyers/flyer_clases_danza_popular.png">
+<meta property="og:image:width" content="1900"/>
+<meta property="og:image:height" content="976"/>
+
+<meta name="twitter:title" content="Clases de Danzas Populares">
+<meta name="twitter:image" content="http://karolcowan.com/images/flyers/flyer_clases_danza_popular.png">
+<meta name="twitter:text:description" content="Elementos y recursos de las danzas afrocubanas y sus derivados, empleados en el casino y el SON cubano.">
+{% endblock %}
+
+{% block content %}
+
+<!-- SUBHEADER ================================================== -->
+<div id="subheader">
+    <div class="row">
+        <div class="twelve columns">
+            <p>
+                Facebook Groups de Danzas Populares Cubanas
+            </p>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript">
+    function copyToClipboard(element) {
+        // Create a "hidden" input
+        var aux = document.createElement("input");
+        // Assign it the value of the specified element
+        aux.setAttribute("value", document.getElementById(element).innerHTML);
+        // Append it to the body
+        document.body.appendChild(aux);
+        // Highlight its content
+        aux.select();
+        // Copy the highlighted text
+        document.execCommand("copy");
+        // Remove it from the body
+        document.body.removeChild(aux);
+    }
+
+
+
+</script>
+
+<br>
+<div class="row">
+    <div class="twelve columns">
+        <b>Titulo:</b> <span id="title">{{ post.post_title }}</span> <button class="button" onclick="copyToClipboard('title')">Copiar Titulo</button>
+        <br>
+        <b>Descripcion:</b> <span id="description">{{ post.post_description }}</span> <button class="button" onclick="copyToClipboard('description')">Copiar Descripcion</button>
+        <br>
+        <b>Link:</b> <span id="link">{{ post.post_link }}</span> <button class="button" onclick="copyToClipboard('link')">Copiar Link</button>
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="twelve columns">
+        <ul>
+            {% for group in groups %}
+                <li><a href="{{group.group_url}}" target="_blank">{{group.group_url}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
