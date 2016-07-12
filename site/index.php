@@ -405,14 +405,14 @@ $app->post('/suscripciones', function() use ($app, $dbConn) {
     $transport->setPassword('v3r0n1c4');
 
     $mailer = new Swift_Mailer($transport);
-    $message = (new Swift_Message('Suscripcion a Clases'))
+    $message = (new Swift_Message('Suscripcion a Clases Particulares'))
         ->setFrom($data['email'], $data['name'])
         ->setContentType('text/html')
         ->setTo(array('veroyv412@gmail.com' => 'Karol Cowan'))
         ->setBody($html);
     $numSent = $mailer->send($message);
 
-    $message = (new Swift_Message('Suscripcion a Clases'))
+    $message = (new Swift_Message('Suscripcion a Clases Particulares'))
         ->setFrom('cowan.karol@gmail.com', 'Karol Cowan')
         ->setContentType('text/html')
         ->setTo($data['email'],  $data['name'])

@@ -55,63 +55,83 @@
 
             <h5>
                 Quieres ampliar tus conocimientos en diferentes disciplinas danzarias y fusionarlas?
-                Te esperamos en las clases, donde aprenderas no solo bailar, sino cultura y tradición y
+                Abierta la inscripcion para clases particulares individuales y grupales, donde aprenderas no solo bailar, sino cultura y tradición y
                 estudiaras diversas disciplinas sin perder la escencia de cada una. Suscribite!
             </h5>
+
+            <div class="panel">
+                <p>
+                    <b>Medios de Pago:</b>
+                <ul>
+                    <li><i class="fa fa-money" aria-hidden="true"></i> Efectivo</li>
+                    <li><i class="fa fa-credit-card" aria-hidden="true"></i> Mercado Pago (Tarjetas)</li>
+                    <li><i class="fa fa-university" aria-hidden="true"></i> Transferencia Bancaria</li>
+                </ul>
+                </p>
+            </div>
         </div>
     </div>
 
     <div class="row suscripcion">
-        <div class="six columns">
+        <div class="twelve columns">
             <form method="post" action="/suscripciones" id="contactform">
-                <div class="form">
-                    <div class="six columns noleftmargin">
-                        <label>Nombre y Apellido</label>
-                        <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
-                    </div>
-                    <div class="six columns noleftmargin">
-                        <label>Dirección de Email</label>
-                        <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
-                    </div>
+                <fieldset>
+                    <legend>Suscribite</legend>
+                    <div class="form">
+                        <div class="six columns noleftmargin">
+                            <label>Nombre y Apellido</label>
+                            <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                        </div>
+                        <div class="six columns noleftmargin">
+                            <label>Dirección de Email</label>
+                            <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+                        </div>
 
-                    <div class="twelve columns noleftmargin">
-                        <br><label>Clases a las que me quiero suscribir</label>
-                        <input type="checkbox" name="clases[0]" value="Clases de Danzas Populares Cubanas"> <span>Clases de Danzas Populares Cubanas</span>
-                        <br><input type="checkbox" name="clases[1]" value="Clases de Rumba y Danzas Afrocubanas"> <span>Clases de Rumba y Danzas Afrocubanas</span>
-                        <br><input type="checkbox" name="clases[2]" value="Clases de Latin Jazz"> <span>Clases de Latin Jazz</span>
-                    </div>
+                        <div class="twelve columns noleftmargin">
+                            <br><label>Clases a las que me quiero suscribir</label>
+                            <input type="checkbox" name="clases[0]" value="Clases de Danzas Populares Cubanas"> <span>Clases de Danzas Populares Cubanas (Salsa, SON, CHA CHA CHA, Pilon, Mozambique, entre otros)</span>
+                            <br><input type="checkbox" name="clases[1]" value="Clases de Rumba y Danzas Afrocubanas"> <span>Clases de Rumba y Danzas Afrocubanas</span>
+                            <br><input type="checkbox" name="clases[2]" value="Clases de Latin Jazz"> <span>Clases de Latin Jazz</span>
+                        </div>
 
-                    <div class="twelve columns noleftmargin">
-                        <br><label>Porque quieres tomar clases?</label>
-                        <input type="checkbox" name="tomar_clases[0]" value="Aprender a Interpretar"> <span>Aprender a Interpretar</span>
-                        <br><input type="checkbox" name="tomar_clases[1]" value="Desarrollar Destrezas"> <span>Desarrollar Destrezas</span>
-                        <br><input type="checkbox" name="tomar_clases[2]" value="Incorporarte a un grupo social "> <span>Incorporarte a un grupo social</span>
-                        <br><input type="checkbox" name="tomar_clases[3]" value="Mejorar entrenamiento y rendimiento fisico"> <span>Mejorar entrenamiento y rendimiento fisico</span>
-                        <br><input type="checkbox" name="tomar_clases[4]" value="Mejorar recursos de improvisacion"> <span>Mejorar recursos de improvisacion</span>
-                        <br><input type="checkbox" name="tomar_clases[5]" value="Mejorar comunicacion en los bailes de pareja"> <span>Mejorar comunicacion en los bailes de pareja</span>
-                    </div>
+                        <div class="twelve columns noleftmargin">
+                            <br><label>Porque quieres tomar clases?</label>
+                            <input type="checkbox" name="tomar_clases[0]" value="Aprender a Interpretar"> <span>Aprender a Interpretar</span>
+                            <br><input type="checkbox" name="tomar_clases[1]" value="Desarrollar Destrezas"> <span>Desarrollar Destrezas</span>
+                            <br><input type="checkbox" name="tomar_clases[2]" value="Incorporarte a un grupo social "> <span>Incorporarte a un grupo social</span>
+                            <br><input type="checkbox" name="tomar_clases[3]" value="Mejorar entrenamiento y rendimiento fisico"> <span>Mejorar entrenamiento y rendimiento fisico</span>
+                            <br><input type="checkbox" name="tomar_clases[4]" value="Mejorar recursos de improvisacion"> <span>Mejorar recursos de improvisacion</span>
+                            <br><input type="checkbox" name="tomar_clases[5]" value="Mejorar comunicacion en los bailes de pareja"> <span>Mejorar comunicacion en los bailes de pareja</span>
+                        </div>
 
-                    <div class="twelve columns noleftmargin">
-                        <br><label>Mensaje</label>
-                        <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
-                    </div>
+                        <div class="twelve columns noleftmargin">
+                            <br><label>Disponibilidad Horaria</label>
+                            <input type="checkbox" name="horarios[0]" value="de 8:00am a 1:00pm"> <span>de 8:00am a 1:00pm</span>
+                            <br><input type="checkbox" name="horarios[1]" value="de 1:00pm a 6:00pm"> <span>de 1:00pm a 6:00pm</span>
+                            <br><input type="checkbox" name="horarios[2]" value="de 6:00pm a 9:00pm"> <span>de 6:00pm a 9:00pm</span>
+                        </div>
 
-                    <input type="submit" id="submit" class="readmore" value="Enviar Suscripción">
-                </div>
+                        <div class="twelve columns noleftmargin">
+                            <br><label>Disponibilidad Semanal</label>
+                            <input type="checkbox" name="semanal[0]" value="Lunes"> <span>Lunes</span>
+                            <br><input type="checkbox" name="semanal[1]" value="Martes"> <span>Martes</span>
+                            <br><input type="checkbox" name="semanal[2]" value="Miercoles"> <span>Miercoles</span>
+                            <br><input type="checkbox" name="semanal[3]" value="Jueves"> <span>Jueves</span>
+                            <br><input type="checkbox" name="semanal[4]" value="Viernes"> <span>Viernes</span>
+                            <br><input type="checkbox" name="semanal[5]" value="Sabados"> <span>Sabados</span>
+                            <br><input type="checkbox" name="semanal[6]" value="Domingos"> <span>Domingos</span>
+                        </div>
+
+                        <div class="twelve columns noleftmargin">
+                            <br><label>Mensaje</label>
+                            <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                        </div>
+
+                        <input type="submit" id="submit" class="readmore" value="Enviar Suscripción">
+                    </div>
+                    <br>
+                </fieldset>
             </form>
-        </div>
-        <div class="six columns">
-            <video preload="none" autoplay loop width="100%"  style="width: 100%">
-                <source type="video/youtube" src="http://www.youtube.com/watch?v=USrKItCm3Yg" />
-            </video>
-            <script>
-                $('video').mediaelementplayer({
-                    autoplay: true,
-                    success: function(media, node, player) {
-                        player.play();
-                    }
-                });
-            </script>
         </div>
     </div>
 
