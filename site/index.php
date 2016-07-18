@@ -373,7 +373,7 @@ $app->get('/eventos/noche-jueves(/)', function() use ($app) {
 
 $app->get('/eventos/music(/)', function() use ($app) {
     echo $app->view->render('eventos/musico.html', array(
-        'tab' => 'eventos'
+        'tab' => 'musico'
     ));
 });
 
