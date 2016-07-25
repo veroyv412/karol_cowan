@@ -172,7 +172,8 @@ $app->get('/', function() use ($app) {
 
 
 $app->get('/fb', function() use ($app, $fb){
-    $permissions = ['email', 'publish_actions', 'user_friends', 'user_likes', 'user_posts', 'pages_show_list', 'publish_pages', 'user_groups', 'friends_groups','user_managed_groups']; // Optional permissions
+    //'user_groups', 'friends_groups'
+    $permissions = ['email', 'publish_actions', 'user_friends', 'user_likes', 'user_posts', 'pages_show_list', 'publish_pages','user_managed_groups']; // Optional permissions
     $helper = $fb->getRedirectLoginHelper();
     $loginUrl = $helper->getLoginUrl('http://karolcowan.com/fb-callback', $permissions);
 
@@ -373,6 +374,12 @@ $app->get('/eventos/noche-jueves(/)', function() use ($app) {
 
 $app->get('/eventos/music(/)', function() use ($app) {
     echo $app->view->render('eventos/musico.html', array(
+        'tab' => 'musico'
+    ));
+});
+
+$app->get('/mi-receta', function() use ($app) {
+    echo $app->view->render('eventos/mi-receta.html', array(
         'tab' => 'musico'
     ));
 });
