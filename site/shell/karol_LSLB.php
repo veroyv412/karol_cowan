@@ -36,9 +36,9 @@ $fb = new Facebook\Facebook(
 
 $accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
 
-$groups = $dbConn->fetchRowMany('SELECT * FROM groups where group_category = 1');
+$groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ) {
-    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 7');
+    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 8');
     if ( !empty($post) ){
         $data = array();
         $message = $post['post_title'];
