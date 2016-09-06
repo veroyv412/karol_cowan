@@ -1,0 +1,53 @@
+.home-upcoming-event {
+	padding-top:80px;
+	padding-bottom:100px;
+	background-image:url(../images/world-1920x1132.png);
+}
+body.theme-light .home-upcoming-event {
+	background-image:url(../images/world-1920x1132.png);
+}
+.home-successful-event {
+	padding-top:96px;
+	padding-bottom:80px;
+	background-color:#262626;
+}
+body.theme-light .home-successful-event {
+	background-color: #f7f7f7;
+}
+.home-album {
+	padding-top:100px;
+	padding-bottom:100px;
+	background-color:#2f2f2f;
+}
+body.theme-light .home-album {
+	background-color: #ffffff;
+}
+.home-news {
+	padding-top:100px;
+	padding-bottom:100px;
+	background-color:#262626;
+}
+body.theme-light .home-news {
+	background-color: #efefef;
+}
+.home-go-top {
+	background-color:#2f2f2f;
+}
+body.theme-light .home-go-top {
+	background-color: #ffffff;
+}
+.home-service {
+	padding-top:30px;
+	padding-bottom:75px;
+	background-color:#2f2f2f;
+}
+body.theme-light .home-service {
+	background-color: #ffffff;
+}
+.service-item {
+	padding-top:30px;
+}
+.contact-content {
+	margin-top:50px;
+	margin-bottom:80px;
+}

@@ -1,0 +1,14 @@
+{% block page_title %}Home{% endblock %}
+{% extends 'layout/base.twig' %}
+{% block title %}Karol Cowan & La Sabrosa Latin band{% endblock %}
+
+{% block content %}
+    <div class="main-content container-fullwidth">
+
+        {% include 'partials/home/_parallax.twig' %}
+        {% include 'partials/home/_upcoming_events.twig' %}
+        {% include 'partials/home/_successfull_events.twig' %}
+        {% include 'partials/home/_featured_albums.twig' %}
+        {% include 'partials/home/_news_and_updates.twig' %}
+    </div>
+{% endblock %}
