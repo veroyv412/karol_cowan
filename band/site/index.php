@@ -85,9 +85,14 @@ $app->hook('slim.before', function() use ($app) {
     $app->view()->appendData($data);
 });
 
-$app->get('/', function() use ($app) {
+$app->get('/', function() use ($app, $dbConn) {
+    $upcoming_events = $dbConn->fetchRowMany('SELECT * FROM events WHERE new = 1');
+    $passed_events = $dbConn->fetchRowMany('SELECT * FROM events WHERE new = 0');
+    
     echo $app->view->render('home.twig', array(
-        'tab' => 'home'
+        'tab'               => 'home',
+        'upcoming_events'   => $upcoming_events,
+        'passed_events'     => $passed_events
     ));
 });
 

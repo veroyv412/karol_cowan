@@ -1,0 +1,108 @@
+<footer class="colophon site-info">
+    <div class="colophon wigetized">
+        <div class="background-footer"></div>
+        <div class="container">
+            <div class="row noo-footer-main">
+                <div class="col-md-4 col-sm-4 col-xs-18">
+                    <div class="widget widget_text">
+                        <h4 class="widget-title">Acerca de la Banda</h4>
+                        <div class="textwidget">
+                            <p>
+                                WeMusic was built for Music Band Event with selling ticket service directly on site. Quick way to popularize your events and make it more professional towards thousands of audiences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-18">
+                    <div class="widget tribe-events-adv-list-widget">
+                        <h4 class="widget-title">Proximos Eventos</h4>
+                        {% for event in upcoming_events %}
+                        <div class="tribe-mini-calendar-event">
+                            <div class="list-date">
+                                <span class="list-dayname">{{ event.date | date('d') }}</span>
+                                <span class="list-daynumber">{{ event.date | date('m') }}</span>
+                            </div>
+                            <div class="list-info">
+                                <h2 class="entry-title summary">
+                                    <a href="#">{{ event.venue_name }}</a>
+                                </h2>
+                                <div class="duration">
+                                    <span class="date-end dtend">{{ event.location }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-18">
+                    <div class="widget mailchimp-widget">
+                        <h4 class="widget-title">Suscribite</h4>
+                        <form class="mc-subscribe-form">
+                            <div class="input-mail">
+                                <input type="email" name="mc_email" class="mc-email" value="" placeholder="Ingresa tu mail..."/>
+                                <i class="fa fa-envelope-o icon-mc-email"></i>
+                            </div>
+                            <button disabled>Suscribite</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="noo-footer-bottom">
+                <div class="widget widget_noo_infomation">
+                    <ul class="noo-infomation">
+                        <li>
+                            <span class="fa fa-map-marker infomation-left"></span>
+                            <address>Buenos Aires, Argentina</address>
+                        </li>
+                        <li class="info-phone">
+                            <span class="fa fa-phone infomation-left"></span>
+                            <span>+54 9 11 3089-1051</span>
+                        </li>
+                        <li class="info-mail">
+                            <span class="fa fa-envelope-o infomation-left"></span>
+                            <span><a href="mailto:email@domain.com">karolcowanylasabrosalatinband@gmail.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="widget widget_noo_social">
+                    <div class="noo_social">
+                        <div class="social-all">
+                            <span class="footer-social">
+                                <span class="social-name">
+                                    Follow on facebook
+                                </span>
+                                <a href="https://www.facebook.com/KarolCowanLaSabrosaLatinBand/" class="fa fa-facebook"></a>
+                            </span>
+                            <span class="footer-social">
+                                <span class="social-name">
+                                    Follow on google-plus
+                                </span>
+                                <a href="https://plus.google.com/u/1/+KarolCowan" class="fa fa-google-plus"></a>
+                            </span>
+                            <span class="footer-social">
+                                <span class="social-name">
+                                    Follow on twitter
+                                </span>
+                                <a href="https://twitter.com/karolcowan" class="fa fa-twitter"></a>
+                            </span>
+                            <span class="footer-social">
+                                <span class="social-name">
+                                    Follow on youtube
+                                </span>
+                                <a href="https://www.youtube.com/channel/UCBPLByrX4x3WZ8TRoPhgEcw" class="fa fa-youtube"></a>
+                            </span>
+                            <span class="footer-social">
+                                <span class="social-name">
+                                    Follow on linkedin
+                                </span>
+                                <a href="https://ar.linkedin.com/in/karol-cowan-2083a8a0/en" class="fa fa-linkedin"></a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

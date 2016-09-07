@@ -6264,7 +6264,7 @@ footer.colophon {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.6);
 }
 .wigetized .widget {
   color: #ffffff;
@@ -6662,7 +6662,7 @@ a.go-to-top:hover a.go-to-top:focus.on:hover {
 }
 footer.colophon.site-info {
   background-color: #000000;
-  background-image: url('../images/footer-bg-1050x700.jpg');
+  background-image: url('../images/footer-bg-1050x700-kc.png');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -14222,7 +14222,7 @@ h3.tribe-events-related-events-title {
   transition: all 0.5s ease 0s;
 }
 .noo-sh-list-event .thumb-1 {
-  background-image: url('../images/event/event-thumb-600x450.jpg');
+  background-image: url('../images/event/upcoming-event-mamerta.png');
 }
 .noo-sh-list-event .thumb-2 {
   background-image: url('../images/event/event-thumb-600x450.jpg');
