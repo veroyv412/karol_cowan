@@ -121,7 +121,8 @@
 		}
 
 		austDay = new Date(2016, 9,  14);
-		jQuery('#defaultCountdown').countdown({until: austDay});
+		$.countdown.setDefaults($.countdown.regionalOptions['es']);
+		jQuery('#defaultCountdown').countdown({until: austDay, labels: ['Anio', 'Meses', 'Semanas', 'Dias', 'Horas', 'Minutos', 'Segundos'], });
 		jQuery('#year').text(austDay.getFullYear());
 
 
