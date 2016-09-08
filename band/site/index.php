@@ -66,13 +66,13 @@ $sqlManager = new \Simplon\Mysql\Manager\SqlManager($dbConn);
 
 
 $app->error(function (\Exception $e) use ($app) {
-    echo $app->view->render('404.html', array(
+    echo $app->view->render('404.twig', array(
         'message' => $e->getMessage()
     ));
 });
 
 $app->notFound(function (\Exception $e) use ($app) {
-    echo $app->view->render('404.html', array(
+    echo $app->view->render('404.twig', array(
         'message' => $e->getMessage()
     ));
 });
@@ -93,6 +93,13 @@ $app->get('/', function() use ($app, $dbConn) {
         'tab'               => 'home',
         'upcoming_events'   => $upcoming_events,
         'passed_events'     => $passed_events
+    ));
+});
+
+$app->get('/members', function() use ($app, $dbConn) {
+    
+    echo $app->view->render('members.twig', array(
+        'tab'               => 'members'
     ));
 });
 

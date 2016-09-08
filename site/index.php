@@ -145,13 +145,13 @@ $sqlManager = new \Simplon\Mysql\Manager\SqlManager($dbConn);
 
 
 $app->error(function (\Exception $e) use ($app) {
-    echo $app->view->render('404.html', array(
+    echo $app->view->render('404.twig', array(
         'message' => $e->getMessage()
     ));
 });
 
 $app->notFound(function (\Exception $e) use ($app) {
-    echo $app->view->render('404.html', array(
+    echo $app->view->render('404.twig', array(
         'message' => $e->getMessage()
     ));
 });

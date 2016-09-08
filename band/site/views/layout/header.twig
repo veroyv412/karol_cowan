@@ -18,8 +18,8 @@
                 </div>
                 <nav class="collapse navbar-collapse noo-navbar-collapse">
                     <ul class="navbar-nav sf-menu">
-                        <li class="current-menu-item"><a href="/">Home</a></li>
-                        <li><a href="/events">Eventos / Shows</a></li>
+                        <li {% if tab == 'home' %}class="current-menu-item"{% endif %}><a href="/">Home</a></li>
+                        <li {% if tab == 'events' %}class="current-menu-item"{% endif %}><a href="/events">Eventos / Shows</a></li>
                         {#<li class="menu-item-has-children">
                             <a href="#">Albums</a>
                             <ul class="sub-menu">
@@ -37,7 +37,7 @@
                             </ul>
                         </li>
                         #}
-                        <li><a href="/members">Musicos</a></li>
+                        <li {% if tab == 'members' %}class="current-menu-item"{% endif %}><a href="/members">Musicos</a></li>
                         {#<li class="menu-item-has-children">
                             <a href="blog.html">Blog</a>
                             <ul class="sub-menu">
@@ -45,7 +45,7 @@
                                 <li><a href="blog-detail.html">Single Post</a></li>
                             </ul>
                         </li>#}
-                        <li><a href="/contact">Contactenos</a></li>
+                        <li {% if tab == 'contact' %}class="current-menu-item"{% endif %}><a href="/contact">Contactenos</a></li>
                         {#<li class="noo-menu-item-cart minicart">
                             <a class="cart-button" href="cart.html">
 											<span class="cart-item">
