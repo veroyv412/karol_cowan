@@ -1,0 +1,225 @@
+{% block page_title %}Eventos{% endblock %}
+{% extends 'layout/base.twig' %}
+{% block title %}Karol Cowan | Eventos{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <script type='text/javascript' src='/js/nivo-lightbox.min.js'></script>
+{% endblock %}
+
+{% block content %}
+    <div class="noo-page-heading">
+        <div class="container">
+            <div class="noo-page-breadcrumb">
+                <div class="breadcrumb-wrap">
+                    <span><a href="/" class="home">Home</a></span><i>&#047;</i><span><span>Eventos</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="noo-tribe-events">
+        <div class="container">
+
+            <div class="noo-tribe-events">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="tribe-events" class="single-tribe_events tribe-events-uses-geolocation">
+                                <div id="tribe-events-content" class="tribe-events-single">
+                                    <div class="col-md-9">
+                                        <div class="noo-single-event-content">
+                                            <span class="noo-attr-style">{{ event.price }}</span>
+											<span class="entry-date">
+												{{ event.date | date('d') }} <span class="month">{{ event.date | date('F') }} </span>
+											</span>
+                                            <h2 class="tribe-events-single-event-title">
+                                                {{ event.venue_name }}
+                                            </h2>
+                                            <div class="tribe-events-schedule">
+												<span class="sh-time-event">
+													<i class="fa fa-clock-o"></i>
+													<span class="date-start dtstart">
+														{{ event.date | date('d/m/Y H:i') }}
+													</span>
+												</span>
+												<span class="sh-address">
+													<i class="fa fa-map-marker"></i>
+                                                    {{ event.location }}
+												</span>
+                                            </div>
+                                            <div class="tribe-events-event-image">
+                                                <img width="1280" height="853" src="{{ event.image_url }}" alt="event5"/>
+                                            </div>
+                                            <div class="description">
+                                                {{ event.description }}
+                                            </div>
+                                            <div class="content-social">
+                                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ base_url }}/event/{{ event.id }}" class="noo-share noo-facebook" title="Share on Facebook">
+                                                    <span class="title-shared">Share on Facebook</span>
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                                <a href="https://twitter.com/home?status={{ base_url }}/event/{{ event.id }}" class="noo-share noo-twitter" title="Share on Twitter">
+                                                    <span class="title-shared">Share on Twitter</span>
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                                <a href="https://plus.google.com/share?url={{ base_url }}/event/{{ event.id }}" class="noo-share noo-google-plus" title="Share on Google+">
+                                                    <span class="title-shared">Share on Google+</span>
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                                <a href="https://pinterest.com/pin/create/button/?url=&media={{ base_url }}/event/{{ event.id }}&description=Karol Cowan y la Sabrosa Latin Band en Concierto. {{ event.venue_name | capitalize }} | {{ event.location }}" class="noo-share noo-pinterest" title="Share on Pinterest">
+                                                    <span class="title-shared">Share on Pinterest</span>
+                                                    <i class="fa fa-pinterest"></i>
+                                                </a>
+                                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ base_url }}/event/{{ event.id }}&title=&summary=Karol Cowan y la Sabrosa Latin Band en Concierto. {{ event.venue_name | capitalize }} | {{ event.location }}&source=" class="noo-share noo-linkedin" title="Share on LinkedIn">
+                                                    <span class="title-shared">Share on LinkedIn</span>
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="noo-tabs-wrap">
+                                            <ul class="noo-tabs-header">
+                                                <li>
+                                                    <span class="noo-tabs-title" data-option-value="event-gallery">Galeria</span>
+                                                </li>
+                                                <li>
+                                                    <span class="noo-tabs-title" data-option-value="event-comment-list">Comments</span>
+                                                </li>
+                                            </ul>
+                                            <div class="noo-tabs-content">
+                                                <div id="event-gallery" class="noo-tab-content">
+                                                    <div class="pr-gallery">
+                                                        {#<ul class="event-single-gallery">
+                                                            <li>
+                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="images/event/event-thumb-1280x850.jpg">
+                                                                    <img width="600" height="450" src="images/event/event-thumb-242x202.jpg" alt="event12"/>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="images/event/event-thumb-1280x850.jpg">
+                                                                    <img width="600" height="450" src="images/event/event-thumb-242x202.jpg" alt="event1"/>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="images/event/event-thumb-1280x850.jpg">
+                                                                    <img width="600" height="450" src="images/event/event-thumb-242x202.jpg" alt="event9"/>
+                                                                </a>
+                                                            </li>
+                                                        </ul>#}
+                                                    </div>
+                                                </div>
+                                                <div id="event-comment-list" class="noo-tab-content">
+                                                    <div id="comments" class="comments-area">
+                                                        <div id="fb-root"></div>
+                                                        <script>(function(d, s, id) {
+                                                                var js, fjs = d.getElementsByTagName(s)[0];
+                                                                if (d.getElementById(id)) return;
+                                                                js = d.createElement(s); js.id = id;
+                                                                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=310902175730143";
+                                                                fjs.parentNode.insertBefore(js, fjs);
+                                                            }(document, 'script', 'facebook-jssdk'));</script>
+                                                        <div class="fb-comments" data-colorscheme='dark' data-href="{{ base_url }}/event/{{ event.id }}" data-numposts="5"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="tribe-events-event-meta">
+                                            <div class="tribe-events-meta-group">
+                                                <h3 class="tribe-events-single-section-title"> Detalles del Evento </h3>
+                                                <dl>
+                                                    <dt> Día: </dt>
+                                                    <dd>
+                                                        <abbr> {{ event.date | date('d/m/Y') }} </abbr>
+                                                    </dd>
+                                                    <dt> Hora: </dt>
+                                                    <dd>
+                                                        <abbr> {{ event.date | date('H:i') }} </abbr>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="tribe-events-meta-group">
+                                                <h3 class="tribe-events-single-section-title">Organizador</h3>
+                                                <dl>
+                                                    <dt class="hidden">
+                                                        &nbsp;
+                                                    </dt>
+                                                    <dd>
+                                                        <a href="#">Karol Cowan</a>
+                                                    </dd>
+                                                    <dt>
+                                                        Teléfono:
+                                                    </dt>
+                                                    <dd>
+                                                        +54 9 11 3089-1051
+                                                    </dd>
+                                                    <dt>
+                                                        Website:
+                                                    </dt>
+                                                    <dd>
+                                                        <a href="#">http://www.karolcowan.com/</a>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="tribe-events-event-meta">
+                                            <div class="tribe-events-meta-group">
+                                                <h3 class="tribe-events-single-section-title"> Lugar </h3>
+                                                <dl>
+                                                    <dt class="hidden">
+                                                        &nbsp;
+                                                    </dt>
+                                                    <dd>
+                                                        <a href="#">{{ event.location }}</a>
+                                                        <a class="tribe-events-gmap" href="http://maps.google.com/maps?f=q&#038;source=s_q&#038;hl=en&#038;geocode=&#038;q={{ event.location }}" title="Click to view a Google Map" target="_blank">+ Google Map</a>
+                                                    </dd>
+                                                </dl>
+                                            </div>
+                                            <div class="tribe-events-venue-map">
+
+                                                {#<iframe
+                                                        width="600"
+                                                        height="450"
+                                                        frameborder="0" style="border:0"
+                                                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCH1zPvZ0jGkaFnCUbSyTKj_yM6Yc7CYbA
+      &q=Butchart+Gardens+Victoria+BC
+      &attribution_source=Google+Maps+Embed+API
+      &attribution_web_url=http://www.butchartgardens.com/
+      &attribution_ios_deep_link_id=comgooglemaps://?daddr=Butchart+Gardens+Victoria+BC" allowfullscreen>
+                                                </iframe>#}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.noo-tngallery').nivoLightbox({
+                effect: 'slideUp'
+            });
+
+            $('.noo-tabs-content .noo-tab-content:first').show();
+            $('.noo-tabs-header .noo-tabs-title:first').addClass('tab-active');
+
+            $('span.noo-tabs-title').on("click", function(){
+
+                $(this).parent().parent().find('span').removeClass('tab-active');
+                $(this).addClass('tab-active');
+                var $id = $(this).attr('data-option-value');
+                $(this).parent().parent().parent().find('.noo-tab-content').fadeOut(0);
+                $('#'+$id).fadeIn(0);
+
+            }) ;
+        });
+    </script>
+{% endblock %}

@@ -213,8 +213,6 @@
     };
     $(document).ready(function() {
         nooInit();
-    });
-    $(window).load(function() {
         $('#loading').fadeOut(300);
     });
     /*$(document).bind('noo-layout-changed', function() {

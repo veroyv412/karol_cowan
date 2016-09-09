@@ -1,13 +1,13 @@
 {% block page_title %}Home{% endblock %}
 {% extends 'layout/base.twig' %}
-{% block title %}Karol Cowan & La Sabrosa Latin Band{% endblock %}
+{% block title %}Karol Cowan | Integrantes {% endblock %}
 
 {% block content %}
     <div class="noo-page-heading">
         <div class="container">
             <div class="noo-page-breadcrumb">
                 <div class="breadcrumb-wrap">
-                    <span><a href="#" class="home">Home</a></span><i>&#047;</i> <span><span>Músicos</span></span>
+                    <span><a href="#" class="home">Home</a></span><i>&#047;</i> <span><span>Integrantes</span></span>
                 </div>
             </div>
         </div>
@@ -23,202 +23,58 @@
                                 <h2 class="noo-team-title">Integrantes de la Banda</h2>
                                 <div class="row noo-team-contents">
                                     <div class="col-md-4 col-sm-6">
-                                        <div class="noo_team_item">
-                                            <div class="team_thumbnail">
-                                                <img width="770" height="770"
-                                                     src="/images/member/member-thumb-370x370-cesar.png" alt="Cesar Guri"/>
-                                                <div class="team-info">
-                                                    <h4 class="team_name">Cesar Guri</h4>
-                                                    <span class="team_position">Bajo</span>
-                                                </div>
-                                            </div>
-                                            <div class="team-detail">
-                                                <div class="team-detail-position">
-                                                    <p class="ds">
-                                                        Cesar Guri <br>(Santa Fe, Argentina)
-                                                    </p>
-                                                    {#<div class="team_socials">
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on facebook</span>
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on twitter</span>
-                                                            <a href="#" class="fa fa-twitter"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on google</span>
-                                                            <a href="#" class="fa fa-google-plus"></a>
-                                                        </span>
-                                                    </div>#}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{ include('partials/members/_member.twig',
+                                            {
+                                                'image': '/images/member/member-thumb-370x370-cesar.png',
+                                                'display_name' : 'Cesar Guri',
+                                                'titulo': 'Bajo',
+                                                'location': '( Santa Fe, Argentina )'
+                                        }) }}
                                     </div>
                                     <div class="col-md-4 col-sm-6">
-                                        <div class="noo_team_item">
-                                            <div class="team_thumbnail">
-                                                <img width="770" height="770"
-                                                     src="/images/member/member-thumb-370x370-karol.png" alt="Karol Cowan"/>
-                                                <div class="team-info">
-                                                    <h4 class="team_name">Karol Cowan</h4>
-                                                    <span class="team_position">Voz Principal</span>
-                                                </div>
-                                            </div>
-                                            <div class="team-detail">
-                                                <div class="team-detail-position">
-                                                    <p class="ds">
-                                                        Karol Cowan<br>(Camagūey, Cuba)
-                                                    </p>
-                                                    {#<div class="team_socials">
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on facebook</span>
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on twitter</span>
-                                                            <a href="#" class="fa fa-twitter"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on google</span>
-                                                            <a href="#" class="fa fa-google-plus"></a>
-                                                        </span>
-                                                    </div>#}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{ include('partials/members/_member.twig',
+                                        {
+                                            'image': '/images/member/member-thumb-370x370-karol.png',
+                                            'display_name' : 'Karol Cowan',
+                                            'titulo': 'Voz Principal',
+                                            'location': '( Camagūey, Cuba )'
+                                        }) }}
                                     </div>
                                     <div class="col-md-4 col-sm-6">
-                                        <div class="noo_team_item">
-                                            <div class="team_thumbnail">
-                                                <img width="770" height="770"
-                                                     src="images/member/member-thumb-370x370-tomas.png" alt="Tomas Sivadón"/>
-                                                <div class="team-info">
-                                                    <h4 class="team_name">Tomas Sivadón</h4>
-                                                    <span class="team_position">Percusión</span>
-                                                </div>
-                                            </div>
-                                            <div class="team-detail">
-                                                <div class="team-detail-position">
-                                                    <p class="ds">
-                                                        Tomas Sivadón<br>(Buenos Aires, Argentina)
-                                                    </p>
-                                                    {#<div class="team_socials">
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on facebook</span>
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on twitter</span>
-                                                            <a href="#" class="fa fa-twitter"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on google</span>
-                                                            <a href="#" class="fa fa-google-plus"></a>
-                                                        </span>
-                                                    </div>#}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{ include('partials/members/_member.twig',
+                                        {
+                                            'image': '/images/member/member-thumb-370x370-tomas.png',
+                                            'display_name' : 'Tomas Sivadón',
+                                            'titulo': 'Percusión',
+                                            'location': '( Buenos Aires, Argentina )'
+                                        }) }}
                                     </div>
                                     <div class="col-md-4 col-sm-6">
-                                        <div class="noo_team_item">
-                                            <div class="team_thumbnail">
-                                                <img width="770" height="770"
-                                                     src="images/member/member-thumb-370x370-ezequiel.png" alt="Ezequiel Luzuriaga"/>
-                                                <div class="team-info">
-                                                    <h4 class="team_name">Ezequiel Luzuriaga</h4>
-                                                    <span class="team_position">Guitarra</span>
-                                                </div>
-                                            </div>
-                                            <div class="team-detail">
-                                                <div class="team-detail-position">
-                                                    <p class="ds">
-                                                        Ezequiel Luzuriaga<br>(Buenos Aires, Argentina)
-                                                    </p>
-                                                    {#<div class="team_socials">
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on facebook</span>
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on twitter</span>
-                                                            <a href="#" class="fa fa-twitter"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on google</span>
-                                                            <a href="#" class="fa fa-google-plus"></a>
-                                                        </span>
-                                                    </div>#}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{ include('partials/members/_member.twig',
+                                        {
+                                            'image': '/images/member/member-thumb-370x370-ezequiel.png',
+                                            'display_name' : 'Ezequiel Luzuriaga',
+                                            'titulo': 'Guitarra',
+                                            'location': '( Buenos Aires, Argentina )'
+                                        }) }}
                                     </div>
                                     <div class="col-md-4 col-sm-6">
-                                        <div class="noo_team_item">
-                                            <div class="team_thumbnail">
-                                                <img width="770" height="770"
-                                                     src="images/member/member-thumb-370x370-jonny.png" alt="Jonathan Alexis Castro Perez"/>
-                                                <div class="team-info">
-                                                    <h4 class="team_name">Jonathan Alexis Castro Perez</h4>
-                                                    <span class="team_position">Teclados</span>
-                                                </div>
-                                            </div>
-                                            <div class="team-detail">
-                                                <div class="team-detail-position">
-                                                    <p class="ds">
-                                                        Jonathan Alexis Castro Perez<br>(Colombia)
-                                                    </p>
-                                                    {#<div class="team_socials">
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on facebook</span>
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on twitter</span>
-                                                            <a href="#" class="fa fa-twitter"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on google</span>
-                                                            <a href="#" class="fa fa-google-plus"></a>
-                                                        </span>
-                                                    </div>#}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{ include('partials/members/_member.twig',
+                                        {
+                                            'image': '/images/member/member-thumb-370x370-jonny.png',
+                                            'display_name' : 'Jonathan Alexis Castro Perez',
+                                            'titulo': 'Teclados',
+                                            'location': '( Cartagena, Colombia )'
+                                        }) }}
                                     </div>
                                     <div class="col-md-4 col-sm-6">
-                                        <div class="noo_team_item">
-                                            <div class="team_thumbnail">
-                                                <img width="770" height="770"
-                                                     src="images/member/member-thumb-370x370-sergio.png" alt="Sergio Moran"/>
-                                                <div class="team-info">
-                                                    <h4 class="team_name">Sergio Moran</h4>
-                                                    <span class="team_position">Batería</span>
-                                                </div>
-                                            </div>
-                                            <div class="team-detail">
-                                                <div class="team-detail-position">
-                                                    <p class="ds">
-                                                        Sergio Moran<br>(Buenos Aires, Argentina)
-                                                    </p>
-                                                    {#<div class="team_socials">
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on facebook</span>
-                                                            <a href="#" class="fa fa-facebook"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on twitter</span>
-                                                            <a href="#" class="fa fa-twitter"></a>
-                                                        </span>
-                                                        <span class="team_social">
-                                                            <span class="social-name">Follow on google</span>
-                                                            <a href="#" class="fa fa-google-plus"></a>
-                                                        </span>
-                                                    </div>#}
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {{ include('partials/members/_member.twig',
+                                        {
+                                            'image': '/images/member/member-thumb-370x370-sergio.png',
+                                            'display_name' : 'Sergio Moran',
+                                            'titulo': 'Batería',
+                                            'location': '( Buenos Aires, Argentina )'
+                                        }) }}
                                     </div>
                                 </div>
                             </div>

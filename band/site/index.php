@@ -97,9 +97,25 @@ $app->get('/', function() use ($app, $dbConn) {
 });
 
 $app->get('/members', function() use ($app, $dbConn) {
-    
     echo $app->view->render('members.twig', array(
-        'tab'               => 'members'
+        'tab'               => 'members',
+        
+    ));
+});
+
+$app->get('/events', function() use ($app, $dbConn) {
+    $events = $dbConn->fetchRowMany('SELECT * FROM events ORDER BY new DESC');
+    echo $app->view->render('events.twig', array(
+        'tab'               => 'events',
+        'events'            => $events
+    ));
+});
+
+$app->get('/events/:event_id', function($event_id) use ($app, $dbConn) {
+    $event = $dbConn->fetchRow('SELECT * FROM events WHERE id = ' . $event_id);
+    echo $app->view->render('event-detail.twig', array(
+        'tab'               => 'events',
+        'event'            => $event
     ));
 });
 

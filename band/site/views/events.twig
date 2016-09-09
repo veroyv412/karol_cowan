@@ -1,0 +1,120 @@
+{% block page_title %}Eventos{% endblock %}
+{% extends 'layout/base.twig' %}
+{% block title %}Karol Cowan | Eventos{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel='stylesheet' href='css/tribe-events.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='css/tribe-events-pro-theme.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='css/style.css' type='text/css' media='all'/>
+    <link rel='stylesheet' href='/js/calendar/zabuto_calendar.css' type='text/css' media='all'/>
+{% endblock %}
+
+{% block content %}
+    <div class="noo-page-heading">
+        <div class="container">
+            <div class="noo-page-breadcrumb">
+                <div class="breadcrumb-wrap">
+                    <span><a href="/" class="home">Home</a></span><i>&#047;</i><span><span>Eventos</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="noo-tribe-events">
+        <div class="container">
+
+            <div class="noo-grid-header-events">
+                <span class="icon">
+                    <i class="fa fa-calendar"></i>
+                </span>
+                <h2 class="sh-event-title">
+                    Eventos
+                </h2>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="tribe-events">
+                        <div class="tribe-clearfix">
+
+                            <div id="tribe-events-photo-events" class="tribe-events-list tribe-events-photo">
+                                <div class="tribe-events-loop hfeed vcalendar tribe-clearfix isotope">
+
+                                    {% for event in events %}
+                                        <div class="type-tribe_events tribe-clearfix tribe-events-photo-event isotope-item">
+                                            <h2 class="tribe-events-list-event-title">
+                                                <a href="#">{{ event.venue_name }}</a>
+                                            </h2>
+                                            <div class="noo-tribe-events-image">
+                                                <span class="noo-attr-style">${{ event.price }}</span>
+                                                <div class="tribe-events-event-meta vcard">
+                                                    <div class="author location">
+                                                        <div class="time-details">
+                                                            <i class="fa fa-calendar"></i>
+                                                            <span class="date-start">{{ event.date | date('d/m/Y H:i') }}</span>
+                                                        </div>
+                                                        <div class="tribe-events-venue-details">
+                                                            <i class="fa fa-map-marker"></i>
+                                                            <span class="author"><a href="#">{{ event.location }}</a></span>,
+                                                            <a class="tribe-events-gmap" href="http://maps.google.com/maps?f=q&#038;source=s_q&#038;hl=en&#038;geocode=&#038;q={{ event.location }}" title="Click to view a Google Map" target="_blank">+ Google Map</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tribe-events-event-image">
+                                                    <a href="#">
+                                                        <img width="1280" height="853" src="{{ event.image_url }}" alt="event5"/>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="tribe-events-list-event-description">
+                                                {{ event.description }}
+                                                {% if event.new == 0 %}
+                                                <br><a href="/events/{{ event.id }}" class="tribe-events-read-more">Galería de Imágenes</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 sidebar-event">
+                    <div class="widget widget_calendar">
+                        <div id="calendar_wrap">
+
+                            <div id="my-calendar"></div>
+                            <!-- use fixed data -->
+                            <script type="application/javascript">
+                                var eventData = [
+                                    { "date":"2016-10-14", "badge":false, "title":"Karol Cowan y LSLB en Concierto en Mamerta"},
+                                    { "date":"2016-09-02", "badge":false, "title":"Karol Cowan y LSLB en Concierto en Espacio PM"},
+                                    { "date":"2016-08-18", "badge":false, "title":"Karol Cowan y LSLB en Concierto en Mamerta"}
+                                ];
+                                $(document).ready(function () {
+                                    $("#my-calendar").zabuto_calendar({
+                                        data: eventData
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="widget widget_noo_request_information">
+                        <h4 class="widget-title">Solicitar Información</h4>
+                        <div class="noo_request_information">
+                            <i class="fa fa-envelope-o icon-request"></i>
+                            <p>Queres enterarte mas acerca de nuestros eventos?</p>
+                            <span>Tu pregunta no molesta</span>
+                            <a class="request" href="/contact">Contactenos<i class="fa fa-long-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
