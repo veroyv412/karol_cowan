@@ -4,11 +4,23 @@
 
 {% block head %}
     {{ parent() }}
-    <script type='text/javascript' src='/js/html5gallery/jquery.js'></script>
-    <script type='text/javascript' src='/js/html5gallery/html5gallery.js'></script>
+    <link rel="stylesheet" href="/js/blueimp-gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="/js/blueimp-gallery/css/blueimp-gallery.css">
+    <link rel="stylesheet" href="/js/blueimp-gallery/css/blueimp-gallery-indicator.css">
+    <link rel="stylesheet" href="/js/blueimp-gallery/css/blueimp-gallery-video.css">
+
+    <script src="/js/blueimp-gallery/js/blueimp-gallery.js"></script>
+    <script src="/js/blueimp-gallery/js/blueimp-helper.js"></script>
+    <script src="/js/blueimp-gallery/js/blueimp-gallery-fullscreen.js"></script>
+    <script src="/js/blueimp-gallery/js/blueimp-gallery-indicator.js"></script>
+    <script src="/js/blueimp-gallery/js/blueimp-gallery-video.js"></script>
+    <script src="/js/blueimp-gallery/js/blueimp-gallery-vimeo.js"></script>
+    <script src="/js/blueimp-gallery/js/blueimp-gallery-youtube.js"></script>
+    <script src="/js/blueimp-gallery/js/jquery.blueimp-gallery.js"></script>
 {% endblock %}
 
 {% block content %}
+    <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
     <div class="noo-page-heading">
         <div class="container">
             <div class="noo-page-breadcrumb">
@@ -34,37 +46,96 @@
                     <div class="row row-fluid">
                         <div class="nocontainer contact-content">
 
-                            <div style="display: block; margin: 0px auto; position: relative; max-width: 100%; width: 880px; height: 618px;"
-                                 class="html5gallery" data-onchange="onSlideChange" data-onthumbclick="onThumbClick" data-skin="showcase"
-                                 data-autoplayvideo="false" data-responsive="true" data-resizemode="fill" data-html5player="true" data-autoslide="true"
-                                 data-width="800" data-height="450" data-effect="fadeout" data-shownumbering="true"
-                                 data-numberingformat="%NUM of %TOTAL - ">
-
-                                <!-- Add images to Gallery -->
-                                <a href="{{ base_url }}/images/slider/home/1.jpg"><img src="{{ base_url }}/images/slider/home/1.jpg" alt=""></a>
-                                <a href="https://www.youtube.com/watch?v=RuNUOoz1LxI"><img src="https://i.ytimg.com/vi/t7ZEJgaK_D4/2.jpg" alt=""></a>
-                                <a href="{{ base_url }}/images/slider/home/2.jpg"><img src="{{ base_url }}/images/slider/home/2.jpg" alt=""></a>
-                                <a href="{{ base_url }}/images/slider/home/3.jpg"><img src="{{ base_url }}/images/slider/home/3.jpg" alt=""></a>
-                                <a href="{{ base_url }}/images/slider/home/4.jpg"><img src="{{ base_url }}/images/slider/home/4.jpg" alt=""></a>
-                                <a href="https://www.youtube.com/watch?v=t7ZEJgaK_D4"><img src="https://i.ytimg.com/vi/RuNUOoz1LxI/1.jpg" alt=""></a>
-                                <a href="{{ base_url }}/images/slider/home/5.jpg"><img src="{{ base_url }}/images/slider/home/5.jpg" alt=""></a>
-                                <a href="{{ base_url }}/images/slider/home/10.jpg"><img src="{{ base_url }}/images/slider/home/10.jpg" alt=""></a>
-                                <a href="{{ base_url }}/images/slider/home/14.jpg"><img src="{{ base_url }}/images/slider/home/14.jpg" alt=""></a>
-                                <a href="https://www.youtube.com/watch?v=gAmZC3d-yB8"><img src="https://i.ytimg.com/vi/gAmZC3d-yB8/3.jpg" alt=""></a>
+                            <h2>Galería de Videos</h2>
+                            <div id="blueimp-video-carousel" class="blueimp-gallery blueimp-gallery-carousel blueimp-gallery-controls">
+                                <div class="slides"></div>
+                                <h3 class="title"></h3>
+                                <a class="prev">‹</a>
+                                <a class="next">›</a>
+                                <a class="close">×</a>
+                                <a class="play-pause"></a>
+                                <ol class="indicator"></ol>
                             </div>
-                        </div>
-                    </div>
 
-                    <script>
-                        function onSlideChange(data) {
-                            try {
-                                $("#html5gallery-elem-video-0").next().hide();
-                            } catch (error)   {}
-                        }
-                        $(document).ready(function(){
-                            $("#html5gallery-elem-video-0").next().hide();
-                        });
-                    </script>
+                            <script type="application/javascript">
+                                $(window).load(function () {
+                                    blueimp.Gallery([
+                                        {
+                                            title: 'Creo en Vivo',
+                                            href: 'https://www.youtube.com/watch?v=t7ZEJgaK_D4',
+                                            type: 'text/html',
+                                            youtube: 't7ZEJgaK_D4',
+
+                                        },
+                                        {
+                                            title: 'Mi Receta',
+                                            href: 'https://www.youtube.com/watch?v=XSsJEwJN0pg',
+                                            type: 'text/html',
+                                            youtube: 'XSsJEwJN0pg',
+
+                                        },
+                                        {
+                                            title: 'Tu y Yo',
+                                            href: 'https://www.youtube.com/watch?v=gAmZC3d-yB8',
+                                            type: 'text/html',
+                                            youtube: 'gAmZC3d-yB8',
+
+                                        },
+                                        {
+                                            title: 'Atornillando las Penas',
+                                            href: 'https://www.youtube.com/watch?v=RuNUOoz1LxI',
+                                            type: 'text/html',
+                                            youtube: 'RuNUOoz1LxI',
+
+                                        },
+
+                                    ], {
+                                        container: '#blueimp-video-carousel',
+                                        carousel: true,
+                                        fullScreen: false
+                                    });
+                                });
+                            </script>
+                        </div>
+
+
+                        <style>
+                            .links img {
+                                width: 150px;
+                                height: 150px;
+                            }
+                        </style>
+
+                        <h2>Galería de Imágenes</h2>
+                        <!-- The container for the list of example images -->
+                        <div id="links" class="links">
+                            {% for i in 1..16 %}
+                            <a href="{{ base_url }}/images/slider/home/{{ i }}.jpg" title="">
+                                <img src="{{ base_url }}/images/slider/home/{{ i }}.jpg"  alt="">
+                            </a>
+                            {% endfor %}
+                        </div>
+                        <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
+                        <div id="blueimp-gallery" class="blueimp-gallery">
+                            <div class="slides"></div>
+                            <h3 class="title"></h3>
+                            <a class="prev">‹</a>
+                            <a class="next">›</a>
+                            <a class="close">×</a>
+                            <a class="play-pause"></a>
+                            <ol class="indicator"></ol>
+                        </div>
+                        <script>
+                            document.getElementById('links').onclick = function (event) {
+                                event = event || window.event;
+                                var target = event.target || event.srcElement,
+                                        link = target.src ? target.parentNode : target,
+                                        options = {index: link, event: event},
+                                        links = this.getElementsByTagName('a');
+                                blueimp.Gallery(links, options);
+                            };
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
