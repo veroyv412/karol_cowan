@@ -1,0 +1,61 @@
+{% block page_title %}Eventos{% endblock %}
+{% extends 'layout/base.twig' %}
+{% block title %}Karol Cowan | Contactenos{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <script type='text/javascript' src='/js/html5gallery/jquery.js'></script>
+    <script type='text/javascript' src='/js/html5gallery/html5gallery.js'></script>
+{% endblock %}
+
+{% block content %}
+    <div class="noo-page-heading">
+        <div class="container">
+            <div class="noo-page-breadcrumb">
+                <div class="breadcrumb-wrap">
+                    <span><a href="#" class="home">Home</a></span><i>&#047;</i> <span><span>Galeria</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-wrap">
+        <div class="default-p container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row row-fluid">
+                        <div class="nocontainer">
+                            <div class="col-sm-12">
+                                <h1 class="text-center text-uppercase">Galería</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-fluid">
+                        <div class="nocontainer contact-content">
+
+                            <div style="display: block; margin: 0px auto; position: relative; max-width: 100%; width: 880px; height: 618px;"
+                                 class="html5gallery" data-onchange="onSlideChange" data-onthumbclick="onThumbClick" data-skin="gallery"
+                                 data-autoplayvideo="false" data-responsive="true" data-resizemode="fill" data-html5player="true" data-autoslide="true"
+                                 data-width="800" data-height="450" data-effect="fadeout" data-shownumbering="true"
+                                 data-numberingformat="%NUM of %TOTAL - ">
+
+                                <!-- Add images to Gallery -->
+                                <a href="{{ base_url }}/images/slider/home/1.jpg"><img src="{{ base_url }}/images/slider/home/1.jpg" alt=""></a>
+                                <a href="https://www.youtube.com/watch?v=RuNUOoz1LxI"><img src="https://i.ytimg.com/vi/t7ZEJgaK_D4/2.jpg" alt=""></a>
+                                <a href="{{ base_url }}/images/slider/home/2.jpg"><img src="{{ base_url }}/images/slider/home/2.jpg" alt=""></a>
+                                <a href="{{ base_url }}/images/slider/home/3.jpg"><img src="{{ base_url }}/images/slider/home/3.jpg" alt=""></a>
+                                <a href="{{ base_url }}/images/slider/home/4.jpg"><img src="{{ base_url }}/images/slider/home/4.jpg" alt=""></a>
+                                <a href="https://www.youtube.com/watch?v=t7ZEJgaK_D4"><img src="https://i.ytimg.com/vi/RuNUOoz1LxI/1.jpg" alt=""></a>
+                                <a href="{{ base_url }}/images/slider/home/5.jpg"><img src="{{ base_url }}/images/slider/home/5.jpg" alt=""></a>
+                                <a href="{{ base_url }}/images/slider/home/10.jpg"><img src="{{ base_url }}/images/slider/home/10.jpg" alt=""></a>
+                                <a href="{{ base_url }}/images/slider/home/14.jpg"><img src="{{ base_url }}/images/slider/home/14.jpg" alt=""></a>
+                                <a href="https://www.youtube.com/watch?v=gAmZC3d-yB8"><img src="https://i.ytimg.com/vi/gAmZC3d-yB8/3.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

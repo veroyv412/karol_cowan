@@ -1,0 +1,97 @@
+{% block page_title %}Eventos{% endblock %}
+{% extends 'layout/base.twig' %}
+{% block title %}Karol Cowan | Contactenos{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="noo-page-heading">
+        <div class="container">
+            <div class="noo-page-breadcrumb">
+                <div class="breadcrumb-wrap">
+                    <span><a href="#" class="home">Home</a></span><i>&#047;</i> <span><span>Contactenos</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-wrap">
+        <div class="default-p container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row row-fluid">
+                        <div class="nocontainer">
+                            <div class="col-sm-12">
+                                <h1 class="text-center text-uppercase">Contactenos</h1>
+                                <p class="text-center">
+                                    Aquí puede enviarnos cualquier tipo de consulta. Nosotros nos contactaremos a la brevedad.
+                                </p>
+
+                                {% if contact_thankyou is not empty %}
+                                    <div class="alert alert-danger text-center">{{ contact_thankyou }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-fluid">
+                        <div class="nocontainer contact-content">
+                            <div class="col-sm-6">
+                                <form class="form" action="/contact" method="post">
+                                    <div class="form-control-wrap">
+                                        <select name="contact_type" class="fs2">
+                                            <option class="item-first" value="">Seleccionar Tipo de Contacto</option>
+                                            <option value="Eventos Proximos">Eventos Proximos</option>
+                                            <option value="Eventos Pasados">Eventos Pasados</option>
+                                            <option value="Shows Privados">Shows Privados</option>
+                                            <option value="Festivales">Festivales</option>
+                                            <option value="Otros">Otros</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="text" name="full_name" value="" size="40" class="form-control text" placeholder="Nombre y Apellido"/>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="email" name="email" value="" size="40" class="form-control text email" placeholder="Email"/>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="text" name="phone_number" value="" size="40" class="form-control text" placeholder="Telefono"/>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="text" name="subject" value="" size="40" class="form-control text" placeholder="Asunto"/>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <textarea name="message" cols="40" rows="10" class="form-control textarea" placeholder="Mensage"></textarea>
+                                    </div>
+                                    <div class="form-control-wrap">
+                                        <input type="submit" value="Enviar" class="form-control submit"/>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="contact-info">
+                                    <li>
+                                        <span class="contact-title">TELEFONO</span>
+                                        <i class="fa fa-phone"></i>
+                                        +54 9 11 3089-1051
+                                    </li>
+                                    <li>
+                                        <span class="contact-title">EMAIL</span>
+                                        <i class="fa fa-envelope-o"></i>
+                                        <a href="mailto:karolcowanylasabrosalatinband@gmail.com">karolcowanylasabrosalatinband@gmail.com</a>
+                                    </li>
+                                    <li>
+                                        <span class="contact-title">WEBSITE</span>
+                                        <i class="fa  fa-globe"></i>
+                                        <a href="#">www.band.karolcowan.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

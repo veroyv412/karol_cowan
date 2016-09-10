@@ -90,23 +90,15 @@
                                             <div class="noo-tabs-content">
                                                 <div id="event-gallery" class="noo-tab-content">
                                                     <div class="pr-gallery">
-                                                        {#<ul class="event-single-gallery">
+                                                        <ul class="event-single-gallery">
+                                                            {% for image in images %}
                                                             <li>
-                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="images/event/event-thumb-1280x850.jpg">
-                                                                    <img width="600" height="450" src="images/event/event-thumb-242x202.jpg" alt="event12"/>
+                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="{{ base_url }}/{{ image }}">
+                                                                    <img width="600" height="450" src="{{ image }}" alt=""/>
                                                                 </a>
                                                             </li>
-                                                            <li>
-                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="images/event/event-thumb-1280x850.jpg">
-                                                                    <img width="600" height="450" src="images/event/event-thumb-242x202.jpg" alt="event1"/>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="noo-tngallery" data-lightbox-gallery="gallery1" href="images/event/event-thumb-1280x850.jpg">
-                                                                    <img width="600" height="450" src="images/event/event-thumb-242x202.jpg" alt="event9"/>
-                                                                </a>
-                                                            </li>
-                                                        </ul>#}
+                                                            {% endfor%}
+                                                        </ul>
                                                     </div>
                                                 </div>
                                                 <div id="event-comment-list" class="noo-tab-content">
@@ -179,16 +171,14 @@
                                             </div>
                                             <div class="tribe-events-venue-map">
 
-                                                {#<iframe
+                                                <iframe
                                                         width="600"
                                                         height="450"
                                                         frameborder="0" style="border:0"
-                                                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCH1zPvZ0jGkaFnCUbSyTKj_yM6Yc7CYbA
-      &q=Butchart+Gardens+Victoria+BC
-      &attribution_source=Google+Maps+Embed+API
-      &attribution_web_url=http://www.butchartgardens.com/
-      &attribution_ios_deep_link_id=comgooglemaps://?daddr=Butchart+Gardens+Victoria+BC" allowfullscreen>
-                                                </iframe>#}
+                                                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB6daMfyytMFE6wc6Ktf70gXIcH3CJ6e_w
+                                                        &q={{ event.location }}
+                                                        &attribution_source=Google+Maps+Embed+API" allowfullscreen>
+                                                </iframe>
                                             </div>
                                         </div>
                                     </div>

@@ -113,10 +113,64 @@ $app->get('/events', function() use ($app, $dbConn) {
 
 $app->get('/events/:event_id', function($event_id) use ($app, $dbConn) {
     $event = $dbConn->fetchRow('SELECT * FROM events WHERE id = ' . $event_id);
+
+    $images = [];
+    foreach(glob(APPLICATION_ROOT.'/images/event/event_'.$event_id.'/*.*') as $file) {
+        array_push($images, '/images/event/event_'.$event_id.'/'.basename($file));
+    }
+
     echo $app->view->render('event-detail.twig', array(
         'tab'               => 'events',
-        'event'            => $event
+        'event'             => $event,
+        'images'            => $images
     ));
+});
+
+$app->get('/gallery(/)', function() use ($app) {
+    echo $app->view->render('gallery.twig', array(
+        'tab'               => 'gallery'
+    ));
+});
+
+$app->get('/contact(/)', function() use ($app) {
+    $message = !empty($_SESSION['contact_thankyou']) ? $_SESSION['contact_thankyou'] : null;
+    if ( isset($_SESSION['contact_thankyou']) ){
+        unset($_SESSION['contact_thankyou']);
+    }
+    echo $app->view->render('contact.twig', array(
+        'tab'               => 'contact',
+        'contact_thankyou'  => !empty($message) ? $message : null
+    ));
+});
+
+$app->post('/contact', function() use ($app){
+    $data = $app->request->post();
+    
+    $html = $app->view->fetch('contact_email.twig', array(
+        'data' => $data
+    ));
+
+    $transport = new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
+    $transport->setUsername('veroyv412@gmail.com');
+    $transport->setPassword('v3r0n1c4');
+
+    $mailer = new Swift_Mailer($transport);
+    $message = (new Swift_Message('BANDA | Contactenos'))
+        ->setFrom($data['email'], $data['full_name'])
+        ->setContentType('text/html')
+        ->setTo(array('veroyv412@gmail.com' => 'Karol Cowan'))
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $message = (new Swift_Message('Suscripcion a Clases Particulares'))
+        ->setFrom('loraknawoc@hotmail.com', 'Karol Cowan')
+        ->setContentType('text/html')
+        ->setTo($data['email'],  $data['full_name'])
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $_SESSION['contact_thankyou'] = 'Gracias por contactarnos, hemos recibido su solicitud. Nos contactaremos a la brevedad!';
+    $app->redirect('/contact');
 });
 
 function getBaseURI(){
