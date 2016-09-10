@@ -54,6 +54,17 @@
                             </div>
                         </div>
                     </div>
+
+                    <script>
+                        function onSlideChange(data) {
+                            try {
+                                $("#html5gallery-elem-video-0").next().hide();
+                            } catch (error)   {}
+                        }
+                        $(document).ready(function(){
+                            $("#html5gallery-elem-video-0").next().hide();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
