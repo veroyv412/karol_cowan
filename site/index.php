@@ -132,7 +132,7 @@ $fb = new Facebook\Facebook(
 
 /* Mercado Pago */
 $mp = new MP("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
-$mp->sandbox_mode(TRUE);
+$mp->sandbox_mode(true);
 
 // standard setup
 $dbConn = new \Simplon\Mysql\Mysql(
@@ -442,6 +442,78 @@ $app->post('/suscripciones', function() use ($app, $dbConn) {
     $_SESSION['suscripcion_thankyou'] = 'Gracias por suscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
     $app->redirect('/suscripciones');
 });
+
+
+
+$app->get('/inscripciones(/)', function() use ($app, $mp) {
+    $inscripcion_thankyou = !empty($_SESSION['inscripcion_thankyou']) ? $_SESSION['inscripcion_thankyou'] : null;
+    unset($_SESSION['inscripcion_thankyou']);
+
+    $preference_data = array (
+        "items" => array (
+            array (
+                "title" => "Inscripcion Clase de Rumba con Tambor en Vivo",
+                "quantity" => 1,
+                "currency_id" => "ARS",
+                "unit_price" => 1000,
+                "picture_url" => ''
+            )
+        )
+    );
+
+    $preference = $mp->create_preference ($preference_data);
+
+    echo $app->view->render('inscripciones.html', array(
+        'tab' => 'profesor',
+        'inscripcion_thankyou' => $inscripcion_thankyou,
+        'mp_url' => $preference['response']['sandbox_init_point']
+    ));
+});
+
+$app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
+    $data = $app->request->post();
+
+    $html = $app->view->fetch('suscripcion_email.html', array(
+        'data' => $data
+    ));
+
+    $transport = new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
+    $transport->setUsername('veroyv412@gmail.com');
+    $transport->setPassword('v3r0n1c4');
+
+    $mailer = new Swift_Mailer($transport);
+    $message = (new Swift_Message('Inscription a Clases Tambor en Vivo'))
+        ->setFrom($data['email'], $data['name'])
+        ->setContentType('text/html')
+        ->setTo(array('veroyv412@gmail.com' => 'Veronica Nisenbaum'))
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $message = (new Swift_Message('Inscription a Clases Tambor en Vivo'))
+        ->setFrom('loraknawoc@hotmail.com', 'Karol Cowan')
+        ->setContentType('text/html')
+        ->setTo($data['email'],  $data['name'])
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $image = array(
+        array(
+            'id'            => false,
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'classes'       => json_encode($data['clases']),
+            'purpose'       => json_encode($data['tomar_clases']),
+            'message'       => $data['comment']
+        )
+    );
+    $id = $dbConn->insertMany('suscriptions', $image);
+
+
+    $_SESSION['suscripcion_thankyou'] = 'Gracias por inscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
+    $app->redirect('/inscripciones');
+});
+
+
 
 $app->get('/contact(/)', function() use ($app) {
     echo $app->view->render('contact.html', array(

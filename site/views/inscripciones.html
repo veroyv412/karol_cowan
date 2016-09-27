@@ -1,0 +1,157 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+
+{% block metatags %}
+    <meta property="og:url" content="http://karolcowan.com/suscripciones">
+    <meta property="og:title" content="Suscripciones">
+    <meta property="og:description" content="Inscripciones a clases de Rumba">
+    <meta property="og:image" content="http://karolcowan.com/images/flyer_suscripcion_clases_particulares.jpg?t={{ 'now'|date('m-d-Y-h-s') }}">
+    <meta property="og:image:width" content="1300"/>
+    <meta property="og:image:height" content="975"/>
+
+    <meta name="twitter:title" content="Suscripciones">
+    <meta name="twitter:image" content="http://karolcowan.com/images/flyer_suscripcion_clases_particulares.jpg?t={{ 'now'|date('m-d-Y-h-s') }}">
+    <meta name="twitter:text:description" content="Inscripciones a clases de Rumba">
+{% endblock %}
+
+{% block content %}
+
+    <script type="text/javascript" src="https://www.mercadopago.com/org-img/jsapi/mptools/buttons/render.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.icheck').iCheck({
+                checkboxClass: 'icheckbox_square-aero',
+                radioClass: 'iradio_square-aero',
+                increaseArea: '20%' // optional
+            });
+
+            $(".icheck").on("ifChecked", function (e) {
+                console.log($(this).val());
+                var _class = $(this).val();
+                $('.'+_class+"_wrapper").toggle();
+            });
+
+            $('.pagar').on('click', function (e) {
+                $MPC.openCheckout ({
+                    url: "{{mp_url}}",
+                    mode: "modal",
+                    onreturn: function(json) {
+                        if (json.collection_status=='approved'){
+                            alert ('Pago acreditado');
+                        } else if(json.collection_status=='pending'){
+                            alert ('El usuario no completó el pago');
+                        } else if(json.collection_status=='in_process'){
+                            alert ('El pago está siendo revisado');
+                        } else if(json.collection_status=='rejected'){
+                            alert ('El pago fué rechazado, el usuario puede intentar nuevamente el pago');
+                        } else if(json.collection_status==null){
+                            alert ('El usuario no completó el proceso de pago, no se ha generado ningún pago');
+                        }
+                    }
+                });
+            })
+
+
+        });
+
+        function mp_callback(json){
+            if (json.collection_status=='approved'){
+                alert ('Pago acreditado');
+            } else if(json.collection_status=='pending'){
+                alert ('El usuario no completó el pago');
+            } else if(json.collection_status=='in_process'){
+                alert ('El pago está siendo revisado');
+            } else if(json.collection_status=='rejected'){
+                alert ('El pago fué rechazado, el usuario puede intentar nuevamente el pago');
+            } else if(json.collection_status==null){
+                alert ('El usuario no completó el proceso de pago, no se ha generado ningún pago');
+            }
+        }
+    </script>
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p>
+                    Inscripciones
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+    <form method="post" action="/inscripciones" id="contactform">
+        <div class="row">
+            <div class="twelve columns">
+                {% if inscripcion_thankyou %}
+                    <div class="alert-box default">
+                        {{ inscripcion_thankyou }}. <a href="" class="close">x</a>
+                    </div>
+                {% endif %}
+
+                <div class="panel">
+                    <p>
+                        <b>Medios de Pago:</b>
+                    <ul>
+                        <li>
+                            <br><input type="radio" name="forma_pago" value="cash" class="icheck"> <i class="fa fa-money" aria-hidden="true"></i>  Efectivo
+                            <div class="cash_wrapper" style="display: none">
+                                <br>Puede hacerse personalmente a Karol Cowan o Tomas Sivadón
+                                <br>Karol Cowan: <i class="fa fa-whatsapp" aria-hidden="true"></i> +54 9 11 3089-1051
+                                <br>Tomas Sivadon: <i class="fa fa-whatsapp" aria-hidden="true"></i> +54 9 11 5157-8704
+                            </div>
+                        </li>
+                        <li>
+                            <br><input type="radio" name="forma_pago" value="card" class="icheck"> <i class="fa fa-credit-card" aria-hidden="true"></i>  Mercado Pago (Tarjetas)
+                            <div class="card_wrapper" style="display: none">
+                                <!-- Aquí debes insertar la URL que corresponde al "init_point" -->
+                                <a href="{{mp_url}}" name="MP-Checkout" class="green-M-Sq-Ar-ArAll" mp-mode="popup" onreturn="mp_callback">Pagar</a>
+                            </div>
+                        </li>
+                        <li>
+                            <br><input type="radio" name="forma_pago" value="bank" class="icheck"> <i class="fa fa-university" aria-hidden="true"></i> Transferencia Bancaria
+                            <div class="bank_wrapper" style="display: none">
+                                <br>Aclararlo en el mensaje y te pasaremos por mail los datos del banco.
+                            </div>
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row suscripcion">
+            <div class="twelve columns">
+
+                    <fieldset>
+                        <legend>Inscribite</legend>
+                        <div class="form">
+                            <div class="six columns noleftmargin">
+                                <label>Nombre y Apellido</label>
+                                <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                            </div>
+                            <div class="six columns noleftmargin">
+                                <label>Dirección de Email</label>
+                                <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+                            </div>
+
+                            <div class="twelve columns noleftmargin">
+                                <br><label>Mensaje</label>
+                                <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                            </div>
+
+                            <input type="submit" id="submit" class="readmore" value="Enviar">
+                        </div>
+                        <br>
+                    </fieldset>
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
