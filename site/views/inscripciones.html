@@ -32,43 +32,7 @@
                 var _class = $(this).val();
                 $('.'+_class+"_wrapper").toggle();
             });
-
-            $('.pagar').on('click', function (e) {
-                $MPC.openCheckout ({
-                    url: "{{mp_url}}",
-                    mode: "modal",
-                    onreturn: function(json) {
-                        if (json.collection_status=='approved'){
-                            alert ('Pago acreditado');
-                        } else if(json.collection_status=='pending'){
-                            alert ('El usuario no completó el pago');
-                        } else if(json.collection_status=='in_process'){
-                            alert ('El pago está siendo revisado');
-                        } else if(json.collection_status=='rejected'){
-                            alert ('El pago fué rechazado, el usuario puede intentar nuevamente el pago');
-                        } else if(json.collection_status==null){
-                            alert ('El usuario no completó el proceso de pago, no se ha generado ningún pago');
-                        }
-                    }
-                });
-            })
-
-
         });
-
-        function mp_callback(json){
-            if (json.collection_status=='approved'){
-                alert ('Pago acreditado');
-            } else if(json.collection_status=='pending'){
-                alert ('El usuario no completó el pago');
-            } else if(json.collection_status=='in_process'){
-                alert ('El pago está siendo revisado');
-            } else if(json.collection_status=='rejected'){
-                alert ('El pago fué rechazado, el usuario puede intentar nuevamente el pago');
-            } else if(json.collection_status==null){
-                alert ('El usuario no completó el proceso de pago, no se ha generado ningún pago');
-            }
-        }
     </script>
 
     <!-- SUBHEADER ================================================== -->
@@ -107,9 +71,7 @@
                         <li>
                             <br><input type="radio" name="forma_pago" value="card" class="icheck"> <i class="fa fa-credit-card" aria-hidden="true"></i>  Mercado Pago (Tarjetas)
                             <div class="card_wrapper" style="display: none">
-                                <!-- Aquí debes insertar la URL que corresponde al "init_point" -->
-                                <a href="{{mp_url}}" name="MP-Checkout" class="green-M-Sq-Ar-ArAll" mp-mode="modal" onreturn="mp_callback">Pagar</a>
-                                <!--<iframe src="{{mp_url}}" name="MP-Checkout" width="740" height="600" frameborder="0"></iframe>-->
+                                El link de pago se le enviara por correo electronico.
                             </div>
                         </li>
                         <li>

@@ -449,31 +449,37 @@ $app->get('/inscripciones(/)', function() use ($app, $mp) {
     $inscripcion_thankyou = !empty($_SESSION['inscripcion_thankyou']) ? $_SESSION['inscripcion_thankyou'] : null;
     unset($_SESSION['inscripcion_thankyou']);
 
-    $preference_data = array (
-        "items" => array (
-            array (
-                "title" => "Inscripcion Clase de Rumba con Tambor en Vivo",
-                "quantity" => 1,
-                "currency_id" => "ARS",
-                "unit_price" => 1,
-                "picture_url" => 'http://res.cloudinary.com/prohero/image/upload/v1474989482/product_images/Clases_Rumba_tambor_vivo.jpg'
-            )
-        )
-    );
 
-    $preference = $mp->create_preference ($preference_data);
 
     echo $app->view->render('inscripciones.html', array(
         'tab' => 'profesor',
         'inscripcion_thankyou' => $inscripcion_thankyou,
-        'mp_url' => $preference['response']['init_point']
     ));
 });
 
 $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
     $data = $app->request->post();
 
-    $html = $app->view->fetch('suscripcion_email.html', array(
+    $data['mp_link'] = null;
+    if ( $data['forma_pago'] == 'card' ){
+        $preference_data = array (
+            "items" => array (
+                array (
+                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo",
+                    "quantity" => 1,
+                    "currency_id" => "ARS",
+                    "unit_price" => 1000,
+                    "picture_url" => 'http://res.cloudinary.com/prohero/image/upload/v1474989482/product_images/Clases_Rumba_tambor_vivo.jpg'
+                )
+            )
+        );
+
+        $preference = $mp->create_preference ($preference_data);
+        $data['mp_link'] =  $preference['response']['init_point'];
+    }
+
+
+    $html = $app->view->fetch('inscripcion_email.html', array(
         'data' => $data
     ));
 
