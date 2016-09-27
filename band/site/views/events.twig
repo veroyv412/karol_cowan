@@ -45,7 +45,7 @@
                                     {% for event in events %}
                                         <div class="type-tribe_events tribe-clearfix tribe-events-photo-event isotope-item">
                                             <h2 class="tribe-events-list-event-title">
-                                                <a href="#">{{ event.venue_name }}</a>
+                                                <a href="/events/{{ event.id }}">{{ event.venue_name }}</a>
                                             </h2>
                                             <div class="noo-tribe-events-image">
                                                 <span class="noo-attr-style">${{ event.price }}</span>
@@ -57,14 +57,14 @@
                                                         </div>
                                                         <div class="tribe-events-venue-details">
                                                             <i class="fa fa-map-marker"></i>
-                                                            <span class="author"><a href="#">{{ event.location }}</a></span>,
+                                                            <span class="author"><a href="/events/{{ event.id }}">{{ event.location }}</a></span>,
                                                             <a class="tribe-events-gmap" href="http://maps.google.com/maps?f=q&#038;source=s_q&#038;hl=en&#038;geocode=&#038;q={{ event.location }}" title="Click to view a Google Map" target="_blank">+ Google Map</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="tribe-events-event-image">
-                                                    <a href="#">
-                                                        <img width="1280" height="853" src="{{ event.image_url }}" alt="event5"/>
+                                                    <a href="/events/{{ event.id }}">
+                                                        <img width="1280" height="853" src="{{ event.image_url }}" alt="Karol Cowan y la Sabrosa Latin Band"/>
                                                     </a>
                                                 </div>
                                             </div>

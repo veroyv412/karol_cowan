@@ -13,9 +13,9 @@
                             <span class="entry-date">
                                 {{ event.date | date('d') }} <span class="month"> {{ event.date | date('F') }} </span>
                             </span>
-                            <div class="noo-thumbnail thumb-1"></div>
+                            <div class="noo-thumbnail thumb-1" style="background-image: url('{{ event.image_url }}')"></div>
                             <div class="noo-shevent-content">
-                                <h4><a href="#">{{ event.venue_name }}</a></h4>
+                                <h4><a href="/events/{{ event.id }}">{{ event.venue_name }}</a></h4>
                                 <div class="sh-meta">
                                     <span class="sh-date">
                                         <i class="fa fa-clock-o"></i>
