@@ -28,8 +28,7 @@
                 increaseArea: '20%' // optional
             });
 
-            $(".icheck").on("ifChecked", function (e) {
-                console.log($(this).val());
+            $(".icheck").on("ifChanged", function (e) {
                 var _class = $(this).val();
                 $('.'+_class+"_wrapper").toggle();
             });
@@ -93,6 +92,7 @@
                 {% endif %}
 
                 <div class="panel">
+                    <p><b>Precio: $1000</b> por 4 Clases con Tambor en Vivo (4 musicos + cantante + profesor)</p>
                     <p>
                         <b>Medios de Pago:</b>
                     <ul>
@@ -108,7 +108,8 @@
                             <br><input type="radio" name="forma_pago" value="card" class="icheck"> <i class="fa fa-credit-card" aria-hidden="true"></i>  Mercado Pago (Tarjetas)
                             <div class="card_wrapper" style="display: none">
                                 <!-- Aquí debes insertar la URL que corresponde al "init_point" -->
-                                <a href="{{mp_url}}" name="MP-Checkout" class="green-M-Sq-Ar-ArAll" mp-mode="popup" onreturn="mp_callback">Pagar</a>
+                                <a href="{{mp_url}}" name="MP-Checkout" class="green-M-Sq-Ar-ArAll" mp-mode="modal" onreturn="mp_callback">Pagar</a>
+                                <!--<iframe src="{{mp_url}}" name="MP-Checkout" width="740" height="600" frameborder="0"></iframe>-->
                             </div>
                         </li>
                         <li>

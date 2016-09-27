@@ -132,7 +132,7 @@ $fb = new Facebook\Facebook(
 
 /* Mercado Pago */
 $mp = new MP("8977799810561584", "iIMJnnb15UKtXuEFDzYf7UI5aVpBXyeV");
-$mp->sandbox_mode(true);
+$mp->sandbox_mode(false);
 
 // standard setup
 $dbConn = new \Simplon\Mysql\Mysql(
@@ -455,8 +455,8 @@ $app->get('/inscripciones(/)', function() use ($app, $mp) {
                 "title" => "Inscripcion Clase de Rumba con Tambor en Vivo",
                 "quantity" => 1,
                 "currency_id" => "ARS",
-                "unit_price" => 1000,
-                "picture_url" => ''
+                "unit_price" => 1,
+                "picture_url" => 'http://res.cloudinary.com/prohero/image/upload/v1474989482/product_images/Clases_Rumba_tambor_vivo.jpg'
             )
         )
     );
@@ -466,7 +466,7 @@ $app->get('/inscripciones(/)', function() use ($app, $mp) {
     echo $app->view->render('inscripciones.html', array(
         'tab' => 'profesor',
         'inscripcion_thankyou' => $inscripcion_thankyou,
-        'mp_url' => $preference['response']['sandbox_init_point']
+        'mp_url' => $preference['response']['init_point']
     ));
 });
 
@@ -496,20 +496,19 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
         ->setBody($html);
     $numSent = $mailer->send($message);
 
-    $image = array(
+    $signup = array(
         array(
-            'id'            => false,
-            'name'          => $data['name'],
-            'email'         => $data['email'],
-            'classes'       => json_encode($data['clases']),
-            'purpose'       => json_encode($data['tomar_clases']),
-            'message'       => $data['comment']
+            'id'                    => false,
+            'name'                  => $data['name'],
+            'email'                 => $data['email'],
+            'payment_method'        => $data['forma_pago'],
+            'message'               => $data['comment']
         )
     );
-    $id = $dbConn->insertMany('suscriptions', $image);
+    $id = $dbConn->insertMany('inscripciones', $signup);
 
 
-    $_SESSION['suscripcion_thankyou'] = 'Gracias por inscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
+    $_SESSION['inscripcion_thankyou'] = 'Gracias por inscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
     $app->redirect('/inscripciones');
 });
 
