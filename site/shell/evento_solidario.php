@@ -38,7 +38,7 @@ $accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAE
 
 $groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ) {
-    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 5');
+    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 13');
     if ( !empty($post) ){
         $data = array();
         $message = $post['post_title'];

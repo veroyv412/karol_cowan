@@ -86,8 +86,8 @@ $app->hook('slim.before', function() use ($app) {
 });
 
 $app->get('/', function() use ($app, $dbConn) {
-    $upcoming_events = $dbConn->fetchRowMany('SELECT * FROM events WHERE new = 1');
-    $passed_events = $dbConn->fetchRowMany('SELECT * FROM events WHERE new = 0');
+    $upcoming_events = $dbConn->fetchRowMany('SELECT * FROM events WHERE new = 1 ORDER BY date ASC');
+    $passed_events = $dbConn->fetchRowMany('SELECT * FROM events WHERE new = 0 ORDER BY date ASC');
     
     echo $app->view->render('home.twig', array(
         'tab'               => 'home',
