@@ -468,8 +468,8 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
                     "title" => "Inscripcion Clase de Rumba con Tambor en Vivo",
                     "quantity" => 1,
                     "currency_id" => "ARS",
-                    "unit_price" => 1000,
-                    "picture_url" => 'http://res.cloudinary.com/prohero/image/upload/v1474989482/product_images/Clases_Rumba_tambor_vivo.jpg'
+                    "unit_price" => 150,
+                    "picture_url" => 'https://scontent-gru2-1.xx.fbcdn.net/t31.0-8/14855969_1786002748323195_3512085325756665307_o.jpg'
                 )
             )
         );
