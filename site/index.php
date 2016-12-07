@@ -469,7 +469,7 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
                     "quantity" => 1,
                     "currency_id" => "ARS",
                     "unit_price" => 150,
-                    "picture_url" => 'https://scontent-gru2-1.xx.fbcdn.net/t31.0-8/14855969_1786002748323195_3512085325756665307_o.jpg'
+                    "picture_url" => 'https://scontent-gru2-1.xx.fbcdn.net/t31.0-8/15289266_1803541436569326_715126570605050619_o.jpg'
                 )
             )
         );
