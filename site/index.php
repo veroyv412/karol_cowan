@@ -532,6 +532,7 @@ $app->get('/sabado-de-rumba(/)', function() use ($app, $mp) {
 
 $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
     $data = $app->request->post();
+    $baseUrl = getBaseURI();
 
     $data['mp_link'] = null;
     if ( $data['forma_pago'] == 'card' ){
@@ -542,7 +543,7 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
                     "quantity" => 1,
                     "currency_id" => "ARS",
                     "unit_price" => 200,
-                    "picture_url" => 'https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e'
+                    "picture_url" => $baseUrl . '/images/flyers/flyer_sabado_rumba.png'
                 )
             )
         );
@@ -554,7 +555,7 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
                     "quantity" => 1,
                     "currency_id" => "ARS",
                     "unit_price" => 350,
-                    "picture_url" => 'https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e'
+                    "picture_url" => $baseUrl . '/images/flyers/flyer_sabado_rumba.png'
                 )
             )
         );
@@ -565,6 +566,7 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
         $data['mp_link_350'] =  $preference_350['response']['init_point'];
     }
 
+    $data['flyer_url'] = $baseUrl . '/images/flyers/flyer_sabado_rumba.png';
     $html = $app->view->fetch('inscripcion_sabado_rumba_email.html', array(
         'data' => $data
     ));
