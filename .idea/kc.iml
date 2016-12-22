@@ -8,9 +8,11 @@
       <library name="PHARS">
         <CLASSES>
           <root url="phar://$MODULE_DIR$/site/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/band/site/composer.phar/" />
         </CLASSES>
         <SOURCES>
           <root url="phar://$MODULE_DIR$/site/composer.phar/" />
+          <root url="phar://$MODULE_DIR$/band/site/composer.phar/" />
         </SOURCES>
       </library>
     </orderEntry>

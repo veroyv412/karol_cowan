@@ -1,0 +1,147 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+
+{% block metatags %}
+    <meta property="og:url" content="http://karolcowan.com/inscripciones">
+    <meta property="og:title" content="Inscripciones Clases Rumba con Tambor en Vivo">
+    <meta property="og:description" content="Inscripciones Clases Rumba con Tambor en Vivo">
+    <meta property="og:image" content="https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e?t={{ 'now'|date('m-d-Y-h-s') }}">
+    <meta property="og:image:width" content="1300"/>
+    <meta property="og:image:height" content="975"/>
+
+    <meta name="twitter:title" content="Inscripciones Clases Rumba con Tambor en Vivo">
+    <meta name="twitter:image" content="https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e?t={{ 'now'|date('m-d-Y-h-s') }}">
+    <meta name="twitter:text:description" content="Inscripciones Clases Rumba con Tambor en Vivo">
+{% endblock %}
+
+{% block content %}
+
+    <script type="text/javascript" src="https://www.mercadopago.com/org-img/jsapi/mptools/buttons/render.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.icheck').iCheck({
+                checkboxClass: 'icheckbox_square-aero',
+                radioClass: 'iradio_square-aero',
+                increaseArea: '20%' // optional
+            });
+
+            $(".icheck").on("ifChanged", function (e) {
+                var _class = $(this).val();
+                $('.'+_class+"_wrapper").toggle();
+            });
+        });
+    </script>
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p>
+                    El Sabado de la Rumba | Inscripciones
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="hr"></div>
+    <form method="post" action="/sabado-de-rumba" id="contactform">
+        <div class="row">
+            <div class="twelve columns">
+                {% if inscripcion_thankyou %}
+                    <div class="alert-box default">
+                        {{ inscripcion_thankyou }}. <a href="" class="close">x</a>
+                    </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="six columns">
+                        <div class="panel">
+                            <p>
+                                <h4>Medios de Pago:</h4>
+                            <ul>
+                                <li>
+                                    <br><input type="radio" name="forma_pago" value="cash" class="icheck"> <i class="fa fa-money" aria-hidden="true"></i>  Efectivo
+                                    <div class="cash_wrapper" style="display: none">
+                                        <br>Puede hacerse personalmente a Karol Cowan o Veronica Nisenbaum
+                                        <br>Karol Cowan: <i class="fa fa-whatsapp" aria-hidden="true"></i> +54 9 11 3089-1051
+                                        <br>Veronica Nisenbaum: <i class="fa fa-whatsapp" aria-hidden="true"></i> +54 9 223 5560011
+                                    </div>
+                                </li>
+                                <li>
+                                    <br><input type="radio" name="forma_pago" value="card" class="icheck"> <i class="fa fa-credit-card" aria-hidden="true"></i>  Mercado Pago (Tarjetas)
+                                    <div class="card_wrapper" style="display: none">
+                                        El link de pago se le enviara por correo electronico.
+                                    </div>
+                                </li>
+                                <li>
+                                    <br><input type="radio" name="forma_pago" value="bank" class="icheck"> <i class="fa fa-university" aria-hidden="true"></i> Transferencia Bancaria
+                                    <div class="bank_wrapper" style="display: none">
+                                        <br>Aclararlo en el mensaje y te pasaremos por mail los datos del banco.
+                                    </div>
+                                </li>
+                            </ul>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="six columns">
+                        <div class="panel">
+                            <p>
+                            <h4>Cantidad de Clases:</h4>
+                            <ul>
+                                <li>
+                                    <br><input type="radio" name="cantidad_clases" value="2" class="icheck">
+                                    2 Clases de $350
+                                </li>
+                                <li>
+                                    <br><input type="radio" name="cantidad_clases" value="1" class="icheck">
+                                    1 Clase de $200
+                                </li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row suscripcion">
+            <div class="six columns">
+                <fieldset>
+                    <legend>Inscribite</legend>
+                    <div class="form">
+                        <div class="six columns noleftmargin">
+                            <label>Nombre y Apellido</label>
+                            <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                        </div>
+                        <div class="six columns noleftmargin">
+                            <label>Dirección de Email</label>
+                            <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+                        </div>
+                        <div class="twelve columns noleftmargin">
+                            <label>Telefono</label>
+                            <input type="text" name="phone_number" class="smoothborder" placeholder="Tu Telefono"/>
+                        </div>
+                        <div class="twelve columns noleftmargin">
+                            <br><label>Mensaje</label>
+                            <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                        </div>
+
+                        <input type="submit" id="submit" class="readmore" value="Enviar">
+                    </div>
+                    <br>
+                </fieldset>
+            </div>
+            <div class="six columns">
+                <img class="blogimage" src="https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e">
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

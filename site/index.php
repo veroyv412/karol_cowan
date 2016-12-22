@@ -518,7 +518,109 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
     $app->redirect('/inscripciones');
 });
 
+$app->get('/sabado-de-rumba(/)', function() use ($app, $mp) {
+    $inscripcion_thankyou = !empty($_SESSION['inscripcion_thankyou']) ? $_SESSION['inscripcion_thankyou'] : null;
+    unset($_SESSION['inscripcion_thankyou']);
 
+
+
+    echo $app->view->render('inscripciones_sabado_de_rumba.html', array(
+        'tab' => 'profesor',
+        'inscripcion_thankyou' => $inscripcion_thankyou,
+    ));
+});
+
+$app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
+    $data = $app->request->post();
+
+    $data['mp_link'] = null;
+    if ( $data['forma_pago'] == 'card' ){
+        $preference_data_200 = array (
+            "items" => array (
+                array (
+                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo: 200",
+                    "quantity" => 1,
+                    "currency_id" => "ARS",
+                    "unit_price" => 200,
+                    "picture_url" => 'https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e'
+                )
+            )
+        );
+
+        $preference_data_350 = array (
+            "items" => array (
+                array (
+                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo: 350",
+                    "quantity" => 1,
+                    "currency_id" => "ARS",
+                    "unit_price" => 350,
+                    "picture_url" => 'https://fb-s-a-a.akamaihd.net/h-ak-xfl1/v/t31.0-8/15676051_1811196652470471_2829443396541210150_o.jpg?oh=2f38dbf773feb7d2d0c51d27a3521786&oe=58E8735F&__gda__=1492459120_c2f2aca44290e3edc920144d0532ec7e'
+                )
+            )
+        );
+
+        $preference_200 = $mp->create_preference ($preference_data_200);
+        $preference_350 = $mp->create_preference ($preference_data_350);
+        $data['mp_link_200'] =  $preference_200['response']['init_point'];
+        $data['mp_link_350'] =  $preference_350['response']['init_point'];
+    }
+
+    $html = $app->view->fetch('inscripcion_sabado_rumba_email.html', array(
+        'data' => $data
+    ));
+
+    $transport = new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
+    $transport->setUsername('veroyv412@gmail.com');
+    $transport->setPassword('v3r0n1c4');
+
+    $mailer = new Swift_Mailer($transport);
+    $message = (new Swift_Message('Inscription a Clases Tambor en Vivo'))
+        ->setFrom($data['email'], $data['name'])
+        ->setContentType('text/html')
+        ->setTo(array('veroyv412@gmail.com' => 'Veronica Nisenbaum'))
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $message = (new Swift_Message('Inscription a Clases Tambor en Vivo'))
+        ->setFrom('loraknawoc@hotmail.com', 'Karol Cowan')
+        ->setContentType('text/html')
+        ->setTo($data['email'],  $data['name'])
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $signup = array(
+        array(
+            'id'                    => false,
+            'name'                  => $data['name'],
+            'email'                 => $data['email'],
+            'phone_number'          => $data['phone_number'],
+            'payment_method'        => $data['forma_pago'],
+            'message'               => $data['comment']
+        )
+    );
+    $id = $dbConn->insertMany('inscripciones', $signup);
+
+    $band = array(
+        array(
+            'id'                    => false,
+            'name'                  => $data['name'],
+            'email'                 => $data['email'],
+        )
+    );
+    $id = $dbConn->insertMany('band_subscriptions', $band);
+
+    $kc = array(
+        array(
+            'id'                    => false,
+            'name'                  => $data['name'],
+            'email'                 => $data['email'],
+        )
+    );
+    $id = $dbConn->insertMany('karol_subscriptions', $kc);
+
+    $_SESSION['inscripcion_thankyou'] = 'Gracias por inscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
+    $app->redirect('/sabado-de-rumba');
+});
 
 $app->get('/contact(/)', function() use ($app) {
     echo $app->view->render('contact.html', array(
