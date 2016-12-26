@@ -34,7 +34,7 @@ $fb = new Facebook\Facebook(
     ]
 );
 
-$accessToken = "EAACEdEose0cBABphGoJNZBcSOXea4ZAZCws4lHVgfkYMM1bv5hqsy7Xqug8ZAX54iQYK8kCOfZAa1SvkhtMQDtG52pnP7JWeeqDWTytcvcKAvwhLFDi095FYMaRvPRR0li0TJPMRfZC2DE2Xxh28TwwJPvS4mvXLw61u2Epq6xRQZDZD";
+$accessToken = "EAAEaw42ZBid8BABvtEAxWgHgXWwwdmSJXFxUHf2LOkj8hZC3wq9b0z0rMR7z9BLRlszZBrR7suQyS8m38xAZCuH2cmNOdRXmNnXaEioZCXfH7X3xYynrTSESUZBnmXUebZBs0Q56H2tBHZCNQDzPKVEcOiKDMs1Q2bcZD";
 
 $groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ) {
@@ -50,8 +50,8 @@ foreach ( $groups as $group ) {
         $data['picture'] = $post['post_picture'];
 
         try {
-            //$response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
-            $response = $fb->post('/1178672095511260/feed', $data, $accessToken);
+            $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
+            //$response = $fb->post('/1178672095511260/feed', $data, $accessToken);
             var_dump($response);
             sleep(60);
         } catch (Exception $e){

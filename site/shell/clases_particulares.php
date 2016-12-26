@@ -34,7 +34,7 @@ $fb = new Facebook\Facebook(
     ]
 );
 
-$accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
+$accessToken = "EAAEaw42ZBid8BABvtEAxWgHgXWwwdmSJXFxUHf2LOkj8hZC3wq9b0z0rMR7z9BLRlszZBrR7suQyS8m38xAZCuH2cmNOdRXmNnXaEioZCXfH7X3xYynrTSESUZBnmXUebZBs0Q56H2tBHZCNQDzPKVEcOiKDMs1Q2bcZD";
 
 $groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ){
