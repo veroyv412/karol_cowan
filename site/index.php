@@ -267,6 +267,7 @@ $app->get('/fb-autopost', function() use ($app, $fb){
     //$accessToken = "EAAEaw42ZBid8BAJfWEx3O7gcGhqQRGqPNyZB9BxHMVbsZCNNYZCMqjre9BColAEZA3aePwJG7wRa07VVodgUHwBVwbf4ZBttjiTW6xvMkZBhija0e9g79Ku3BEcMj9pmYdFHRpxVZBqMpidz299LDajx6noUEcgFw28ZD";
     //$response = $fb->post('/1178672095511260/feed', array('message' => 'Juego de 3 Hermosas Silla Matera + Banquito de Regalo!!!! TEST!!!', 'link' => 'http://karolcowan.com/sales/product/1', 'picture' => 'http://res.cloudinary.com/dplksnehy/image/upload/v1462641249/veronica/sales/silla_matera/IMG_3760.jpg'), $accessToken);
     //var_dump($response);
+    var_dump($_SESSION['fb_access_token']);
 });
 
 $app->get('/mercadopago', function() use ($app, $mp) {
@@ -534,38 +535,6 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
     $data = $app->request->post();
     $baseUrl = getBaseURI();
 
-    $data['mp_link'] = null;
-    if ( $data['forma_pago'] == 'card' ){
-        $preference_data_200 = array (
-            "items" => array (
-                array (
-                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo: 200",
-                    "quantity" => 1,
-                    "currency_id" => "ARS",
-                    "unit_price" => 200,
-                    "picture_url" => $baseUrl . '/images/flyers/flyer_sabado_rumba.png'
-                )
-            )
-        );
-
-        $preference_data_350 = array (
-            "items" => array (
-                array (
-                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo: 350",
-                    "quantity" => 1,
-                    "currency_id" => "ARS",
-                    "unit_price" => 350,
-                    "picture_url" => $baseUrl . '/images/flyers/flyer_sabado_rumba.png'
-                )
-            )
-        );
-
-        $preference_200 = $mp->create_preference ($preference_data_200);
-        $preference_350 = $mp->create_preference ($preference_data_350);
-        $data['mp_link_200'] =  $preference_200['response']['init_point'];
-        $data['mp_link_350'] =  $preference_350['response']['init_point'];
-    }
-
     $data['flyer_url'] = $baseUrl . '/images/flyers/flyer_sabado_rumba.png';
     $html = $app->view->fetch('inscripcion_sabado_rumba_email.html', array(
         'data' => $data
@@ -621,7 +590,46 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
     $id = $dbConn->insertMany('karol_subscriptions', $kc);
 
     $_SESSION['inscripcion_thankyou'] = 'Gracias por inscribirte, te hemos enviado un mail con toda esta informacion para que te quede agendado. Te esperamos!';
-    $app->redirect('/sabado-de-rumba');
+
+    $data['mp_link'] = null;
+    if ( $data['forma_pago'] == 'card' ){
+        $preference_data_200 = array (
+            "items" => array (
+                array (
+                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo: 1 Clase",
+                    "quantity" => 1,
+                    "currency_id" => "ARS",
+                    "unit_price" => 219.99,
+                    "picture_url" => $baseUrl . '/images/flyers/flyer_sabado_rumba.png'
+                )
+            )
+        );
+
+        $preference_data_350 = array (
+            "items" => array (
+                array (
+                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo: 2 Clases",
+                    "quantity" => 1,
+                    "currency_id" => "ARS",
+                    "unit_price" => 369.99,
+                    "picture_url" => $baseUrl . '/images/flyers/flyer_sabado_rumba.png'
+                )
+            )
+        );
+
+        $preference_200 = $mp->create_preference ($preference_data_200);
+        $preference_350 = $mp->create_preference ($preference_data_350);
+        $data['mp_link_200'] =  $preference_200['response']['init_point'];
+        $data['mp_link_350'] =  $preference_350['response']['init_point'];
+
+        if ( !empty($data['cantidad_clases']) && $data['cantidad_clases'] == 1){
+            $app->redirect($preference_200['response']['init_point']);
+        } else {
+            $app->redirect($preference_350['response']['init_point']);
+        }
+    } else {
+        $app->redirect('/sabado-de-rumba');
+    }
 });
 
 $app->get('/contact(/)', function() use ($app) {
