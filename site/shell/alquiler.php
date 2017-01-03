@@ -40,7 +40,7 @@ foreach ( $groups as $groupId ){
     if ( !empty($groupId) ){
         $data = array();
         $message = 'Buscamos Alquilar!';
-        $data['link'] = 'http://karolcowan.com/images/alquiler_ph.png';
+        $data['link'] = 'http://karolcowan.com/images/alquiler/alquiler_ph.png';
         $data['picture'] = 'http://karolcowan.com/images/alquiler/alquiler_ph.png';
 
         try {
