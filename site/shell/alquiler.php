@@ -46,7 +46,6 @@ foreach ( $groups as $groupId ){
         try {
             $response = $fb->post('/'.$groupId.'/feed', $data, $accessToken);
             var_dump($response);
-            sleep(60);
         } catch (Exception $e){
             echo $e->getMessage();
         }
