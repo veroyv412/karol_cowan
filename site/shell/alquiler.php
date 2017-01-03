@@ -39,8 +39,8 @@ $groups = ['306991289452864', '48915643257', '1038768602805946'];
 foreach ( $groups as $groupId ){
     if ( !empty($groupId) ){
         $data = array();
-        $message = $post['post_title'];
-        $data['link'] = $post['post_link'];
+        $message = 'Buscamos Alquilar!';
+        $data['link'] = 'http://karolcowan.com/images/alquiler_ph.png';
         $data['picture'] = 'http://karolcowan.com/images/alquiler_ph.png';
 
         try {
