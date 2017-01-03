@@ -41,7 +41,7 @@ foreach ( $groups as $groupId ){
         $data = array();
         $message = 'Buscamos Alquilar!';
         $data['link'] = 'http://karolcowan.com/images/alquiler_ph.png';
-        $data['picture'] = 'http://karolcowan.com/images/alquiler_ph.png';
+        $data['picture'] = 'http://karolcowan.com/images/alquiler/alquiler_ph.png';
 
         try {
             $response = $fb->post('/'.$groupId.'/feed', $data, $accessToken);
