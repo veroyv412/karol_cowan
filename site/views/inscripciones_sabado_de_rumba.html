@@ -18,9 +18,7 @@
 {% endblock %}
 
 {% block content %}
-
-    <script type="text/javascript" src="https://www.mercadopago.com/org-img/jsapi/mptools/buttons/render.js"></script>
-    <script>
+ <script>
         $(document).ready(function(){
             $('.icheck').iCheck({
                 checkboxClass: 'icheckbox_square-aero',
@@ -56,41 +54,22 @@
                     </div>
                 {% endif %}
 
+                <div class="panel">
+                    <p>
+                        <h4>Medios de Pago:</h4>
+                        <h6>
+                            SOLICITAMOS QUE EL PAGO SEA POR ADELANTADO POR UN TEMA DE ORGANIZACION CON LOS MUSICOS Y EL SALON. <br>LE ENVIAREMOS LOS DATOS DEL C.B.U. A SU CASILLA DE MAIL.
+                            <br><br><b>Por Favor, apenas hecha la transferencia avisar al siguiente mail: veroyv412@gmail.com, con nombre y apellido para poder ser anotados en la lista. Muchas gracias</b>
+                        </h6>
+                    </p>
+
+                    <input type="hidden" name="forma_pago" value="bank">
+                </div>
+
+
+
                 <div class="row">
-                    <div class="six columns">
-                        <div class="panel">
-                            <p>
-                                <h4>Medios de Pago:</h4>
-                            <ul>
-                                <li>
-                                    <br><input type="radio" name="forma_pago" value="cash" class="icheck"> <i class="fa fa-money" aria-hidden="true"></i>  Efectivo
-                                    <div class="cash_wrapper" style="display: none">
-                                        <br>Puede hacerse personalmente a Karol Cowan o Veronica Nisenbaum
-                                        <br>Karol Cowan: <i class="fa fa-whatsapp" aria-hidden="true"></i> +54 9 11 3089-1051
-                                        <br>Veronica Nisenbaum: <i class="fa fa-whatsapp" aria-hidden="true"></i> +54 9 223 5560011
-                                    </div>
-                                </li>
-                                <li>
-                                    <br><input type="radio" name="forma_pago" value="card" class="icheck"> <i class="fa fa-credit-card" aria-hidden="true"></i>  Mercado Pago (Tarjetas)
-                                    <div class="card_wrapper" style="display: none">
-                                        <p>
-                                            <br><b>Mercado Pago tiene una comisión de 5.99%, por lo tanto se le sumarán $19.99 al precio total.</b>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <br><input type="radio" name="forma_pago" value="bank" class="icheck"> <i class="fa fa-university" aria-hidden="true"></i> Transferencia Bancaria
-                                    <div class="bank_wrapper" style="display: none">
-                                        <br>Aclararlo en el mensaje y te pasaremos por mail los datos del banco.
-                                    </div>
-                                </li>
-                            </ul>
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="six columns">
+                    <div class="twelve columns">
                         <div class="panel">
                             <p>
                             <h4>Cantidad de Clases:</h4>
@@ -135,7 +114,7 @@
                             <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
                         </div>
 
-                        <input type="submit" id="submit" class="readmore" value="Enviar">
+                        <input type="submit" id="submit" class="readmore" value="Enviar" style="width: 96%">
                     </div>
                     <br>
                 </fieldset>
