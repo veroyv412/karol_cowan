@@ -50,7 +50,7 @@ foreach ( $groups as $group ) {
         //$data['picture'] = $post['post_picture'];
 
         try {
-            //$response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
+            $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
             //$response = $fb->post('/1178672095511260/feed', $data, $accessToken);
             var_dump($response);
             sleep(60);

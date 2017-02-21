@@ -38,7 +38,7 @@ $accessToken = "EAAEaw42ZBid8BABvtEAxWgHgXWwwdmSJXFxUHf2LOkj8hZC3wq9b0z0rMR7z9BL
 
 $groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ) {
-    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 4');
+    $post = $dbConn->fetchRow('SELECT * FROM posts WHERE id = 16');
     if ( !empty($post) ){
         $data = array();
         $message = $post['post_title'];
@@ -47,7 +47,7 @@ foreach ( $groups as $group ) {
         }
         $data['message'] = $message;
         $data['link'] = $post['post_link'];
-        $data['picture'] = $post['post_picture'];
+        //$data['picture'] = $post['post_picture'];
 
         try {
             $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
