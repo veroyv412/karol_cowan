@@ -34,7 +34,7 @@ $fb = new Facebook\Facebook(
     ]
 );
 
-$accessToken = "EAAEaw42ZBid8BAKRtarC4mLIeFQ88f7TOUwlV4T6yL6UAW8O9Utv79WIdcEsyc3vtquU6ZBdfyyE21LSGwgdSZCbxMSd6vy7Y7cudMfZChIhoz1ONyZBdzJoxM6wsuC7SCQfZCD5uJDsVdcPV25zQGmpddrvpmTjsZD";
+$accessToken = "EAAEaw42ZBid8BANgl90HCiuvEsUwNWnZB9FPoRXxhJDQtKwHXdyzof07anuRPi9baO8Q47ul5rnDrsPyU9wZA7mZAHL7tgpgZBIW136nIAZCREqNUXMC1KeRaozsYtsV8yrZA21AsWi8gMKOIeJwH2sM6F3tfAZA9E5YTeTEQqHhmMOBWflq0oHP";
 
 $groups = $dbConn->fetchRowMany('SELECT * FROM groups order by group_category DESC');
 foreach ( $groups as $group ){
@@ -53,7 +53,7 @@ foreach ( $groups as $group ){
             $response = $fb->post('/'.$group['group_id'].'/feed', $data, $accessToken);
             //$response = $fb->post('/1178672095511260/feed', $data, $accessToken);
             var_dump($response);
-            sleep(60);
+            //sleep(60);
         } catch (Exception $e){
             echo $e->getMessage();
         }

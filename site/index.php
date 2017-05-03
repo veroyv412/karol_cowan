@@ -126,7 +126,7 @@ $fb = new Facebook\Facebook(
     [
         'app_id' => '310902175730143',
         'app_secret' => 'c5e81f0f7d9020775a740023bbb1a4a2',
-        'default_graph_version' => 'v2.6'
+        'default_graph_version' => 'v2.8'
     ]
 );
 
@@ -449,9 +449,7 @@ $app->post('/suscripciones', function() use ($app, $dbConn) {
 $app->get('/inscripciones(/)', function() use ($app, $mp) {
     $inscripcion_thankyou = !empty($_SESSION['inscripcion_thankyou']) ? $_SESSION['inscripcion_thankyou'] : null;
     unset($_SESSION['inscripcion_thankyou']);
-
-
-
+    
     echo $app->view->render('inscripciones.html', array(
         'tab' => 'profesor',
         'inscripcion_thankyou' => $inscripcion_thankyou,
@@ -466,17 +464,17 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
         $preference_data = array (
             "items" => array (
                 array (
-                    "title" => "Inscripcion Clase de Rumba con Tambor en Vivo",
+                    "title" => "Inscripcion El Sabado de la Rumba Baila",
                     "quantity" => 1,
                     "currency_id" => "ARS",
                     "unit_price" => 150,
-                    "picture_url" => 'https://scontent-gru2-1.xx.fbcdn.net/t31.0-8/15289266_1803541436569326_715126570605050619_o.jpg'
+                    "picture_url" => 'http://www.karolcowan.com/images/flyers/sabado_rumba_baila.jpg'
                 )
             )
         );
 
-        $preference = $mp->create_preference ($preference_data);
-        $data['mp_link'] =  $preference['response']['init_point'];
+        //$preference = $mp->create_preference ($preference_data);
+        //$data['mp_link'] =  $preference['response']['init_point'];
     }
 
 
@@ -489,14 +487,14 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
     $transport->setPassword('v3r0n1c4');
 
     $mailer = new Swift_Mailer($transport);
-    $message = (new Swift_Message('Inscription a Clases Tambor en Vivo'))
+    $message = (new Swift_Message('Inscripcion El Sabado de la Rumba Baila'))
         ->setFrom($data['email'], $data['name'])
         ->setContentType('text/html')
         ->setTo(array('veroyv412@gmail.com' => 'Veronica Nisenbaum'))
         ->setBody($html);
     $numSent = $mailer->send($message);
 
-    $message = (new Swift_Message('Inscription a Clases Tambor en Vivo'))
+    $message = (new Swift_Message('Inscripcion El Sabado de la Rumba Baila'))
         ->setFrom('loraknawoc@hotmail.com', 'Karol Cowan')
         ->setContentType('text/html')
         ->setTo($data['email'],  $data['name'])
