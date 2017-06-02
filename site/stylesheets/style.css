@@ -978,3 +978,18 @@ footer .social-network a {
 	font-size: 1.2em;
 	font-weight: bold;
 }
+
+.center {
+	display: block;
+	margin: 0 auto
+}
+
+img.cmac {
+	width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+	img.cmac {
+		width: 100%;
+	}
+}

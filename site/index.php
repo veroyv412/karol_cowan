@@ -520,9 +520,7 @@ $app->post('/inscripciones', function() use ($app, $dbConn, $mp) {
 $app->get('/sabado-de-rumba(/)', function() use ($app, $mp) {
     $inscripcion_thankyou = !empty($_SESSION['inscripcion_thankyou']) ? $_SESSION['inscripcion_thankyou'] : null;
     unset($_SESSION['inscripcion_thankyou']);
-
-
-
+    
     echo $app->view->render('inscripciones_sabado_de_rumba.html', array(
         'tab' => 'profesor',
         'inscripcion_thankyou' => $inscripcion_thankyou,
@@ -629,6 +627,13 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
         $app->redirect('/sabado-de-rumba');
     }
 });
+
+$app->get('/cmac(/)', function() use ($app, $mp) {
+    echo $app->view->render('cmac.html', array(
+        'tab' => 'profesor',
+    ));
+});
+
 
 $app->get('/contact(/)', function() use ($app) {
     echo $app->view->render('contact.html', array(

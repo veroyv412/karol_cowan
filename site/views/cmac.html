@@ -1,0 +1,199 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+{% block title%}Karol Cowan{% endblock %}
+
+{% block content %}
+<script>
+    $(document).ready(function(){
+        $('.icheck').iCheck({
+            checkboxClass: 'icheckbox_square-aero',
+            radioClass: 'iradio_square-aero',
+            increaseArea: '20%' // optional
+        });
+
+        $(".icheck").on("ifChanged", function (e) {
+            var _class = $(this).val();
+            $('.'+_class+"_wrapper").toggle();
+        });
+    });
+</script>
+
+<!-- SUBHEADER ================================================== -->
+<div class="row">
+    <div class="twelve columns">
+        <img src="/images/carreraModularArtisticaCubana3.png" class="cmac center">
+    </div>
+</div>
+<div class="hr"></div>
+
+<div class="row">
+    <div class="eight columns">
+        <div class="sectiontitle">
+            <h4>Objetivo</h4>
+        </div>
+        <p>
+            Formar bailarines integralmente con gran versatilidad en el campo artístico cubano.
+        </p>
+        <p>
+            En el módulo se estudiarán ocho materias con una granularidad intensiva cumpliendo la totalidad
+            de la carga horaria de trabajo, siendo esta necesaria para la continuación del segundo módulo.
+        </p>
+        <p>Al finalizar cada módulo se realizará una muestra, la cual consolidará lo aprendido durante el módulo y que
+        culminará con la entrega de diplomas firmados por cada unos de los profesores de esta carrera.</p>
+
+
+
+        <div class="row">
+            <div class="twelve columns">
+                <div class="sectiontitle">
+                    <h4>Detalles</h4>
+                </div>
+                <ul class="accordion">
+                    <li class="active">
+                        <div class="title">
+                            <b>Matrícula</b>
+                        </div>
+                        <div class="content" style="overflow: hidden; display: block; ">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="title">
+                            <b>Cursada</b>
+                        </div>
+                        <div class="content" style="overflow: hidden; display: none; ">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="title">
+                            <b>Plan de Estudios</b>
+                        </div>
+                        <div class="content" style="overflow: hidden; display: none; ">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="">
+                        <div class="title">
+                            <b>Aranceles</b>
+                        </div>
+                        <div class="content" style="overflow: hidden; display: none; ">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="four columns">
+        <h5>Consultas?</h5>
+        <form method="post" action="/camc/consultas" id="cmac-consultas">
+            <div class="form">
+                <div class="twelve columns noleftmargin">
+                    <label>Nombre y Apellido</label>
+                    <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                </div>
+                <div class="twelve columns noleftmargin">
+                    <label>Dirección de Email</label>
+                    <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+                </div>
+
+                <div class="twelve columns noleftmargin">
+                    <br><label>Mensaje</label>
+                    <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                </div>
+
+                <input type="submit" id="submit" class="readmore" value="Enviar">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="twelve columns">
+        <div class="sectiontitle">
+            <h4>Staff de Profesores</h4>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="four columns">
+        <div class="teamwrap teambox">
+            <img src="/images/staff_profesores/karol_cowan.png" alt="">
+            <div class="mask">
+                <h2>Karol Cowan</h2>
+                <p>Bailarín, Músico y Artista Cubano</p>
+            </div>
+        </div>
+    </div>
+    <div class="four columns">
+        <div class="teamwrap teambox">
+            <img src="/images/staff_profesores/nelson_silvestre.png" alt="">
+            <div class="mask">
+                <h2>Nelson Silvestre</h2>
+                <p>
+                    One of our best shooting model, working for this company since the beginning.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="four columns">
+        <div class="teamwrap teambox">
+            <img src="/images/staff_profesores/adriel_martinez.png" alt="">
+            <div class="mask">
+                <h2>Adriel Martinez</h2>
+                <p>
+                    One of our best shooting model, working for this company since the beginning.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="four columns">
+        <div class="teamwrap teambox">
+            <img src="/images/staff_profesores/gaby_fabro.png" alt="">
+            <div class="mask">
+                <h2>Gaby Fabro</h2>
+                <p>Bailarín, Músico y Artista Cubano</p>
+            </div>
+        </div>
+    </div>
+    <div class="four columns">
+        <div class="teamwrap teambox">
+            <img src="/images/staff_profesores/roberto_bouly.png" alt="">
+            <div class="mask">
+                <h2>Roberto Bouly</h2>
+                <p>
+                    One of our best shooting model, working for this company since the beginning.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="four columns">
+        <div class="teamwrap teambox">
+            <img src="/images/staff_profesores/yinneris_aquinet.png" alt="">
+            <div class="mask">
+                <h2>Yinneris Aquinet</h2>
+                <p>
+                    One of our best shooting model, working for this company since the beginning.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
