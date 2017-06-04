@@ -28,6 +28,11 @@
 <div class="hr"></div>
 
 <div class="row">
+    {% if consultas_thankyou %}
+    <div class="alert-box default">
+        {{ consultas_thankyou }}. <a href="" class="close">x</a>
+    </div>
+    {% endif %}
     <div class="eight columns">
         <div class="sectiontitle">
             <h4>Objetivo</h4>
@@ -101,6 +106,10 @@
                 <div class="twelve columns noleftmargin">
                     <label>Nombre y Apellido</label>
                     <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                </div>
+                <div class="twelve columns noleftmargin">
+                    <label>Telefono</label>
+                    <input type="text" name="phone_number" class="smoothborder" placeholder="Telefono"/>
                 </div>
                 <div class="twelve columns noleftmargin">
                     <label>Dirección de Email</label>

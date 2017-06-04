@@ -629,11 +629,45 @@ $app->post('/sabado-de-rumba', function() use ($app, $dbConn, $mp) {
 });
 
 $app->get('/cmac(/)', function() use ($app, $mp) {
+    $consultas_thankyou = !empty($_SESSION['consultas_thankyou']) ? $_SESSION['consultas_thankyou'] : null;
+    unset($_SESSION['consultas_thankyou']);
+
     echo $app->view->render('cmac.html', array(
         'tab' => 'profesor',
+        'consultas_thankyou' => $consultas_thankyou
     ));
 });
 
+$app->post('/camc/consultas(/)', function() use ($app, $mp) {
+    $data = $app->request->post();
+    $baseUrl = getBaseURI();
+    
+    $html = $app->view->fetch('cmac_consultas_email.html', array(
+        'data' => $data
+    ));
+
+    $transport = new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl');
+    $transport->setUsername('veroyv412@gmail.com');
+    $transport->setPassword('v3r0n1c4');
+
+    $mailer = new Swift_Mailer($transport);
+    $message = (new Swift_Message('Consultas de Carrera Modular Artistica Cubana'))
+        ->setFrom('veroyv412@gmail.com', 'Pagina Web')
+        ->setContentType('text/html')
+        ->setTo(array('veroyv412@gmail.com' => 'Veronica Nisenbaum'))
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $message = (new Swift_Message('Consultas de Carrera Modular Artistica Cubana'))
+        ->setFrom('loraknawoc@hotmail.com', 'Pagina Web')
+        ->setContentType('text/html')
+        ->setTo('loraknawoc@hotmail.com',  'Karol Cowan')
+        ->setBody($html);
+    $numSent = $mailer->send($message);
+
+    $_SESSION['consultas_thankyou'] = 'Su consulta ha sido enviada satisfactoriamente';
+    $app->redirect('/cmac');
+});
 
 $app->get('/contact(/)', function() use ($app) {
     echo $app->view->render('contact.html', array(
