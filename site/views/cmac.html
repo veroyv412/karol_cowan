@@ -19,6 +19,12 @@
     });
 </script>
 
+<style>
+    p, ul li,label {
+        font-size: 17px;
+    }
+</style>
+
 <!-- SUBHEADER ================================================== -->
 <div class="row">
     <div class="twelve columns">
@@ -44,10 +50,9 @@
             En el módulo se estudiarán ocho materias con una granularidad intensiva cumpliendo la totalidad
             de la carga horaria de trabajo, siendo esta necesaria para la continuación del segundo módulo.
         </p>
-        <p>Al finalizar cada módulo se realizará una muestra, la cual consolidará lo aprendido durante el módulo y que
-        culminará con la entrega de diplomas firmados por cada unos de los profesores de esta carrera.</p>
-
-
+        <p>Al finalizar cada módulo se realizará una muestra y un exámen final, el cual consolidará lo aprendido durante el módulo y que
+        culminará con la entrega de diplomas firmados por cada unos de los profesores de esta carrera.
+        </p>
 
         <div class="row">
             <div class="twelve columns">
@@ -56,43 +61,172 @@
                 </div>
                 <ul class="accordion">
                     <li class="active">
-                        <div class="title">
-                            <b>Matrícula</b>
-                        </div>
-                        <div class="content" style="overflow: hidden; display: block; ">
+                        <div class="title"><h4><i class="fa fa-university"></i> Ingreso</h4></div>
+                        <div class="content" >
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Para ser considerado alumno de la Carrera Modular Artística Cubana, el aspirante deberá:
+                                <ul>
+                                    <li><i class="fa fa-check" aria-hidden="true"></i> Matricularse en la carrera elegida.</li>
+                                    <li><i class="fa fa-check" aria-hidden="true"></i> Completar la solicitud de inscripción, la cual será enviada luego de haberse matriculado
+                                        y la cual deberá ser enviada antes de la fecha de inicio del Módulo.
+                                    </li>
+                                </ul>
                             </p>
                         </div>
                     </li>
                     <li class="">
                         <div class="title">
-                            <b>Cursada</b>
+                            <h4><i class="fa fa-thumb-tack"></i> Cursada</h4>
                         </div>
-                        <div class="content" style="overflow: hidden; display: none; ">
+                        <div class="content">
+                            <h5>Horarios</h5>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Los días de cursada serán 3 días a la semana. Lunes, Miércoles y Viernes
+                                de 20hs a 22hs.
                             </p>
+                            <h5>Carga Horaria</h5>
+                            <p>Cada materia se dividirá en clases teorico / practicas de 60 minutos cada una.</p>
                         </div>
                     </li>
                     <li class="">
                         <div class="title">
-                            <b>Plan de Estudios</b>
+                            <h4><i class="fa fa-server"></i> Plan de Estudios</h4>
                         </div>
-                        <div class="content" style="overflow: hidden; display: none; ">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
+                        <div class="content">
+
+                            <h5>Módulo Uno</h5>
+                            <dl class="tabs">
+                                <dd class="active"><a href="#agosto">Agosto</a></dd>
+                                <dd class=""><a href="#septiembre">Septiembre</a></dd>
+                                <dd class=""><a href="#octubre">Octubre</a></dd>
+                                <dd class=""><a href="#noviembre">Noviembre</a></dd>
+                            </dl>
+                            <ul class="tabs-content">
+                                <li class="active" id="agostoTab">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Lunes</th>
+                                                <th>Miércoles</th>
+                                                <th>Viernes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Historia del Arte</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Bailes Populares Cubanos</p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Danza Moderna Contempo. Cubana</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Danza Moderna Contempo. Cubana</p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Yoruba</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Cantos Yorubas</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li id="septiembreTab">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Lunes</th>
+                                            <th>Miércoles</th>
+                                            <th>Viernes</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <p><b>Primer Hora:</b> Bailes Populares</p>
+                                                <p>Break de 15 minutos</p>
+                                                <p><b>Segunda Hora:</b> Rumba Cubana</p>
+                                            </td>
+                                            <td>
+                                                <p><b>Primer Hora:</b> Danza Clásica</p>
+                                                <p>Break de 15 minutos</p>
+                                                <p><b>Segunda Hora:</b> Danza Clásica</p>
+                                            </td>
+                                            <td>
+                                                <p><b>Primer Hora:</b> Yoruba</p>
+                                                <p>Break de 15 minutos</p>
+                                                <p><b>Segunda Hora:</b> Percusión Cubana</p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                                <li id="octubreTab">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Lunes</th>
+                                            <th>Miércoles</th>
+                                            <th>Viernes</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <p><b>Primer Hora:</b> Campesino</p>
+                                                <p>Break de 15 minutos</p>
+                                                <p><b>Segunda Hora:</b> Rumba Cubana</p>
+                                            </td>
+                                            <td>
+                                                <p><b>Primer Hora:</b> Danza Clásica</p>
+                                                <p>Break de 15 minutos</p>
+                                                <p><b>Segunda Hora:</b> Danza Clásica</p>
+                                            </td>
+                                            <td>
+                                                <p><b>Primer Hora:</b> Yoruba</p>
+                                                <p>Break de 15 minutos</p>
+                                                <p><b>Segunda Hora:</b> Percusión Cubana</p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </li>
+                            </ul>
                         </div>
                     </li>
                     <li class="">
                         <div class="title">
-                            <b>Aranceles</b>
+                            <h4><i class="fa fa-usd"></i> Aranceles</h4>
                         </div>
-                        <div class="content" style="overflow: hidden; display: none; ">
+                        <div class="content">
+                            <h5>Matrícula</h5>
+                            <p>Se abona por única vez en toda la carrera al inscribirse.</p>
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Valor hasta 15 de Julio de 2017: $500
+                                <br>
+                                Valor hasta 1 de Agosto de 2017: $550
+                                <br>
+                                Valor hasta 8 de Agosto 2017: $600
                             </p>
+                            <p>
+                                La matrícula incluye la confeccion de una pollera folklórica cubana, claves cubanas y todo el material
+                                que utilizarán a lo largo del módulo.
+                            </p>
+
+
+                            <h5>Cuota Mensual</h5>
+                            <p>
+                                No se abona ningún otro cargo extra por los trámites ordinarios propios de un alumno de
+                                la CMAC como es el vestuario para la obra final.
+                            </p>
+                            <p><b>Valor de Cuota: $800</b></p>
+
+
+                            <h5>Métodos de Pago</h5>
+                            <p>La matrícula puede abonarse tanto en efectivo como con
+                                <img src="/images/logo_mercado_pago_small.png"> en cuotas</p>
+                            <p>El valor de la cuota puede abonarse tanto en efectivo como con Tarjeta de Crédito a través de <img src="/images/logo_mercado_pago_small.png"> </p>
                         </div>
                     </li>
                 </ul>
