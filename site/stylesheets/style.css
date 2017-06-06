@@ -984,12 +984,16 @@ footer .social-network a {
 	margin: 0 auto
 }
 
-img.cmac {
+.cmac_wrapper img.cmac {
 	width: 30%;
 }
 
 @media screen and (max-width: 600px) {
-	img.cmac {
+	.cmac_wrapper img.cmac {
 		width: 100%;
+	}
+
+	.cmac_wrapper .teamwrap {
+		height: auto !important;
 	}
 }

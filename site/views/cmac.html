@@ -3,115 +3,109 @@
 {% extends 'layout/base.html' %}
 {% block title%}Karol Cowan{% endblock %}
 
-{% block content %}
-<script>
-    $(document).ready(function(){
-        $('.icheck').iCheck({
-            checkboxClass: 'icheckbox_square-aero',
-            radioClass: 'iradio_square-aero',
-            increaseArea: '20%' // optional
-        });
+{% block head %}
+    {{ parent() }}
 
-        $(".icheck").on("ifChanged", function (e) {
-            var _class = $(this).val();
-            $('.'+_class+"_wrapper").toggle();
-        });
-    });
-</script>
+    <link rel="stylesheet" href="/javascripts/jquery.owlCarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javascripts/jquery.owlCarousel/dist/assets/owl.theme.default.min.css">
+{% endblock %}
+
+{% block content %}
 
 <style>
     p, ul li,label {
         font-size: 17px;
     }
 </style>
+<div class="cmac_wrapper">
 
-<!-- SUBHEADER ================================================== -->
-<div class="row">
-    <div class="twelve columns">
-        <img src="/images/carreraModularArtisticaCubana3.png" class="cmac center">
-    </div>
-</div>
-<div class="hr"></div>
-
-<div class="row">
-    {% if consultas_thankyou %}
-    <div class="alert-box default">
-        {{ consultas_thankyou }}. <a href="" class="close">x</a>
-    </div>
-    {% endif %}
-    <div class="eight columns">
-        <div class="sectiontitle">
-            <h4>Objetivo</h4>
+    <!-- SUBHEADER ================================================== -->
+    <div class="row">
+        <div class="twelve columns">
+            <img src="/images/carreraModularArtisticaCubana3.png" class="cmac center">
         </div>
-        <p>
-            Formar bailarines integralmente con gran versatilidad en el campo artístico cubano.
-        </p>
-        <p>
-            En el módulo se estudiarán ocho materias con una granularidad intensiva cumpliendo la totalidad
-            de la carga horaria de trabajo, siendo esta necesaria para la continuación del segundo módulo.
-        </p>
-        <p>Al finalizar cada módulo se realizará una muestra y un exámen final, el cual consolidará lo aprendido durante el módulo y que
-        culminará con la entrega de diplomas firmados por cada unos de los profesores de esta carrera.
-        </p>
+    </div>
+    <div class="hr"></div>
 
-        <div class="row">
-            <div class="twelve columns">
-                <div class="sectiontitle">
-                    <h4>Detalles</h4>
-                </div>
-                <ul class="accordion">
-                    <li class="active">
-                        <div class="title"><h4><i class="fa fa-university"></i> Ingreso</h4></div>
-                        <div class="content" >
-                            <p>
-                                Para ser considerado alumno de la Carrera Modular Artística Cubana, el aspirante deberá:
+    <div class="row">
+        {% if consultas_thankyou %}
+        <div class="alert-box default">
+            {{ consultas_thankyou }}. <a href="" class="close">x</a>
+        </div>
+        {% endif %}
+        <div class="eight columns">
+            <div class="sectiontitle">
+                <h4>Objetivo</h4>
+            </div>
+            <p>
+                Formar bailarines integralmente con gran versatilidad en el campo artístico cubano.
+            </p>
+            <p>
+                En el módulo se estudiarán ocho materias con una granularidad intensiva cumpliendo la totalidad
+                de la carga horaria de trabajo, siendo esta necesaria para la continuación del segundo módulo.
+            </p>
+            <p>Al finalizar cada módulo se realizará una muestra y un exámen final, el cual consolidará lo aprendido durante el módulo y que
+                culminará con la entrega de diplomas firmados por cada unos de los profesores de esta carrera.
+            </p>
+
+            <div class="row">
+                <div class="twelve columns">
+                    <div class="sectiontitle">
+                        <h4>Detalles</h4>
+                    </div>
+                    <ul class="accordion">
+                        <li class="active">
+                            <div class="title"><h4><i class="fa fa-university"></i> Ingreso</h4></div>
+                            <div class="content" >
+                                <p>
+                                    Para ser considerado alumno de la Carrera Modular Artística Cubana, el aspirante deberá:
                                 <ul>
                                     <li><i class="fa fa-check" aria-hidden="true"></i> Matricularse en la carrera elegida.</li>
                                     <li><i class="fa fa-check" aria-hidden="true"></i> Completar la solicitud de inscripción, la cual será enviada luego de haberse matriculado
                                         y la cual deberá ser enviada antes de la fecha de inicio del Módulo.
                                     </li>
                                 </ul>
-                            </p>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="title">
-                            <h4><i class="fa fa-thumb-tack"></i> Cursada</h4>
-                        </div>
-                        <div class="content">
-                            <h5>Horarios</h5>
-                            <p>
-                                Los días de cursada serán 3 días a la semana. Lunes, Miércoles y Viernes
-                                de 20hs a 22hs.
-                            </p>
-                            <h5>Carga Horaria</h5>
-                            <p>Cada materia se dividirá en clases teorico / practicas de 60 minutos cada una.</p>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="title">
-                            <h4><i class="fa fa-server"></i> Plan de Estudios</h4>
-                        </div>
-                        <div class="content">
+                                </p>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="title">
+                                <h4><i class="fa fa-thumb-tack"></i> Cursada</h4>
+                            </div>
+                            <div class="content">
+                                <h5>Horarios</h5>
+                                <p>
+                                    Los días de cursada serán 3 días a la semana. Lunes, Miércoles y Viernes
+                                    de 20hs a 22hs.
+                                </p>
+                                <h5>Carga Horaria</h5>
+                                <p>Cada materia se dividirá en clases teorico / practicas de 60 minutos cada una.</p>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="title">
+                                <h4><i class="fa fa-server"></i> Plan de Estudios</h4>
+                            </div>
+                            <div class="content">
 
-                            <h5>Módulo Uno</h5>
-                            <dl class="tabs">
-                                <dd class="active"><a href="#agosto">Agosto</a></dd>
-                                <dd class=""><a href="#septiembre">Septiembre</a></dd>
-                                <dd class=""><a href="#octubre">Octubre</a></dd>
-                                <dd class=""><a href="#noviembre">Noviembre</a></dd>
-                            </dl>
-                            <ul class="tabs-content">
-                                <li class="active" id="agostoTab">
-                                    <table>
-                                        <thead>
+                                <h5>Módulo Uno</h5>
+                                <dl class="tabs">
+                                    <dd class="active"><a href="#agosto">Agosto</a></dd>
+                                    <dd class=""><a href="#septiembre">Septiembre</a></dd>
+                                    <dd class=""><a href="#octubre">Octubre</a></dd>
+                                    <dd class=""><a href="#noviembre">Noviembre</a></dd>
+                                </dl>
+                                <ul class="tabs-content">
+                                    <li class="active" id="agostoTab">
+                                        <table>
+                                            <thead>
                                             <tr>
                                                 <th>Lunes</th>
                                                 <th>Miércoles</th>
                                                 <th>Viernes</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                            </thead>
+                                            <tbody>
                                             <tr>
                                                 <td>
                                                     <p><b>Primer Hora:</b> Historia del Arte</p>
@@ -129,214 +123,249 @@
                                                     <p><b>Segunda Hora:</b> Cantos Yorubas</p>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
-                                </li>
-                                <li id="septiembreTab">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>Lunes</th>
-                                            <th>Miércoles</th>
-                                            <th>Viernes</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <p><b>Primer Hora:</b> Bailes Populares</p>
-                                                <p>Break de 15 minutos</p>
-                                                <p><b>Segunda Hora:</b> Rumba Cubana</p>
-                                            </td>
-                                            <td>
-                                                <p><b>Primer Hora:</b> Danza Clásica</p>
-                                                <p>Break de 15 minutos</p>
-                                                <p><b>Segunda Hora:</b> Danza Clásica</p>
-                                            </td>
-                                            <td>
-                                                <p><b>Primer Hora:</b> Yoruba</p>
-                                                <p>Break de 15 minutos</p>
-                                                <p><b>Segunda Hora:</b> Percusión Cubana</p>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </li>
-                                <li id="octubreTab">
-                                    <table>
-                                        <thead>
-                                        <tr>
-                                            <th>Lunes</th>
-                                            <th>Miércoles</th>
-                                            <th>Viernes</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <p><b>Primer Hora:</b> Campesino</p>
-                                                <p>Break de 15 minutos</p>
-                                                <p><b>Segunda Hora:</b> Rumba Cubana</p>
-                                            </td>
-                                            <td>
-                                                <p><b>Primer Hora:</b> Danza Clásica</p>
-                                                <p>Break de 15 minutos</p>
-                                                <p><b>Segunda Hora:</b> Danza Clásica</p>
-                                            </td>
-                                            <td>
-                                                <p><b>Primer Hora:</b> Yoruba</p>
-                                                <p>Break de 15 minutos</p>
-                                                <p><b>Segunda Hora:</b> Percusión Cubana</p>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="">
-                        <div class="title">
-                            <h4><i class="fa fa-usd"></i> Aranceles</h4>
-                        </div>
-                        <div class="content">
-                            <h5>Matrícula</h5>
-                            <p>Se abona por única vez en toda la carrera al inscribirse.</p>
-                            <p>
-                                Valor hasta 15 de Julio de 2017: $500
-                                <br>
-                                Valor hasta 1 de Agosto de 2017: $550
-                                <br>
-                                Valor hasta 8 de Agosto 2017: $600
-                            </p>
-                            <p>
-                                La matrícula incluye la confeccion de una pollera folklórica cubana, claves cubanas y todo el material
-                                que utilizarán a lo largo del módulo.
-                            </p>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                    <li id="septiembreTab">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Lunes</th>
+                                                <th>Miércoles</th>
+                                                <th>Viernes</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Bailes Populares</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Rumba Cubana</p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Danza Clásica</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Danza Clásica</p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Yoruba</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Percusión Cubana</p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                    <li id="octubreTab">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <th>Lunes</th>
+                                                <th>Miércoles</th>
+                                                <th>Viernes</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Campesino</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Rumba Cubana</p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Danza Clásica</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Danza Clásica</p>
+                                                </td>
+                                                <td>
+                                                    <p><b>Primer Hora:</b> Yoruba</p>
+                                                    <p>Break de 15 minutos</p>
+                                                    <p><b>Segunda Hora:</b> Percusión Cubana</p>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="title">
+                                <h4><i class="fa fa-usd"></i> Aranceles</h4>
+                            </div>
+                            <div class="content">
+                                <h5>Matrícula</h5>
+                                <p>Se abona por única vez en toda la carrera al inscribirse.</p>
+                                <p>
+                                    Valor hasta 15 de Julio de 2017: $500
+                                    <br>
+                                    Valor hasta 1 de Agosto de 2017: $550
+                                    <br>
+                                    Valor hasta 8 de Agosto 2017: $600
+                                </p>
+                                <p>
+                                    La matrícula incluye la confeccion de una pollera folklórica cubana, claves cubanas y todo el material
+                                    que utilizarán a lo largo del módulo.
+                                </p>
 
 
-                            <h5>Cuota Mensual</h5>
-                            <p>
-                                No se abona ningún otro cargo extra por los trámites ordinarios propios de un alumno de
-                                la CMAC como es el vestuario para la obra final.
-                            </p>
-                            <p><b>Valor de Cuota: $800</b></p>
+                                <h5>Cuota Mensual</h5>
+                                <p>
+                                    No se abona ningún otro cargo extra por los trámites ordinarios propios de un alumno de
+                                    la CMAC como es el vestuario para la obra final.
+                                </p>
+                                <p><b>Valor de Cuota: $800</b></p>
 
 
-                            <h5>Métodos de Pago</h5>
-                            <p>La matrícula puede abonarse tanto en efectivo como con
-                                <img src="/images/logo_mercado_pago_small.png"> en cuotas</p>
-                            <p>El valor de la cuota puede abonarse tanto en efectivo como con Tarjeta de Crédito a través de <img src="/images/logo_mercado_pago_small.png"> </p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="four columns">
-        <h5>Consultas?</h5>
-        <form method="post" action="/camc/consultas" id="cmac-consultas">
-            <div class="form">
-                <div class="twelve columns noleftmargin">
-                    <label>Nombre y Apellido</label>
-                    <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                                <h5>Métodos de Pago</h5>
+                                <p>La matrícula puede abonarse tanto en efectivo como con
+                                    <img src="/images/logo_mercado_pago_small.png"> en cuotas</p>
+                                <p>El valor de la cuota puede abonarse tanto en efectivo como con Tarjeta de Crédito a través de <img src="/images/logo_mercado_pago_small.png"> </p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="twelve columns noleftmargin">
-                    <label>Telefono</label>
-                    <input type="text" name="phone_number" class="smoothborder" placeholder="Telefono"/>
+            </div>
+        </div>
+        <div class="four columns">
+            <h5>Consultas?</h5>
+            <form method="post" action="/camc/consultas" id="cmac-consultas">
+                <div class="form">
+                    <div class="twelve columns noleftmargin">
+                        <label>Nombre y Apellido</label>
+                        <input type="text" name="name" class="smoothborder" placeholder="Tu Nombre y Tu Apellido"/>
+                    </div>
+                    <div class="twelve columns noleftmargin">
+                        <label>Telefono</label>
+                        <input type="text" name="phone_number" class="smoothborder" placeholder="Telefono"/>
+                    </div>
+                    <div class="twelve columns noleftmargin">
+                        <label>Dirección de Email</label>
+                        <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+                    </div>
+
+                    <div class="twelve columns noleftmargin">
+                        <br><label>Mensaje</label>
+                        <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                    </div>
+
+                    <input type="submit" id="submit" class="readmore" value="Enviar">
                 </div>
-                <div class="twelve columns noleftmargin">
-                    <label>Dirección de Email</label>
-                    <input type="text" name="email" class="smoothborder" placeholder="Tu Dirección de Email"/>
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <div class="sectiontitle">
+                <h4>Staff de Profesores</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <div class="owl-carousel owl-theme">
+                <div class="item teamwrap teambox">
+                    <img src="/images/staff_profesores/karol_cowan.png" alt="">
+                    <div class="mask">
+                        <h2>Karol Cowan</h2>
+                        <p>Bailarín, Músico y Artista Cubano</p>
+                    </div>
+                </div>
+                <div class="item teamwrap teambox">
+                    <img src="/images/staff_profesores/nelson_silvestre.png" alt="">
+                    <div class="mask">
+                        <h2>Nelson Silvestre</h2>
+                        <p>
+                            One of our best shooting model, working for this company since the beginning.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="twelve columns noleftmargin">
-                    <br><label>Mensaje</label>
-                    <textarea name="comment" class="smoothborder ctextarea" rows="8" placeholder="Mensaje"></textarea>
+                <div class="item teamwrap teambox">
+                    <img src="/images/staff_profesores/adriel_martinez.png" alt="">
+                    <div class="mask">
+                        <h2>Adriel Martinez</h2>
+                        <p>
+                            One of our best shooting model, working for this company since the beginning.
+                        </p>
+                    </div>
                 </div>
 
-                <input type="submit" id="submit" class="readmore" value="Enviar">
-            </div>
-        </form>
-    </div>
-</div>
+                <div class="item teamwrap teambox">
+                    <img src="/images/staff_profesores/gaby_fabro.png" alt="">
+                    <div class="mask">
+                        <h2>Gaby Fabro</h2>
+                        <p>Bailarín, Músico y Artista Cubano</p>
+                    </div>
+                </div>
 
-<div class="row">
-    <div class="twelve columns">
-        <div class="sectiontitle">
-            <h4>Staff de Profesores</h4>
-        </div>
-    </div>
-</div>
+                <div class="item teamwrap teambox">
+                    <img src="/images/staff_profesores/roberto_bouly.png" alt="">
+                    <div class="mask">
+                        <h2>Roberto Bouly</h2>
+                        <p>
+                            One of our best shooting model, working for this company since the beginning.
+                        </p>
+                    </div>
+                </div>
 
-<div class="row">
-    <div class="four columns">
-        <div class="teamwrap teambox">
-            <img src="/images/staff_profesores/karol_cowan.png" alt="">
-            <div class="mask">
-                <h2>Karol Cowan</h2>
-                <p>Bailarín, Músico y Artista Cubano</p>
-            </div>
-        </div>
-    </div>
-    <div class="four columns">
-        <div class="teamwrap teambox">
-            <img src="/images/staff_profesores/nelson_silvestre.png" alt="">
-            <div class="mask">
-                <h2>Nelson Silvestre</h2>
-                <p>
-                    One of our best shooting model, working for this company since the beginning.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="four columns">
-        <div class="teamwrap teambox">
-            <img src="/images/staff_profesores/adriel_martinez.png" alt="">
-            <div class="mask">
-                <h2>Adriel Martinez</h2>
-                <p>
-                    One of our best shooting model, working for this company since the beginning.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="four columns">
-        <div class="teamwrap teambox">
-            <img src="/images/staff_profesores/gaby_fabro.png" alt="">
-            <div class="mask">
-                <h2>Gaby Fabro</h2>
-                <p>Bailarín, Músico y Artista Cubano</p>
-            </div>
-        </div>
-    </div>
-    <div class="four columns">
-        <div class="teamwrap teambox">
-            <img src="/images/staff_profesores/roberto_bouly.png" alt="">
-            <div class="mask">
-                <h2>Roberto Bouly</h2>
-                <p>
-                    One of our best shooting model, working for this company since the beginning.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="four columns">
-        <div class="teamwrap teambox">
-            <img src="/images/staff_profesores/yinneris_aquinet.png" alt="">
-            <div class="mask">
-                <h2>Yinneris Aquinet</h2>
-                <p>
-                    One of our best shooting model, working for this company since the beginning.
-                </p>
+                <div class="item teamwrap teambox">
+                    <img src="/images/staff_profesores/yinneris_aquinet.png" alt="">
+                    <div class="mask">
+                        <h2>Yinneris Aquinet</h2>
+                        <p>
+                            One of our best shooting model, working for this company since the beginning.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
+
+
+<script>
+    $(document).ready(function(){
+        $('.icheck').iCheck({
+            checkboxClass: 'icheckbox_square-aero',
+            radioClass: 'iradio_square-aero',
+            increaseArea: '20%' // optional
+        });
+
+        $(".icheck").on("ifChanged", function (e) {
+            var _class = $(this).val();
+            $('.'+_class+"_wrapper").toggle();
+        });
+
+        $('.owl-carousel').owlCarousel({
+            stagePadding: 25,
+            autoplay: true,
+            loop:true,
+            dots: false,
+            nav:true,
+            responsiveClass:true,
+            navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"],
+            responsive:{
+                0:{
+                    items:1,
+                    nav:true,
+                    dots: false,
+                },
+                768:{
+                    items:2,
+                    nav:true,
+                    dots: false,
+                },
+                1000:{
+                    items:3,
+                    nav:true,
+                    dots: false,
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}
