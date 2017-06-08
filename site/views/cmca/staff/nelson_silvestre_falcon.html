@@ -15,7 +15,7 @@
 {% block content %}
 
 <style>
-    p, ul li,label {
+    p, ul li,label, article, a {
         font-size: 17px;
     }
 </style>
@@ -42,9 +42,9 @@
             <div class="sectiontitle">
                 <h4>Biografía</h4>
             </div>
-            <p>
+            <article>
                 Bio de Nelson....
-            </p>
+            </article>
 
         </div>
         <!-- end main content-->
@@ -61,4 +61,19 @@
         <!-- end sliderr-->
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('article').readmore({
+            speed: 75,
+            collapsedHeight: 500,
+            lessLink: '<a href="#">Cerrar</a>',
+            moreLink: '<a href="#">Leer mas</a>',
+            afterToggle: function(trigger, element, expanded) {
+                if(! expanded) { // The "Close" link was clicked
+                    $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}

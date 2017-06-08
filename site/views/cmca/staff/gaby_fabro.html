@@ -15,7 +15,7 @@
 {% block content %}
 
 <style>
-    p, ul li,label {
+    p, ul li,label, article, a {
         font-size: 17px;
     }
 </style>
@@ -42,7 +42,7 @@
             <div class="sectiontitle">
                 <h4>Biografía</h4>
             </div>
-            <p>
+            <article>
                 Egresada del Instituto Superior de Arte del Teatro Colón como bailarina profesional (1983), Gaby Fabro realizó cursos de perfeccionamiento con prestigiosos maestros en danzas clásicas, jazz, educación auditiva y teatro.
                 <br><br>
                 Valiéndose de los conocimientos técnicos y expresivos adquiridos a través de su formación académica, se abocó a las áreas creativas que en particular concentraron su interés: la gestación del estilo estético y coreográfico denominado “afro-contemporáneo” y el desarrollo de investigaciones sobre danzas y ritmos folclóricos cubanos.
@@ -68,7 +68,7 @@
                 Actualmente, Gaby Fabro, dicta clases y realiza talleres en distintas Escuelas de la ciudad de Buenos Aires y Rosario y en su Estudio particular, desarrollando la técnica afro contemporánea.
                 Recientemente, realizó trabajos coreográficos para la Agencia Publicitaria Banana Films.
                 En el mes de Junio de 2009 participó en la publicidad de Days, toallas femeninas, como coreógrafa.
-            </p>
+            </article>
 
         </div>
         <!-- end main content-->
@@ -85,4 +85,19 @@
         <!-- end sliderr-->
     </div>
 </div>
+<script>
+    $(document).ready(function(){
+        $('article').readmore({
+            speed: 75,
+            collapsedHeight: 500,
+            lessLink: '<a href="#">Cerrar</a>',
+            moreLink: '<a href="#">Leer mas</a>',
+            afterToggle: function(trigger, element, expanded) {
+                if(! expanded) { // The "Close" link was clicked
+                    $('html, body').animate( { scrollTop: element.offset().top }, {duration: 100 } );
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}
