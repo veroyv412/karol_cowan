@@ -1,0 +1,61 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+
+
+{% block title%}{{header_name}}{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/javascripts/jquery.owlCarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javascripts/jquery.owlCarousel/dist/assets/owl.theme.default.min.css">
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+    p, ul li,label {
+        font-size: 17px;
+    }
+</style>
+<div class="cmac_wrapper">
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p class="left">
+                    Carrera Modular Artística Cubana
+                </p>
+                <p class="right">
+                    <a href="/cmac"><i class="fa fa-chevron-left" aria-hidden="true"></i> Volver</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="row">
+        <!-- PROJECT DESCRIPTION-->
+        <div class="six columns">
+            <p>
+                Bio de Nelson....
+            </p>
+
+        </div>
+        <!-- end main content-->
+        <!-- SLIDER-->
+        <div class="six columns">
+            <div class="slider-wrapper theme-default">
+                <div id="slider" class="nivoSlider detailslider">
+                    <img src="/images/staff_profesores/nelson_silvestre_falcon.jpg" data-thumb="" alt=""/>
+                    <img src="/images/staff_profesores/nelson_silvestre_falcon2.jpg" data-thumb="" alt=""/>
+                    <img src="/images/staff_profesores/nelson_silvestre_falcon3.png" data-thumb="" alt=""/>
+                </div>
+            </div>
+        </div>
+        <!-- end sliderr-->
+    </div>
+</div>
+{% endblock %}

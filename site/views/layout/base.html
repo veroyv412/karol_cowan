@@ -62,6 +62,8 @@
     <link rel="stylesheet" type="text/css" href="/javascripts/GammaGallery/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/javascripts/icheck/skins/square/aero.css"/>
 
+    <link rel="stylesheet" href="/stylesheets/nivoslider.css"><!-- nivo slider stylesheet -->
+
     <!-- Facebook Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -106,8 +108,8 @@
         <p class="slide">
             <a href="#" class="btn-slide"></a>
         </p>
-
-        {% include 'layout/header.html' %}
+        {% set header_name = header_name is not empty ? header_name : 'Karol Cowan' %}
+        {% include 'layout/header.html' with {header_name: header_name} %}
 
         <div class="container" role="main">
             {% block content %}{% endblock %}
@@ -135,6 +137,7 @@
         <script src="/javascripts/twitterusername.js"></script>
         <script src="/javascripts/jquery.isotope.min.js"></script>
         <script src="/javascripts/jquery.prettyPhoto.js"></script>
+        <script src="/javascripts/jquery.nivo.slider.pack.js"></script>
         <script src="/javascripts/custom.js"></script>
 
         <script src="/javascripts/GammaGallery/js/jquery.masonry.min.js"></script>

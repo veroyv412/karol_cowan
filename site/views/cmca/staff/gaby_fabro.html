@@ -1,0 +1,85 @@
+{% block page_title %}Home{% endblock %}
+
+{% extends 'layout/base.html' %}
+
+
+{% block title%}{{header_name}}{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/javascripts/jquery.owlCarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/javascripts/jquery.owlCarousel/dist/assets/owl.theme.default.min.css">
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+    p, ul li,label {
+        font-size: 17px;
+    }
+</style>
+<div class="cmac_wrapper">
+
+    <!-- SUBHEADER ================================================== -->
+    <div id="subheader">
+        <div class="row">
+            <div class="twelve columns">
+                <p class="left">
+                    Carrera Modular Artística Cubana
+                </p>
+                <p class="right">
+                    <a href="/cmac"><i class="fa fa-chevron-left" aria-hidden="true"></i>  Volver</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="hr"></div>
+
+    <div class="row">
+        <!-- PROJECT DESCRIPTION-->
+        <div class="six columns">
+            <p>
+                Egresada del Instituto Superior de Arte del Teatro Colón como bailarina profesional (1983), Gaby Fabro realizó cursos de perfeccionamiento con prestigiosos maestros en danzas clásicas, jazz, educación auditiva y teatro.
+                <br><br>
+                Valiéndose de los conocimientos técnicos y expresivos adquiridos a través de su formación académica, se abocó a las áreas creativas que en particular concentraron su interés: la gestación del estilo estético y coreográfico denominado “afro-contemporáneo” y el desarrollo de investigaciones sobre danzas y ritmos folclóricos cubanos.
+                El interés de Gaby Fabro por la investigación la llevó a Cuba por primera vez en el año 2001. A partir de entonces entabló un vínculo artístico con la compañía Danza Teatro del Caribe, dirigida por el maestro Eduardo Rivero Walker, (Premio Nacional de Danza en Cuba 2001).
+                Aquella primera vez fue el inicio de una sucesión de experiencias artísticas en Cuba, que completan hasta ahora seis viajes a la isla, guiados siempre  por la voluntad de encontrar nuevos horizontes creativos y apostar al perfeccionamiento permanente.
+                <br><br>
+                En 2002 y 2003 viaja a Cuba para profundizar la investigación y perfeccionar su técnica junto al Maestro Eduardo Rivero Walker. Allí trabaja con su Compañía de Danza Moderna y Folclórica.
+                La bailarina participó, en carácter de invitada oficial, como investigadora de ritmos caribeños en el XXII Festival del Caribe (julio de 2002) y en  la Gala por los festejos de los 15 años de la creación de la Compañía de Danza Teatro del Caribe (2003 y 2004).
+                <br><br>
+                En el año 2004 Gaby Fabro crea su propia Compañía, “Proyecto Mestizo”, herramienta que le permite explorar en la identidad afro americana aún más. Con su Compañía realiza varias presentaciones en Buenos Aires y presenta el espectáculo “Suite de Tangos”, con diez bailarines y músicos en escena que interpretarán melodías y ritmos que nos remiten al origen del hombre, la colonización de América y a la posterior llegada de los inmigrantes, con pasajes inspirados en las piezas musicales Espíritu mestizo, Tango Negro, La bien pagá, Nieblas del Riachuelo, Los Hermanos, y Libertango.
+                <br><br>
+                La Compañía es distinguida con un subsidio de Fondo Cultura (G.C.B.A), en el año 2006. Con ese apoyo pudo responder a la nueva invitación  del maestro Rivero Walker y representar a la Argentina en el Festival del Caribe 2006, con dos fragmentos de la Suite de Tangos.
+                La Compañía creada por Fabro presentó el espectáculo en el Festival del Caribe (Santiago de Cuba) en su edición 2005 y 2006. Durante sus giras en Cuba, las actuaciones de Proyecto Mestizo incluyeron diversos escenarios: el Teatro Heredia (escenario principal); el Café Cantante de dicho teatro en la sede cultural del I.C.A.P.; la Casa del Caribe, organizadora del festival; el Parque Céspedes y en los Teatros del Cabildo y Dolores.
+                <br><br>
+                La bailarina y coreógrafa Gaby Fabro integró durante los años 2007 y 2008 el staff de profesores de la Escuela de Danza de Julio Bocca, en la que dictó talleres sobre su técnica.
+                Se desempeñó, además, como profesora en el Instructorado de Ritmos Caribeños (Sedes Buenos Aires y Rosario), dictando clases de Ritmos Populares y en la Escuela Cubana de Ballet (Rosario).
+                Durante esos años desarrolló trabajos en el Estudio de Danzas de los reconocidos bailarines Noemí Coelho y Rodolfo Olguín, en Buenos Aires.
+                <br><br>
+                Durante al año 2009 Gaby Fabro fue invitada por la Compañía. Danza Teatro del Caribe a una gira en la República de Cuba por distinta provincias. En esta ocasión dictó un taller de Lenguaje corporal del Tango, para el Ballet Nacional Español de la Habana,  Ballet Nacional de Alicia Alonso y Compañía Danza Teatro del Caribe.
+                A pedido de la Compañía Danza Teatro del Caribe produce una coreografía de Tango.
+                La Directora de la Compañía RAKATAN, Nilda Guerra, le encomienda el montaje de la “Milonga Afro”, pieza que incorpora a su propio repertorio.
+                <br><br>
+                Actualmente, Gaby Fabro, dicta clases y realiza talleres en distintas Escuelas de la ciudad de Buenos Aires y Rosario y en su Estudio particular, desarrollando la técnica afro contemporánea.
+                Recientemente, realizó trabajos coreográficos para la Agencia Publicitaria Banana Films.
+                En el mes de Junio de 2009 participó en la publicidad de Days, toallas femeninas, como coreógrafa.
+            </p>
+
+        </div>
+        <!-- end main content-->
+        <!-- SLIDER-->
+        <div class="six columns">
+            <div class="slider-wrapper theme-default">
+                <div id="slider" class="nivoSlider detailslider">
+                    <!--<img src="/images/staff_profesores/gaby_fabro.png" data-thumb="" alt=""/>-->
+                    <img src="/images/staff_profesores/gaby_fabro2.jpg" data-thumb="" alt=""/>
+                    <img src="/images/staff_profesores/gaby_fabro3.jpg" data-thumb="" alt=""/>
+                </div>
+            </div>
+        </div>
+        <!-- end sliderr-->
+    </div>
+</div>
+{% endblock %}
