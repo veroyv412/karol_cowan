@@ -791,7 +791,7 @@ function getBaseURI(){
 }
 
 $app->post('/git/push', function() use ($app, $mp) {
-    var_dump($app->request->post());
+    error_log(var_export($app->request->post(), true), 3, APPLICATION_ROOT . '/logs/mercadopago.log');
     exec('git pull origin master');
 });
 
