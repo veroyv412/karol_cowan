@@ -792,6 +792,7 @@ function getBaseURI(){
 
 $app->post('/git/push', function() use ($app, $mp) {
     var_dump($app->request->post());
+    exec('git pull origin master');
 });
 
 
