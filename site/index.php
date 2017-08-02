@@ -791,7 +791,7 @@ function getBaseURI(){
 }
 
 $app->post('/git/push', function() use ($app, $mp) {
-    exec('sh ../.git/hooks/post-update');
+    echo shell_exec('sh ../.git/hooks/post-update');
     error_log(var_export($app->request->post(), true), 3, APPLICATION_ROOT . '/logs/git.log');
 });
 
