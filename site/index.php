@@ -790,4 +790,9 @@ function getBaseURI(){
     return $protocol . "://" . $_SERVER['HTTP_HOST'] . parse_url($_SERVER['REQUEST_URI'],PHP_URL_FRAGMENT);
 }
 
+$app->post('/git/push', function() use ($app, $mp) {
+    var_dump($app->request->post());
+});
+
+
 $app->run();
