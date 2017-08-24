@@ -1,0 +1,25 @@
+/****** PLACE YOUR CUSTOM STYLES HERE ******/
+.bg-primary {
+    color:#fff;
+    background-color:#13181d;
+}
+
+.bg-black {
+    color:#fff;
+    background-color:#13181d;
+}
+
+.bg-black-bordered {
+    color:#fff;
+    border:1px solid #13181d;
+}
+
+.btn-black {
+    color:#13181d;
+    border:2px solid #13181d;
+}
+
+.btn-black:hover {
+    color:#13181d;
+    background-color:#f8f8f8;
+}
