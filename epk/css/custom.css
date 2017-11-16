@@ -23,3 +23,7 @@
     color:#13181d;
     background-color:#f8f8f8;
 }
+
+h4.black, span.black, p.black {
+    color:#000000;
+}
